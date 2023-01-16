@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/01/16/%E7%BB%AB%E6%B3%A2%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">绫波的第一篇博客文章</a>
+      <a class="article-title" href="/2023/01/16/%E7%BB%AB%E6%B3%A2%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">Ayanami的第一篇blog</a>
     </h1>
   
 
@@ -172,9 +172,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p>内容</p>
+        <h2 id="使用笔记"><a href="#使用笔记" class="headerlink" title="使用笔记"></a>使用笔记</h2><p>node -v	#查看node版本<br>npm -v	#查看npm版本<br>npm install -g cnpm –registry&#x3D;<a target="_blank" rel="noopener" href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a>	#安装淘宝的cnpm 管理器<br>cnpm -v	#查看cnpm版本<br>cnpm install -g hexo-cli    #安装hexo框架<br>hexo -v	#查看hexo版本<br>mkdir blog	#创建blog目录<br>cd blog	 #进入blog目录<br>sudo hexo init 	#生成博客 初始化博客<br>hexo s	#启动本地博客服务<br><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>	#本地访问地址<br>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 YourGithubName.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件</p>
+<p>#配置_config.yml </p>
+<pre><code># Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+      type: git
+     repo: https://github.com/YourGithubName/YourGithubName.github.io.git
+      branch: master
+</code></pre>
 <hr>
-<h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>内容</p>
+<p>hexo d	#部署到Github仓库里<br><a target="_blank" rel="noopener" href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a>  #访问这个地址可以查看博客</p>
+<p> git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes&#x2F;yilia  #下载yilia主题到本地</p>
+<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
+<p>hexo c	#清理一下<br>hexo g	#生成<br>hexo d	#部署到远程Github仓库</p>
 
       
 
