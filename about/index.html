@@ -564,7 +564,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [1,0,1,0,0,0,0,0,0,0,0,0,2],
+                data: [0,0,2,0,0,0,0,0,0,0,0,0,2],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -699,10 +699,10 @@
         <div class="col s12 m6 l6" data-aos="fade-up">
             <div class="skillbar">
                 <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 1%">
+                     style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 5%">
                     <span>C++</span>
                 </div>
-                <div class="skill-bar-percent">1%</div>
+                <div class="skill-bar-percent">5%</div>
             </div>
         </div>
         
@@ -783,14 +783,14 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/Unity/">
-                <span class="chip center-align waves-effect waves-light chip-default">Unity</span>
+            <a href="/tags/others/">
+                <span class="chip center-align waves-effect waves-light chip-default">others</span>
             </a>
             
             
             
-            <a href="/tags/others/">
-                <span class="chip center-align waves-effect waves-light chip-default">others</span>
+            <a href="/tags/Unity/">
+                <span class="chip center-align waves-effect waves-light chip-default">Unity</span>
             </a>
             
             
@@ -801,6 +801,54 @@
 </div>
 
                 
+
+                
+                
+<div id="myGallery" class="my-gallery">
+    <div class="title center-align" data-aos="zoom-in-up">
+        <i class="far fa-image"></i>&nbsp;&nbsp;相册
+    </div>
+    <div class="row">
+        
+        
+        <div class="photo col s12 m6 l4" data-aos="fade-up">
+            <div class="img-item" data-src="/medias/featureimages/3.png">
+                <img src="/medias/featureimages/3.png" class="responsive-img">
+            </div>
+        </div>
+        
+        <div class="photo col s12 m6 l4" data-aos="fade-up">
+            <div class="img-item" data-src="/medias/featureimages/5.png">
+                <img src="/medias/featureimages/5.png" class="responsive-img">
+            </div>
+        </div>
+        
+        <div class="photo col s12 m6 l4" data-aos="fade-up">
+            <div class="img-item" data-src="/medias/featureimages/7.png">
+                <img src="/medias/featureimages/7.png" class="responsive-img">
+            </div>
+        </div>
+        
+        <div class="photo col s12 m6 l4" data-aos="fade-up">
+            <div class="img-item" data-src="/medias/featureimages/15.png">
+                <img src="/medias/featureimages/15.png" class="responsive-img">
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<script>
+    $(function () {
+        let animateClass = 'animated pulse';
+        $('#myGallery .photo').hover(function () {
+            $(this).addClass(animateClass);
+        }, function () {
+            $(this).removeClass(animateClass);
+        });
+    });
+</script>
 
                 
                 
@@ -850,15 +898,15 @@
         <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
                    server="netease"
                    type="playlist"
-                   id="503838841"
+                   id="2449245181"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
                    preload='auto'
                    volume='0.7'
-                   list-folded='true'
+                   list-folded='false'
         >
         </meting-js>
     </div>
@@ -1156,6 +1204,11 @@ $(function () {
 
     <!--腾讯兔小巢-->
     
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     
