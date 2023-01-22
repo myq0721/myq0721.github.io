@@ -9,7 +9,7 @@
 }
 
 #reward .btn-floating:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(181, 66, 179, 0.996), 0 5px 15px rgb(187, 72, 193);
 }
 
 #rewardModal {
@@ -76,7 +76,7 @@
 
 .reward-tabs .wechat-tab .active {
     color: #fff !important;
-    background-color: #22AB38 !important;
+    background-color: #9d5dca !important;
 }
 
 .reward-tabs .alipay-tab .active {

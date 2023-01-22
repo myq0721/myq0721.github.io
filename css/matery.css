@@ -94,7 +94,7 @@ hr {
 }
 
 blockquote {
-    border-left: 5px solid #42b983;
+    border-left: 5px solid #c472e2;
     padding: 1rem 0.8rem 0.2rem 0.8rem;
     color: #666;
     background-color: rgba(66, 185, 131, .1);
@@ -241,15 +241,15 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #d38eec 0%, #eea8daee 100%);
 }
 
 .text-color {
-    color: #0f9d58 !important;
+    color: #913e90 !important;
 }
 
 .white-color {
-    color: #fff;
+    color: rgb(255, 255, 255);
 }
 
 .progress-bar {
@@ -257,7 +257,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background: linear-gradient(to right, #c37ad0 0%, #c377cd 100%);
     opacity: 0.8;
 }
 
@@ -875,7 +875,7 @@ article a {
 
 article a:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #b261d2;
     text-decoration: underline;
 }
 
@@ -1058,7 +1058,7 @@ article .article-tags .chip {
     border-radius: 15px;
     margin-right: 5px;
     margin-bottom: 2px;
-    color: #42b983;
+    color: #b86ae5;
     background: #fff;
     border: 1px solid;
     transition: all 0.6s ease-in-out;
@@ -1066,17 +1066,17 @@ article .article-tags .chip {
 
 #artDetail .tag_share .article-tag .chip:hover {
     color: #fff;
-    background: #42b983;
+    background: #bb6ed9;
 }
 
 #artDetail .post-cate {
     float: right;
-    color: #42b983;
+    color: #bc73cc;
 }
 
 #artDetail .post-cate a {
     padding-right: 5px;
-    color: #42b983;
+    color: #c164c1;
     font-weight: 500;
 }
 
@@ -1095,7 +1095,7 @@ article .article-tags .chip {
 
 #artDetail .post-info .post-category:hover {
     font-weight: bold;
-    color: #42b983;
+    color: #b377c1;
     text-decoration: underline;
 }
 
@@ -1158,7 +1158,7 @@ article .article-tags .chip {
 
 #artDetail .reprint a {
     font-size: 1.05rem;
-    color: #42b983;
+    color: #ba71c9;
     font-weight: 500;
 }
 
@@ -1174,7 +1174,7 @@ article .article-tags .chip {
 
 #articleContent a {
     padding: 0 2px;
-    color: #42b983;
+    color: #a05fc5;
     font-weight: 500;
     text-decoration: underline;
     word-wrap: break-word;
@@ -1393,7 +1393,7 @@ thead {
     left: 18px;
     height: 100%;
     width: 4px;
-    background: #0f9d58;
+    background: #cf78d8;
 }
 
 @media only screen and (min-width: 900px) {
@@ -1608,7 +1608,7 @@ thead {
 }
 
 .post-statis .statis .count a {
-    color: #42b983;
+    color: #bc6dcb;
 }
 
 .post-statis .statis .name {
@@ -1629,8 +1629,8 @@ thead {
     margin: 0 0.5rem;
     padding: 0;
     color: #fff;
-    border: 1px solid #0f9d58;
-    background: radial-gradient(#4cbf30, #0f9d58);
+    border: 1px solid #df92f3;
+    background: radial-gradient(#ce70d6, #df90f5);
     font-size: 0.9rem;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .21), 0 2px 3px rgba(0, 0, 0, .1);
@@ -1806,8 +1806,8 @@ thead {
 
 .other-skills .chip:hover {
     color: #fff;
-    background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
-    border: 1px solid #4cbf30;
+    background: linear-gradient(to right, #af69bb 0%, #cf72e8 100%);
+    border: 1px solid #df70df;
     box-shadow: 0 5px 5px rgba(0, 0, 0, .25)
 }
 
@@ -1878,7 +1878,7 @@ p.search-result-summary{
 
 .search-result-list .search-result-title {
     font-size: 1.4rem;
-    color: #42b983;
+    color: #ec7ce8;
 }
 
 .search-result-list li {
@@ -2259,16 +2259,16 @@ body.DarkMode .theme-btn:hover {
     color: #428bca;
 }
 .post-container .note.success {
-    border-left-color: #5cb85c;
+    border-left-color: #c276d5;
 }
 .post-container .note.success h2, .post-container .note.success h3, .post-container .note.success h4, .post-container .note.success h5, .post-container .note.success h6 {
-    color: #5cb85c;
+    color: #b85cb5;
 }
 .post-container .note.success:not(.no-icon)::before {
     content:'\f058';
     font-family:'Font Awesome 5 Free';
     font-weight: 900;
-    color: #5cb85c;
+    color: #bd82df;
 }
 .post-container .note.warning {
     border-left-color: #f0ad4e;
