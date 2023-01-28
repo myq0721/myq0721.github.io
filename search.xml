@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>日语语法——4.形容词，形容动词</title>
+      <link href="/2023/01/28/ri-yu-yu-fa-4-xing-rong-ci-xing-rong-dong-ci/"/>
+      <url>/2023/01/28/ri-yu-yu-fa-4-xing-rong-ci-xing-rong-dong-ci/</url>
+      
+        <content type="html"><![CDATA[<h3 id="形容词"><a href="#形容词" class="headerlink" title="形容词"></a>形容词</h3><p>空は青い。<br>空は青いです。//更礼貌<br>天空是蓝色的。</p><p><em>形容词可以直接做谓语后不需加だ，做终止形</em></p><p>青い空。<br>蓝色的天空。</p><p><em>形容词做定语，直接加名词，不加の，做连体形</em><br><em>名词代词等即体言</em></p><h3 id="形容动词"><a href="#形容动词" class="headerlink" title="形容动词"></a>形容动词</h3><p><em>形容动词的变化方式和动词相同</em></p><p>教室は静かだ。<br>教室は静かです。<br>教室安静。</p><p>静かな教室。<br>安静的教室</p><p><em>だ变な由终止形变连体形</em></p><h3 id="く-x2F-で"><a href="#く-x2F-で" class="headerlink" title="~く/で"></a>~く/で</h3><p><em>形容词，形容动词，与动词称为用言</em><br><em>同理，连接用眼的部分即为连用形</em></p><p>教室は大きく、静かだ。<br>教室很大也很安静。</p><p><em>形容词い变く，变连用形</em></p><p>教室は静かで、大きい。<br>教室很安静也很大。</p><p><em>形容动词以で结尾，变连用形，和名词相同</em></p><h3 id="ない"><a href="#ない" class="headerlink" title="~ない"></a>~ない</h3><p>この本は面白くない。<br>この本は面白くないです。//敬<br>この本は面白くありません。//敬<br>这本书没意思。</p><p><em>因为后要加ない这个补助形容词,面白い变面白く，即变为连用形</em></p><p>あの俳優さんは有名ではない。<br>あの俳優さんは有名ではありません。<br>那个演员没有名气。</p><h3 id="かつた-x2F"><a href="#かつた-x2F" class="headerlink" title="~かつた/"></a>~かつた/</h3><p><em>连用形的过去式</em></p><p>昨日は寒かっだ。<br>昨日は寒かっだです。<br>昨天冷。</p><p>昨日は寒くなかっだ。<br>昨日は寒くなかっだです。<br>昨日は寒くありませんでした。//でした表过去<br>昨天不冷。</p><p>寒<del>い</del><br>　く＋な<del>い</del><br>　　　　かっだ</p><p><em>为了加ない、寒い变寒く</em><br><em>然后把ない变~かっだ、即过去式的连用形</em></p><h3 id="だった"><a href="#だった" class="headerlink" title="~だった"></a>~だった</h3><p>私はもともと学生だった//だ变だった表过去<br>私はもともと学生でした。//更礼貌<br>我原本是个学生。</p><p>昨日教室は静かだった。<br>昨日教室は静かでした。<br>昨天教室安静。</p><p>昨日教室は静かではなかっだ。<br>昨日教室は静かではありませんでした。<br>昨天教室不安静。</p><h3 id="连体词"><a href="#连体词" class="headerlink" title="连体词"></a>连体词</h3><p><em>只能连接体言的词语</em></p><p>大きな<br>大的</p><p>小さな<br>小的</p><p>色んな<br>各式各样的</p><p><em>上面三个只有连体词一种词性</em></p><p>同じ<br>一样的<br><em>而同じ还是个形容动词，同じだ/です等</em></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 日语 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>日语语法——3.人称代词</title>
       <link href="/2023/01/25/ri-yu-yu-fa-3-ren-cheng-dai-ci/"/>
       <url>/2023/01/25/ri-yu-yu-fa-3-ren-cheng-dai-ci/</url>
@@ -46,7 +65,7 @@
       <link href="/2023/01/23/xian-dai-you-xi-yin-qing-1-zheng-ti-ren-zhi/"/>
       <url>/2023/01/23/xian-dai-you-xi-yin-qing-1-zheng-ti-ren-zhi/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>游戏引擎是一个及其庞大而又复杂的系统工程，其中的任何一层或一个模块都有很深的学问。正因如此，我们需要从一个宏观的角度对游戏引擎有一个整体的认知。理通之后，在对其中的某个方面进行深度的研究时才能事半功倍。</p><p>从这样的角度来说笔者较为推荐《游戏引擎架构》,games104，或youtube上h@TheCherno。至于具体各个功能，例如渲染的《Real-Time Rendering》等资料，在讨论相关板块时再分别提及。<br>而这系列博客主要以分享前三者的学习情况为主。</p>]]></content>
       
       
       
