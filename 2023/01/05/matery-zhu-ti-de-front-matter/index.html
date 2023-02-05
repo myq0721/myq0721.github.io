@@ -4,40 +4,19 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="日语语法——3.人称代词, Ayanami&#39;s blog">
-    <meta name="description" content="一人称
-
-
-私（わたし）
-日常女性使用，正式场合男女通用
+    <meta name="keywords" content="matery主题的Front-matter, Ayanami&#39;s blog">
+    <meta name="description" content="文章 Front-matter 介绍Front-matter 选项详解Front-matter 选项中的所有内容均为非必填的。但我仍然建议至少填写 title 和 date 的值。
 
 
 
-私（わたくし）
-男女通用，正式场合
+配置选项
+默认值
+描述
 
 
-僕
-男，非正式
 
-
-俺
-男，粗鲁
-
-
-俺様
-男，居高临下，十分粗鲁
-
-
-あたし
-女性，随意，日常
-
-
-うち
-女性
-
-
-二人称不知道对方姓">
+title
+Markd">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -49,7 +28,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>日语语法——3.人称代词 | Ayanami&#39;s blog</title>
+    <title>matery主题的Front-matter | Ayanami&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -381,12 +360,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">日语语法——3.人称代词</h1>
+                    <h1 class="description center-align post-title">matery主题的Front-matter</h1>
                 </div>
             </div>
         </div>
@@ -410,8 +389,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%97%A5%E8%AF%AD/">
-                                <span class="chip bg-color">日语</span>
+                            <a href="/tags/other/">
+                                <span class="chip bg-color">other</span>
                             </a>
                         
                     </div>
@@ -426,7 +405,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-25
+                    2023-01-05
                 </div>
                 
 
@@ -435,14 +414,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    287
+                    712
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -465,132 +444,122 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一人称"><a href="#一人称" class="headerlink" title="一人称"></a>一人称</h3><table>
+                <h2 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h2><h3 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
+<table>
 <thead>
 <tr>
-<th align="center">私（わたし）</th>
-<th align="center">日常女性使用，正式场合男女通用</th>
+<th>配置选项</th>
+<th>默认值</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">私（わたくし）</td>
-<td align="center">男女通用，正式场合</td>
+<td>title</td>
+<td><code>Markdown</code> 的文件标题</td>
+<td>文章标题，强烈建议填写此选项</td>
 </tr>
 <tr>
-<td align="center">僕</td>
-<td align="center">男，非正式</td>
+<td>date</td>
+<td>文件创建时的日期时间</td>
+<td>发布时间，强烈建议填写此选项，且最好保证全局唯一</td>
 </tr>
 <tr>
-<td align="center">俺</td>
-<td align="center">男，粗鲁</td>
+<td>author</td>
+<td>根 <code>_config.yml</code> 中的 <code>author</code></td>
+<td>文章作者</td>
 </tr>
 <tr>
-<td align="center">俺様</td>
-<td align="center">男，居高临下，十分粗鲁</td>
+<td>img</td>
+<td><code>featureImages</code> 中的某个值</td>
+<td>文章特征图，推荐使用图床(腾讯云、七牛云、又拍云等)来做图片的路径.如: <code>http://xxx.com/xxx.jpg</code></td>
 </tr>
 <tr>
-<td align="center">あたし</td>
-<td align="center">女性，随意，日常</td>
+<td>top</td>
+<td><code>true</code></td>
+<td>推荐文章（文章是否置顶），如果 <code>top</code> 值为 <code>true</code>，则会作为首页推荐文章</td>
 </tr>
 <tr>
-<td align="center">うち</td>
-<td align="center">女性</td>
+<td>hide</td>
+<td><code>false</code></td>
+<td>隐藏文章，如果<code>hide</code>值为<code>true</code>，则文章不会在首页显示</td>
+</tr>
+<tr>
+<td>cover</td>
+<td><code>false</code></td>
+<td><code>v1.0.2</code>版本新增，表示该文章是否需要加入到首页轮播封面中</td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>无</td>
+<td><code>v1.0.2</code>版本新增，表示该文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片</td>
+</tr>
+<tr>
+<td>password</td>
+<td>无</td>
+<td>文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 <code>password</code> 的值，该值必须是用 <code>SHA256</code> 加密后的密码，防止被他人识破。前提是在主题的 <code>config.yml</code> 中激活了 <code>verifyPassword</code> 选项</td>
+</tr>
+<tr>
+<td>toc</td>
+<td><code>true</code></td>
+<td>是否开启 TOC，可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 <code>config.yml</code> 中激活了 <code>toc</code> 选项</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td><code>false</code></td>
+<td>是否开启数学公式支持 ，本文章是否开启 <code>mathjax</code>，且需要在主题的 <code>_config.yml</code> 文件中也需要开启才行</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>无</td>
+<td>文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>无</td>
+<td>文章分类，本主题的分类表示宏观上大的分类，只建议一篇文章一个分类</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>无</td>
+<td>文章标签，一篇文章可以多个标签</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>文章标题</td>
+<td>文章关键字，SEO 时需要</td>
+</tr>
+<tr>
+<td>reprintPolicy</td>
+<td>cc_by</td>
+<td>文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td>
 </tr>
 </tbody></table>
-<h3 id="二人称"><a href="#二人称" class="headerlink" title="二人称"></a>二人称</h3><h4 id="不知道对方姓名时："><a href="#不知道对方姓名时：" class="headerlink" title="不知道对方姓名时："></a>不知道对方姓名时：</h4><table>
-<thead>
-<tr>
-<th align="center">あなた</th>
-<th align="center">最常用，对平辈与晚辈使用，</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">君</td>
-<td align="center">男性对同辈与晚辈使用</td>
-</tr>
-<tr>
-<td align="center">お前</td>
-<td align="center">男性对同辈与晚辈使用</td>
-</tr>
-<tr>
-<td align="center">あんた</td>
-<td align="center">比あなた更随意</td>
-</tr>
-<tr>
-<td align="center">僕</td>
-<td align="center">对不认识的小孩</td>
-</tr>
-</tbody></table>
-<h4 id="知道对方姓名后，更礼貌的用语："><a href="#知道对方姓名后，更礼貌的用语：" class="headerlink" title="知道对方姓名后，更礼貌的用语："></a>知道对方姓名后，更礼貌的用语：</h4><h5 id="様-x2F-ちん-x2F-君-x2F-ちやん-x2F-殿（どの）-x2F-氏（し）"><a href="#様-x2F-ちん-x2F-君-x2F-ちやん-x2F-殿（どの）-x2F-氏（し）" class="headerlink" title="~様/~ちん/君/ちやん/殿（どの）/氏（し）"></a>~様/~ちん/君/ちやん/殿（どの）/氏（し）</h5><table>
-<thead>
-<tr>
-<th align="center">佐藤様</th>
-<th align="center">广泛，较礼貌，店家对客人等</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">佐藤さん</td>
-<td align="center">日常</td>
-</tr>
-<tr>
-<td align="center">佐藤君</td>
-<td align="center">对同辈和晚辈，日常男性使用</td>
-</tr>
-<tr>
-<td align="center">佐藤ちやん</td>
-<td align="center">比较亲密</td>
-</tr>
-<tr>
-<td align="center">営業部長殿</td>
-<td align="center">前加职务，正式公文</td>
-</tr>
-<tr>
-<td align="center">佐藤氏</td>
-<td align="center">前加姓</td>
-</tr>
-<tr>
-<td align="center">佐藤</td>
-<td align="center">直呼，很亲密，或上对下，或对外人说自己人时</td>
-</tr>
-</tbody></table>
-<h3 id="三人称"><a href="#三人称" class="headerlink" title="三人称"></a>三人称</h3><h4 id="人物："><a href="#人物：" class="headerlink" title="人物："></a>人物：</h4><table>
-<thead>
-<tr>
-<th align="center">彼（かれ）</th>
-<th align="center">他</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">彼女（かのじお）</td>
-<td align="center">她</td>
-</tr>
-<tr>
-<td align="center">こ/そ/あいつ</td>
-<td align="center">它，家伙</td>
-</tr>
-</tbody></table>
-<h4 id="物体："><a href="#物体：" class="headerlink" title="物体："></a>物体：</h4><p>こ/そ/あ/どれ       </p>
-<hr>
-<h3 id="复数表现"><a href="#复数表现" class="headerlink" title="复数表现"></a>复数表现</h3><table>
-<thead>
-<tr>
-<th align="center">私（わたし）たち</th>
-<th align="center">最常用，相当于“们”</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">あなたがだ</td>
-<td align="center">较礼貌</td>
-</tr>
-<tr>
-<td align="center">彼ら</td>
-<td align="center">较不礼貌 <em>只有彼没有彼だち的用法</em></td>
-</tr>
-<tr>
-<td align="center">私（わたくし）ども</td>
-<td align="center">最礼貌，自谦语</td>
-</tr>
-</tbody></table>
+<p>以下为文章的 <code>Front-matter</code> 示例。</p>
+<h3 id="最简示例"><a href="#最简示例" class="headerlink" title="最简示例"></a>最简示例</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">---</span>
+<span class="token key atrule">title</span><span class="token punctuation">:</span> typora<span class="token punctuation">-</span>vue<span class="token punctuation">-</span>theme主题介绍
+<span class="token key atrule">date</span><span class="token punctuation">:</span> <span class="token datetime number">2018-09-07 09:25:00</span>
+<span class="token punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token punctuation">---</span>
+<span class="token key atrule">title</span><span class="token punctuation">:</span> typora<span class="token punctuation">-</span>vue<span class="token punctuation">-</span>theme主题介绍
+<span class="token key atrule">date</span><span class="token punctuation">:</span> <span class="token datetime number">2018-09-07 09:25:00</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> 赵奇
+<span class="token key atrule">img</span><span class="token punctuation">:</span> /source/images/xxx.jpg
+<span class="token key atrule">top</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">hide</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">cover</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">coverImg</span><span class="token punctuation">:</span> /images/1.jpg
+<span class="token key atrule">password</span><span class="token punctuation">:</span> 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
+<span class="token key atrule">toc</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">mathjax</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+<span class="token key atrule">summary</span><span class="token punctuation">:</span> 这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要
+<span class="token key atrule">categories</span><span class="token punctuation">:</span> Markdown
+<span class="token key atrule">tags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> Typora
+  <span class="token punctuation">-</span> Markdown
+<span class="token punctuation">---</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>摘自matery的README_CN，方便自己使用</strong></p>
 
                 
             </div>
@@ -617,7 +586,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://myq0721.github.io/2023/01/25/ri-yu-yu-fa-3-ren-cheng-dai-ci/">http://myq0721.github.io/2023/01/25/ri-yu-yu-fa-3-ren-cheng-dai-ci/</a>
+                    <a href="http://myq0721.github.io/2023/01/05/matery-zhu-ti-de-front-matter/">http://myq0721.github.io/2023/01/05/matery-zhu-ti-de-front-matter/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -655,8 +624,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%97%A5%E8%AF%AD/">
-                                    <span class="chip bg-color">日语</span>
+                                <a href="/tags/other/">
+                                    <span class="chip bg-color">other</span>
                                 </a>
                             
                         </div>
@@ -739,13 +708,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/01/28/ri-yu-yu-fa-4-xing-rong-ci-xing-rong-dong-ci/">
+                <a href="/2023/01/20/markdown-ji-chu-yu-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.png" class="responsive-img" alt="日语语法——4.形容词，形容动词">
+                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="markdown基础语法">
                         
-                        <span class="card-title">日语语法——4.形容词，形容动词</span>
+                        <span class="card-title">markdown基础语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -756,7 +725,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-20
                         </span>
                         <span class="publish-author">
                             
@@ -769,8 +738,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E8%AF%AD/">
-                        <span class="chip bg-color">日语</span>
+                    <a href="/tags/others/">
+                        <span class="chip bg-color">others</span>
                     </a>
                     
                 </div>
@@ -784,13 +753,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/25/ri-yu-yu-fa-2-zhi-shi-dai-ci/">
+                <a href="/2022/03/20/ling-bo-de-di-yi-pian-bo-ke-wen-zhang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.png" class="responsive-img" alt="日语语法——2.指示代词">
+                        <img src="/medias/featureimages/9.png" class="responsive-img" alt="Ayanami的第一篇blog">
                         
-                        <span class="card-title">日语语法——2.指示代词</span>
+                        <span class="card-title">Ayanami的第一篇blog</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -801,7 +770,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-20
                             </span>
                         <span class="publish-author">
                             
@@ -814,8 +783,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%97%A5%E8%AF%AD/">
-                        <span class="chip bg-color">日语</span>
+                    <a href="/tags/others/">
+                        <span class="chip bg-color">others</span>
                     </a>
                     
                 </div>
