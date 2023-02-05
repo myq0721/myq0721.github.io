@@ -3,9 +3,10 @@
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="Unity 3D 脚本概览, Ayanami&#39;s blog">
-    <meta name="description" content="">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="vector用法总结, Ayanami&#39;s blog">
+    <meta name="description" content="vector相关的用法总结因为最近经常用，于是总结在这个地方。
+向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Unity 3D 脚本概览 | Ayanami&#39;s blog</title>
+    <title>vector用法总结 | Ayanami&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -53,12 +54,12 @@
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
 <meta name="generator" content="Hexo 6.3.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 
 <body>
-    <header class="navbar-fixed">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -336,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Unity 3D 脚本概览</h1>
+                    <h1 class="description center-align post-title">vector用法总结</h1>
                 </div>
             </div>
         </div>
@@ -365,8 +366,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Unity/">
-                                <span class="chip bg-color">Unity</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
                     </div>
@@ -381,7 +382,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-20
+                    2023-02-05
                 </div>
                 
 
@@ -390,14 +391,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    661
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -420,7 +421,54 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="vector相关的用法总结"><a href="#vector相关的用法总结" class="headerlink" title="vector相关的用法总结"></a>vector相关的用法总结</h2><p>因为最近经常用，于是总结在这个地方。</p>
+<p>向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够存放任意类型的动态数组。</p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>1.顺序序列<br>顺序容器中的元素按照严格的线性顺序排序。可以通过元素在序列中的位置访问对应的元素。</p>
+<p>2.动态数组<br>支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算述进行该操作。提供了在序列末尾相对快速地添加/删除元素的操作。</p>
+<p>3.能够感知内存分配器的（Allocator-aware）<br>容器使用一个内存分配器对象来动态地处理它的存储需求。</p>
+<hr>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>使用vector需要注意以下几点：</p>
+<p>1.如果你要表示的向量长度较长（需要为向量内部保存很多数），容易导致内存泄漏，而且效率会很低；</p>
+<p>2.Vector作为函数的参数或者返回值时，需要注意它的写法：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">double Distance(vector&lt;int&gt;&amp;a, vector&lt;int&gt;&amp;b); //其中的“&amp;”不能少<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3.vector的元素不仅仅可以是int,double,string,还，可以是结构体，但是要注意：结构体要定义为全局的.</p>
+<h2 id="常见使用"><a href="#常见使用" class="headerlink" title="常见使用"></a>常见使用</h2><p>使用：</p>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;vector&gt;
+
+vector&lt;int&gt; vec;///建立一个vector，int为数组元素的数据类型，vec为动态数组名
+vector&lt;vector&lt;long int&gt; &gt; vec2; //定义一个二维数组vec2
+vec.push_back(1);
+vec.push_back(2);//把1和2压入vector，这样vec[0]就是1,vec[1]就是2
+cout&lt;&lt;vec[0]&lt;&lt;endl;//使用下标访问元素
+
+//使用迭代器访问元素.
+vector&lt;int&gt;::iterator it;
+for(it=vec.begin();it!=vec.end();it++)
+    cout&lt;&lt;*it&lt;&lt;endl;
+
+vec.insert(vec.begin()+i,a);//插入,在第i+1个元素前面插入a
+vec.erase(vec.begin()+2);//删除元素,删除第3个元素
+vec.erase(vec.begin()+i,vec.end()+j);//删除区间[i,j-1];区间从0开始
+vec.size();//向量大小
+vec.clear();//清空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>一些算法</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;algorithm&gt;
+
+reverse(vec.begin(),vec.end());//将元素翻转，即逆序排列
+sort(vec.begin(),vec.end());//默认升序排列
+
+//降序排列需重写
+bool Comp(const int &amp;a,const int &amp;b){
+    return a&gt;b;
+}
+sort(vec.begin(),vec.end(),Comp)//降序排序
+
+//交换两个同类型向量的数据
+vector&lt;int&gt;vec2;
+swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>先这样，之后用到了再加叭qaq <span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>~</p>
+
                 
             </div>
             <hr/>
@@ -446,7 +494,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://myq0721.github.io/2023/01/20/unity-3d-jiao-ben-gai-lan/">http://myq0721.github.io/2023/01/20/unity-3d-jiao-ben-gai-lan/</a>
+                    <a href="http://myq0721.github.io/2023/02/05/vector-yong-fa-zong-jie/">http://myq0721.github.io/2023/02/05/vector-yong-fa-zong-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -484,8 +532,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Unity/">
-                                    <span class="chip bg-color">Unity</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
                         </div>
@@ -563,7 +611,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2023-01-20T18-45-09',
+        id: '2023-02-05T15-34-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -587,7 +635,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Jan 20 2023 18:45:09 GMT+0800',
+    id: 'Sun Feb 05 2023 15:34:29 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -612,9 +660,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://myq0721.github.io/2023/01/20/unity-3d-jiao-ben-gai-lan/';
-        this.page.identifier = '/2023/01/20/unity-3d-jiao-ben-gai-lan/';
-        this.page.title = 'Unity 3D 脚本概览';
+        this.page.url = 'http://myq0721.github.io/2023/02/05/vector-yong-fa-zong-jie/';
+        this.page.identifier = '/2023/02/05/vector-yong-fa-zong-jie/';
+        this.page.title = 'vector用法总结';
     };
     let disqus_shortname = '';
 
@@ -670,13 +718,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/01/20/markdown-ji-chu-yu-fa/">
+                <a href="/2023/02/05/tuple-yong-fa-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="markdown基础语法">
+                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="tuple用法总结">
                         
-                        <span class="card-title">markdown基础语法</span>
+                        <span class="card-title">tuple用法总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -687,7 +735,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-05
                         </span>
                         <span class="publish-author">
                             
@@ -700,8 +748,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/others/">
-                        <span class="chip bg-color">others</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>
@@ -715,13 +763,13 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/20/ling-bo-de-di-yi-pian-bo-ke-wen-zhang/">
+                <a href="/2023/01/28/ri-yu-yu-fa-4-xing-rong-ci-xing-rong-dong-ci/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.png" class="responsive-img" alt="Ayanami的第一篇blog">
+                        <img src="/medias/featureimages/12.png" class="responsive-img" alt="日语语法——4.形容词，形容动词">
                         
-                        <span class="card-title">Ayanami的第一篇blog</span>
+                        <span class="card-title">日语语法——4.形容词，形容动词</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -732,7 +780,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-28
                             </span>
                         <span class="publish-author">
                             
@@ -745,8 +793,8 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/others/">
-                        <span class="chip bg-color">others</span>
+                    <a href="/tags/%E6%97%A5%E8%AF%AD/">
+                        <span class="chip bg-color">日语</span>
                     </a>
                     
                 </div>
@@ -929,7 +977,7 @@ gitment.render('gitment-content');
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">3k</span>
+                        class="white-color">5.1k</span>
             
             
             
@@ -1214,7 +1262,7 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
 </body>

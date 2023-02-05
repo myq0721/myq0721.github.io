@@ -4,8 +4,10 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Ayanami的第一篇blog, Ayanami&#39;s blog">
-    <meta name="description" content="使用笔记node -v	#查看node版本npm -v	#查看npm版本npm install -g cnpm –registry=http://registry.npm.taobao.org	#安装淘宝的cnpm 管理器cnpm -v	#">
+    <meta name="keywords" content="tuple用法总结, Ayanami&#39;s blog">
+    <meta name="description" content="tuple简介tuple（元组）在c++11中开始引用的。tuple看似简单，其实它是简约而不简单，可以说它是c++11中一个既简单又复杂的东西。
+tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
+我们也可以把他当做">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Ayanami的第一篇blog | Ayanami&#39;s blog</title>
+    <title>tuple用法总结 | Ayanami&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Ayanami的第一篇blog</h1>
+                    <h1 class="description center-align post-title">tuple用法总结</h1>
                 </div>
             </div>
         </div>
@@ -365,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/others/">
-                                <span class="chip bg-color">others</span>
+                            <a href="/tags/C/">
+                                <span class="chip bg-color">C++</span>
                             </a>
                         
                     </div>
@@ -381,7 +383,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-03-20
+                    2023-02-05
                 </div>
                 
 
@@ -390,14 +392,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    257
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    7 分
                 </div>
                 
 
@@ -420,12 +422,186 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="使用笔记"><a href="#使用笔记" class="headerlink" title="使用笔记"></a>使用笔记</h2><p>node -v	#查看node版本<br>npm -v	#查看npm版本<br>npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="http://registry.npm.taobao.org/">http://registry.npm.taobao.org</a>	#安装淘宝的cnpm 管理器<br>cnpm -v	#查看cnpm版本<br>cnpm install -g hexo-cli    #安装hexo框架<br>hexo -v	#查看hexo版本<br>mkdir blog	#创建blog目录<br>cd blog	 #进入blog目录<br>sudo hexo init 	#生成博客 初始化博客<br>hexo s	#启动本地博客服务<br><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>	#本地访问地址<br>hexo n “我的第一篇文章” #创建新的文章<br>#返回blog目录<br>hexo clean #清理<br>hexo g #生成<br>#Github创建一个新的仓库 YourGithubName.github.io<br>cnpm install –save hexo-deployer-git #在blog目录下安装git部署插件</p>
-<p>#配置_config.yml<br>    # Deployment<br>    ## Docs: <a target="_blank" rel="noopener" href="https://hexo.io/docs/deployment.html">https://hexo.io/docs/deployment.html</a><br>    deploy:<br>          type: git<br>         repo: <a target="_blank" rel="noopener" href="https://github.com/YourGithubName/YourGithubName.github.io.git">https://github.com/YourGithubName/YourGithubName.github.io.git</a><br>          branch: master<br>hexo d	#部署到Github仓库里<br><a target="_blank" rel="noopener" href="https://yourgithubname.github.io/">https://YourGithubName.github.io/</a>  #访问这个地址可以查看博客</p>
-<p> git clone <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia.git">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia  #下载yilia主题到本地</p>
-<p>#修改hexo根目录下的 _config.yml 文件 ： theme: yilia</p>
-<p>hexo c	#清理一下<br>hexo g	#生成<br>hexo d	#部署到远程Github仓库</p>
+                <h2 id="tuple简介"><a href="#tuple简介" class="headerlink" title="tuple简介"></a>tuple简介</h2><p>tuple（元组）在c++11中开始引用的。tuple看似简单，其实它是简约而不简单，可以说它是c++11中一个既简单又复杂的东西。</p>
+<p>tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。</p>
+<p>我们也可以把他当做一个通用的结构体来用，不需要创建结构体又获取结构体的特征，在某些情况下可以取代结构体使程序更简洁，直观。</p>
+<p>std::tuple理论上可以有无数个任意类型的成员变量，而std::pair只能是2个成员，因此在需要保存3个及以上的数据时就需要使用tuple元组了。</p>
+<h2 id="tuple的创建和初始化"><a href="#tuple的创建和初始化" class="headerlink" title="tuple的创建和初始化"></a>tuple的创建和初始化</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> 
+std::tuple&lt;T1, T2, TN&gt; t1;//创建一个空的tuple对象,它对应的元素分别是T1和T2...Tn类型，采用值初始化。
 
+std::tuple&lt;T1, T2, TN&gt; t2(v1, v2, ... TN);//创建一个tuple对象，它的两个元素分别是T1和T2 ...Tn类型; 要获取元素的值需要通过tuple的成员get&lt;Ith&gt;(obj)进行获取(Ith是指获取在tuple中的第几个元素)。
+
+std::tuple&lt;T1&amp;&gt; t3(ref&amp;); // tuple的元素类型可以是一个引用
+
+std::make_tuple(v1, v2); // 像pair一样也可以通过make_tuple进行创建一个tuple对象
+
+
+// tuple的元素类型为引用：
+std::string name;
+std::tuple&lt;string &amp;, int&gt; tpRef(name, 30);
+// 对tpRef第一个元素赋值，同时name也被赋值 - 引用
+std::get&lt;0&gt;(tpRef) = "Sven";
+ 
+// name输出也是Sven
+std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; '\n';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tuple的操作"><a href="#tuple的操作" class="headerlink" title="tuple的操作"></a>tuple的操作</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//1.等价结构体
+struct person {
+    char *m_name;
+    char *m_addr;
+    int  *m_ages;
+};
+//可以用tuple来表示这样的一个结构类型，作用是一样的。
+std::tuple&lt;const char *, const char *, int&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//2.获取tuple个数
+#include &lt;iostream&gt;
+#include &lt;tuple&gt;
+
+int main (){
+  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);
+  std::cout &lt;&lt; "mytuple has ";
+  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;
+  std::cout &lt;&lt; " elements." &lt;&lt; '\n';
+  return 0;
+}
+//输出结果：mytuple has 3 elements<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//3.获取元素的值
+#include &lt;iostream&gt;
+#include &lt;tuple&gt;
+
+int main ()
+{
+  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);
+  std::cout &lt;&lt; "mytuple has ";
+  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;
+  std::cout &lt;&lt; " elements." &lt;&lt; '\n';
+  //获取元素
+  std::cout &lt;&lt; "the elements is: ";
+  std::cout &lt;&lt; std::get&lt;0&gt;(mytuple) &lt;&lt; " ";
+  std::cout &lt;&lt; std::get&lt;1&gt;(mytuple) &lt;&lt; " ";
+  std::cout &lt;&lt; std::get&lt;2&gt;(mytuple) &lt;&lt; " ";
+  std::cout &lt;&lt; '\n';
+  return 0;
+}
+/*输出结果：
+mytuple has 3 elements.
+the elements is: 10 a 3.14 
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p><strong>注意：tuple不支持迭代，只能通过元素索引(或tie解包)进行获取元素的值。但是给定的索引必须是在编译器就已经给定，不能在运行期进行动态传递，否则将发生编译错误：如：</strong></p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&gt;for(int i=0; i&lt;3; i++)
+   std::cout &lt;&lt; std::get&lt;i&gt;(mytuple) &lt;&lt; " "; //将引发编译错误<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</blockquote>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//4.获取元素的类型
+//要想得到元素类型可以通过tuple_element方法获取，如有以下元组对象：
+std::tuple&lt;std::string, int&gt; tp("Sven", 20);
+
+// 得到第二个元素类型
+std::tuple_element&lt;1, decltype(tp)&gt;::type ages;  // ages就为int类型
+ 
+ages = std::get&lt;1&gt;(tp);
+ 
+std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; '\n';
+ 
+//输出结果:ages: 20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> //5.利用tie进行解包元素的值
+ //如同pair一样也是可以通过tie进行解包tuple的各个元素的值。如下tuple对象有4个元素，通过tie解将会把这4个元素的值分别赋值给tie提供的4个变量中。
+#include &lt;iostream&gt;
+#include &lt;tuple&gt;
+#include &lt;utility&gt;
+ 
+int main(int argc, char **argv) {
+    std::tuple&lt;std::string, int, std::string, int&gt; tp;
+    tp = std::make_tuple("Sven", 25, "Shanghai", 21);
+ 
+    // 定义接收变量
+    std::string name;
+    std::string addr;
+    int ages;
+    int areaCode;
+ 
+    std::tie(name, ages, addr, areaCode) = tp;
+    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';
+    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";
+    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";
+    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";
+    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';
+ 
+    return 0;
+}
+ 
+/*输出结果：
+Output: 
+name: Sven, addr: Shanghai, ages: 25, areaCode: 21
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但有时候tuple包含的多个元素时只需要其中的一个或两个元素，如此可以通过std::ignore进行变量占位，这样将会忽略提取对应的元素。可以修改上述例程：</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;tuple&gt;
+#include &lt;utility&gt;
+ 
+int main(int argc, char **argv) {
+    std::tuple&lt;std::string, int, std::string, int&gt; tp;
+    tp = std::make_tuple("Sven", 25, "Shanghai", 21);
+ 
+    // 定义接收变量
+    std::string name;
+    std::string addr;
+    int ages;
+    int areaCode = 110;
+ 
+    std::tie(name, ages, std::ignore, std::ignore) = tp;
+    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';
+    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";
+    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";
+    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";
+    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';
+ 
+    return 0;
+}
+ 
+/*输出结果：
+Output: 
+name: Sven, addr: , ages: 25, areaCode: 110
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//6. tuple元素的引用
+//前面已经列举了将引用作为tuple的元素类型。下面通过引用搭配make_tuple()可以提取tuple的元素值，将某些变量值设给它们，并通过改变这些变量来改变tuple元素的值：
+
+#include &lt;iostream&gt;
+#include &lt;tuple&gt;
+#include &lt;functional&gt;
+ 
+int main(int argc, char **agrv) {
+ 
+    std::tuple&lt;std::string, int, float&gt; tp1("Sven Cheng", 77, 66.1);
+ 
+    std::string name;
+    int weight;
+    float f;
+ 
+    auto tp2 = std::make_tuple(std::ref(name), std::ref(weight), std::ref(f)) = tp1;
+ 
+    std::cout &lt;&lt; "Before change: " &lt;&lt; '\n';
+    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; ", ";
+    std::cout &lt;&lt; "weight: " &lt;&lt; weight &lt;&lt; ", ";
+    std::cout &lt;&lt; "f: " &lt;&lt; f &lt;&lt; '\n';
+ 
+    name = "Sven";
+    weight = 80;
+    f = 3.14;
+ 
+	std::cout &lt;&lt; "After change: " &lt;&lt; '\n';
+	std::cout &lt;&lt; "element 1st: " &lt;&lt; std::get&lt;0&gt;(tp2) &lt;&lt; ", ";
+	std::cout &lt;&lt; "element 2nd: " &lt;&lt; std::get&lt;1&gt;(tp2) &lt;&lt; ", ";
+	std::cout &lt;&lt; "element 3rd: " &lt;&lt; std::get&lt;2&gt;(tp2) &lt;&lt; '\n';
+ 
+    return 0;
+}
+ 
+/*输出结果：
+Before change: 
+name: Sven Cheng, weight: 77, f: 66.1
+After change: 
+element 1st: Sven, element 2nd: 80, element 3rd: 3.14
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -451,7 +627,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://myq0721.github.io/2022/03/20/ling-bo-de-di-yi-pian-bo-ke-wen-zhang/">http://myq0721.github.io/2022/03/20/ling-bo-de-di-yi-pian-bo-ke-wen-zhang/</a>
+                    <a href="http://myq0721.github.io/2023/02/05/tuple-yong-fa-zong-jie/">http://myq0721.github.io/2023/02/05/tuple-yong-fa-zong-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -489,8 +665,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/others/">
-                                    <span class="chip bg-color">others</span>
+                                <a href="/tags/C/">
+                                    <span class="chip bg-color">C++</span>
                                 </a>
                             
                         </div>
@@ -568,7 +744,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2022-03-20T20-10-15',
+        id: '2023-02-05T16-18-31',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -592,7 +768,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Mar 20 2022 20:10:15 GMT+0800',
+    id: 'Sun Feb 05 2023 16:18:31 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -617,9 +793,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://myq0721.github.io/2022/03/20/ling-bo-de-di-yi-pian-bo-ke-wen-zhang/';
-        this.page.identifier = '/2022/03/20/ling-bo-de-di-yi-pian-bo-ke-wen-zhang/';
-        this.page.title = 'Ayanami的第一篇blog';
+        this.page.url = 'http://myq0721.github.io/2023/02/05/tuple-yong-fa-zong-jie/';
+        this.page.identifier = '/2023/02/05/tuple-yong-fa-zong-jie/';
+        this.page.title = 'tuple用法总结';
     };
     let disqus_shortname = '';
 
@@ -671,17 +847,18 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/01/20/markdown-ji-chu-yu-fa/">
+                <a href="/2023/02/05/tuple-yong-fa-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="markdown基础语法">
+                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="tuple用法总结">
                         
-                        <span class="card-title">markdown基础语法</span>
+                        <span class="card-title">tuple用法总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -691,9 +868,9 @@ gitment.render('gitment-content');
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -702,11 +879,12 @@ gitment.render('gitment-content');
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/others/">
-                        <span class="chip bg-color">others</span>
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
                     </a>
                     
                 </div>
@@ -720,13 +898,13 @@ gitment.render('gitment-content');
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/03/20/hello-world/">
+                <a href="/2023/02/05/vector-yong-fa-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.png" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/8.png" class="responsive-img" alt="vector用法总结">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">vector用法总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -737,7 +915,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-05
                             </span>
                         <span class="publish-author">
                             
@@ -746,6 +924,14 @@ gitment.render('gitment-content');
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
                 </div>
                 
             </div>
