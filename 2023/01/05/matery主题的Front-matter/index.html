@@ -4,10 +4,19 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="tuple用法总结, Ayanami&#39;s blog">
-    <meta name="description" content="tuple简介tuple（元组）在c++11中开始引用的。tuple看似简单，其实它是简约而不简单，可以说它是c++11中一个既简单又复杂的东西。
-tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
-我们也可以把他当做">
+    <meta name="keywords" content="matery主题的Front-matter, Ayanami&#39;s blog">
+    <meta name="description" content="文章 Front-matter 介绍Front-matter 选项详解Front-matter 选项中的所有内容均为非必填的。但我仍然建议至少填写 title 和 date 的值。
+
+
+
+配置选项
+默认值
+描述
+
+
+
+title
+Markd">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +28,7 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>tuple用法总结 | Ayanami&#39;s blog</title>
+    <title>matery主题的Front-matter | Ayanami&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -175,7 +184,7 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
         <div class="logo-name">Ayanami&#39;s blog</div>
         <div class="logo-desc">
             
-            频率和数量不必过分强求，有话要说就写写，没事就歇歇，随意点。因为坚持写作的那一刻起，你就已经开始受益。
+            Never really desperate, only the lost of the soul.
             
         </div>
     </div>
@@ -351,12 +360,12 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">tuple用法总结</h1>
+                    <h1 class="description center-align post-title">matery主题的Front-matter</h1>
                 </div>
             </div>
         </div>
@@ -380,8 +389,8 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/other/">
+                                <span class="chip bg-color">other</span>
                             </a>
                         
                     </div>
@@ -396,7 +405,7 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-05
+                    2023-01-05
                 </div>
                 
 
@@ -410,14 +419,14 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    702
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    2 分
                 </div>
                 
 
@@ -432,194 +441,108 @@ tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="tuple简介"><a href="#tuple简介" class="headerlink" title="tuple简介"></a>tuple简介</h2><p>tuple（元组）在c++11中开始引用的。tuple看似简单，其实它是简约而不简单，可以说它是c++11中一个既简单又复杂的东西。</p>
-<p>tuple是一个固定大小的不同类型值的集合，是泛化的std::pair。</p>
-<p>我们也可以把他当做一个通用的结构体来用，不需要创建结构体又获取结构体的特征，在某些情况下可以取代结构体使程序更简洁，直观。</p>
-<p>std::tuple理论上可以有无数个任意类型的成员变量，而std::pair只能是2个成员，因此在需要保存3个及以上的数据时就需要使用tuple元组了。</p>
-<h2 id="tuple的创建和初始化"><a href="#tuple的创建和初始化" class="headerlink" title="tuple的创建和初始化"></a>tuple的创建和初始化</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> 
-std::tuple&lt;T1, T2, TN&gt; t1;//创建一个空的tuple对象,它对应的元素分别是T1和T2...Tn类型，采用值初始化。
+                <h2 id="文章-Front-matter-介绍"><a href="#文章-Front-matter-介绍" class="headerlink" title="文章 Front-matter 介绍"></a>文章 Front-matter 介绍</h2><h3 id="Front-matter-选项详解"><a href="#Front-matter-选项详解" class="headerlink" title="Front-matter 选项详解"></a>Front-matter 选项详解</h3><p><code>Front-matter</code> 选项中的所有内容均为<strong>非必填</strong>的。但我仍然建议至少填写 <code>title</code> 和 <code>date</code> 的值。</p>
+<table>
+<thead>
+<tr>
+<th>配置选项</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td><code>Markdown</code> 的文件标题</td>
+<td>文章标题，强烈建议填写此选项</td>
+</tr>
+<tr>
+<td>date</td>
+<td>文件创建时的日期时间</td>
+<td>发布时间，强烈建议填写此选项，且最好保证全局唯一</td>
+</tr>
+<tr>
+<td>author</td>
+<td>根 <code>_config.yml</code> 中的 <code>author</code></td>
+<td>文章作者</td>
+</tr>
+<tr>
+<td>img</td>
+<td><code>featureImages</code> 中的某个值</td>
+<td>文章特征图，推荐使用图床(腾讯云、七牛云、又拍云等)来做图片的路径.如: <code>http://xxx.com/xxx.jpg</code></td>
+</tr>
+<tr>
+<td>top</td>
+<td><code>true</code></td>
+<td>推荐文章（文章是否置顶），如果 <code>top</code> 值为 <code>true</code>，则会作为首页推荐文章</td>
+</tr>
+<tr>
+<td>hide</td>
+<td><code>false</code></td>
+<td>隐藏文章，如果<code>hide</code>值为<code>true</code>，则文章不会在首页显示</td>
+</tr>
+<tr>
+<td>cover</td>
+<td><code>false</code></td>
+<td><code>v1.0.2</code>版本新增，表示该文章是否需要加入到首页轮播封面中</td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>无</td>
+<td><code>v1.0.2</code>版本新增，表示该文章在首页轮播封面需要显示的图片路径，如果没有，则默认使用文章的特色图片</td>
+</tr>
+<tr>
+<td>password</td>
+<td>无</td>
+<td>文章阅读密码，如果要对文章设置阅读验证密码的话，就可以设置 <code>password</code> 的值，该值必须是用 <code>SHA256</code> 加密后的密码，防止被他人识破。前提是在主题的 <code>config.yml</code> 中激活了 <code>verifyPassword</code> 选项</td>
+</tr>
+<tr>
+<td>toc</td>
+<td><code>true</code></td>
+<td>是否开启 TOC，可以针对某篇文章单独关闭 TOC 的功能。前提是在主题的 <code>config.yml</code> 中激活了 <code>toc</code> 选项</td>
+</tr>
+<tr>
+<td>mathjax</td>
+<td><code>false</code></td>
+<td>是否开启数学公式支持 ，本文章是否开启 <code>mathjax</code>，且需要在主题的 <code>_config.yml</code> 文件中也需要开启才行</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>无</td>
+<td>文章摘要，自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>无</td>
+<td>文章分类，本主题的分类表示宏观上大的分类，只建议一篇文章一个分类</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>无</td>
+<td>文章标签，一篇文章可以多个标签</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>文章标题</td>
+<td>文章关键字，SEO 时需要</td>
+</tr>
+<tr>
+<td>reprintPolicy</td>
+<td>cc_by</td>
+<td>文章转载规则， 可以是 cc_by, cc_by_nd, cc_by_sa, cc_by_nc, cc_by_nc_nd, cc_by_nc_sa, cc0, noreprint 或 pay 中的一个</td>
+</tr>
+</tbody></table>
+<p>以下为文章的 <code>Front-matter</code> 示例。</p>
+<h3 id="最简示例"><a href="#最简示例" class="headerlink" title="最简示例"></a>最简示例</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">typora-vue-theme主题介绍</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-09-07 09:25:00</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></tbody></table></figure>
 
-std::tuple&lt;T1, T2, TN&gt; t2(v1, v2, ... TN);//创建一个tuple对象，它的两个元素分别是T1和T2 ...Tn类型; 要获取元素的值需要通过tuple的成员get&lt;Ith&gt;(obj)进行获取(Ith是指获取在tuple中的第几个元素)。
+<h3 id="最全示例"><a href="#最全示例" class="headerlink" title="最全示例"></a>最全示例</h3><figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">typora-vue-theme主题介绍</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-09-07 09:25:00</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">赵奇</span></span><br><span class="line"><span class="attr">img:</span> <span class="string">/source/images/xxx.jpg</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">hide:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">cover:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">coverImg:</span> <span class="string">/images/1.jpg</span></span><br><span class="line"><span class="attr">password:</span> <span class="string">8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">summary:</span> <span class="string">这是你自定义的文章摘要内容，如果这个属性有值，文章卡片摘要就显示这段文字，否则程序会自动截取文章的部分内容作为摘要</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Markdown</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Typora</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Markdown</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></tbody></table></figure>
 
-std::tuple&lt;T1&amp;&gt; t3(ref&amp;); // tuple的元素类型可以是一个引用
+<p><strong>摘自matery的README_CN，方便自己使用</strong></p>
 
-std::make_tuple(v1, v2); // 像pair一样也可以通过make_tuple进行创建一个tuple对象
-
-
-// tuple的元素类型为引用：
-std::string name;
-std::tuple&lt;string &amp;, int&gt; tpRef(name, 30);
-// 对tpRef第一个元素赋值，同时name也被赋值 - 引用
-std::get&lt;0&gt;(tpRef) = "Sven";
- 
-// name输出也是Sven
-std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; '\n';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="tuple的操作"><a href="#tuple的操作" class="headerlink" title="tuple的操作"></a>tuple的操作</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//1.等价结构体
-struct person {
-    char *m_name;
-    char *m_addr;
-    int  *m_ages;
-};
-//可以用tuple来表示这样的一个结构类型，作用是一样的。
-std::tuple&lt;const char *, const char *, int&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//2.获取tuple个数
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-
-int main (){
-  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);
-  std::cout &lt;&lt; "mytuple has ";
-  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;
-  std::cout &lt;&lt; " elements." &lt;&lt; '\n';
-  return 0;
-}
-//输出结果：mytuple has 3 elements<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//3.获取元素的值
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-
-int main ()
-{
-  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);
-  std::cout &lt;&lt; "mytuple has ";
-  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;
-  std::cout &lt;&lt; " elements." &lt;&lt; '\n';
-  //获取元素
-  std::cout &lt;&lt; "the elements is: ";
-  std::cout &lt;&lt; std::get&lt;0&gt;(mytuple) &lt;&lt; " ";
-  std::cout &lt;&lt; std::get&lt;1&gt;(mytuple) &lt;&lt; " ";
-  std::cout &lt;&lt; std::get&lt;2&gt;(mytuple) &lt;&lt; " ";
-  std::cout &lt;&lt; '\n';
-  return 0;
-}
-/*输出结果：
-mytuple has 3 elements.
-the elements is: 10 a 3.14 
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p><strong>注意：tuple不支持迭代，只能通过元素索引(或tie解包)进行获取元素的值。但是给定的索引必须是在编译器就已经给定，不能在运行期进行动态传递，否则将发生编译错误：如：</strong></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&gt;for(int i=0; i&lt;3; i++)
-   std::cout &lt;&lt; std::get&lt;i&gt;(mytuple) &lt;&lt; " "; //将引发编译错误<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//4.获取元素的类型
-//要想得到元素类型可以通过tuple_element方法获取，如有以下元组对象：
-std::tuple&lt;std::string, int&gt; tp("Sven", 20);
-
-// 得到第二个元素类型
-std::tuple_element&lt;1, decltype(tp)&gt;::type ages;  // ages就为int类型
- 
-ages = std::get&lt;1&gt;(tp);
- 
-std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; '\n';
- 
-//输出结果:ages: 20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> //5.利用tie进行解包元素的值
- //如同pair一样也是可以通过tie进行解包tuple的各个元素的值。如下tuple对象有4个元素，通过tie解将会把这4个元素的值分别赋值给tie提供的4个变量中。
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-#include &lt;utility&gt;
- 
-int main(int argc, char **argv) {
-    std::tuple&lt;std::string, int, std::string, int&gt; tp;
-    tp = std::make_tuple("Sven", 25, "Shanghai", 21);
- 
-    // 定义接收变量
-    std::string name;
-    std::string addr;
-    int ages;
-    int areaCode;
- 
-    std::tie(name, ages, addr, areaCode) = tp;
-    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';
-    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";
-    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";
-    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";
-    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';
- 
-    return 0;
-}
- 
-/*输出结果：
-Output: 
-name: Sven, addr: Shanghai, ages: 25, areaCode: 21
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但有时候tuple包含的多个元素时只需要其中的一个或两个元素，如此可以通过std::ignore进行变量占位，这样将会忽略提取对应的元素。可以修改上述例程：</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-#include &lt;utility&gt;
- 
-int main(int argc, char **argv) {
-    std::tuple&lt;std::string, int, std::string, int&gt; tp;
-    tp = std::make_tuple("Sven", 25, "Shanghai", 21);
- 
-    // 定义接收变量
-    std::string name;
-    std::string addr;
-    int ages;
-    int areaCode = 110;
- 
-    std::tie(name, ages, std::ignore, std::ignore) = tp;
-    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';
-    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";
-    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";
-    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";
-    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';
- 
-    return 0;
-}
- 
-/*输出结果：
-Output: 
-name: Sven, addr: , ages: 25, areaCode: 110
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//6. tuple元素的引用
-//前面已经列举了将引用作为tuple的元素类型。下面通过引用搭配make_tuple()可以提取tuple的元素值，将某些变量值设给它们，并通过改变这些变量来改变tuple元素的值：
-
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-#include &lt;functional&gt;
- 
-int main(int argc, char **agrv) {
- 
-    std::tuple&lt;std::string, int, float&gt; tp1("Sven Cheng", 77, 66.1);
- 
-    std::string name;
-    int weight;
-    float f;
- 
-    auto tp2 = std::make_tuple(std::ref(name), std::ref(weight), std::ref(f)) = tp1;
- 
-    std::cout &lt;&lt; "Before change: " &lt;&lt; '\n';
-    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; ", ";
-    std::cout &lt;&lt; "weight: " &lt;&lt; weight &lt;&lt; ", ";
-    std::cout &lt;&lt; "f: " &lt;&lt; f &lt;&lt; '\n';
- 
-    name = "Sven";
-    weight = 80;
-    f = 3.14;
- 
-	std::cout &lt;&lt; "After change: " &lt;&lt; '\n';
-	std::cout &lt;&lt; "element 1st: " &lt;&lt; std::get&lt;0&gt;(tp2) &lt;&lt; ", ";
-	std::cout &lt;&lt; "element 2nd: " &lt;&lt; std::get&lt;1&gt;(tp2) &lt;&lt; ", ";
-	std::cout &lt;&lt; "element 3rd: " &lt;&lt; std::get&lt;2&gt;(tp2) &lt;&lt; '\n';
- 
-    return 0;
-}
- 
-/*输出结果：
-Before change: 
-name: Sven Cheng, weight: 77, f: 66.1
-After change: 
-element 1st: Sven, element 2nd: 80, element 3rd: 3.14
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -645,7 +568,7 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://myq0721.github.io/2023/02/05/tuple-yong-fa-zong-jie/">http://myq0721.github.io/2023/02/05/tuple-yong-fa-zong-jie/</a>
+                    <a href="http://myq0721.github.io/2023/01/05/matery%E4%B8%BB%E9%A2%98%E7%9A%84Front-matter/">http://myq0721.github.io/2023/01/05/matery%E4%B8%BB%E9%A2%98%E7%9A%84Front-matter/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -683,8 +606,8 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/other/">
+                                    <span class="chip bg-color">other</span>
                                 </a>
                             
                         </div>
@@ -1034,12 +957,13 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/05/gong-zuo-yu-kao-yan/">
+                <a href="/2023/01/20/markdown%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
                     <div class="card-image">
                         
-                        <img src="https://i.postimg.cc/85GSB6mQ/QQ-20230205223841.png" class="responsive-img" alt="工作与考研的二三事">
                         
-                        <span class="card-title">工作与考研的二三事</span>
+                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="markdown基础语法">
+                        
+                        <span class="card-title">markdown基础语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1050,7 +974,7 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-20
                         </span>
                         <span class="publish-author">
                             
@@ -1063,8 +987,8 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/other/">
-                        <span class="chip bg-color">other</span>
+                    <a href="/tags/others/">
+                        <span class="chip bg-color">others</span>
                     </a>
                     
                 </div>
@@ -1078,13 +1002,13 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/01/vector-yong-fa-zong-jie/">
+                <a href="/2022/03/20/%E7%BB%AB%E6%B3%A2%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.png" class="responsive-img" alt="vector用法总结">
+                        <img src="/medias/featureimages/9.png" class="responsive-img" alt="Ayanami的第一篇blog">
                         
-                        <span class="card-title">vector用法总结</span>
+                        <span class="card-title">Ayanami的第一篇blog</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1095,7 +1019,7 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-20
                             </span>
                         <span class="publish-author">
                             
@@ -1108,8 +1032,8 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/others/">
+                        <span class="chip bg-color">others</span>
                     </a>
                     
                 </div>
@@ -1164,9 +1088,6 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1273,41 +1194,7 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
 
 
 
-    <script>
-    // 点击回复直接评论,官方版本点击回复时都是跳回到页面上方的评论框进行回复，评论框是固定不动的
-    // 参考https://immmmm.com/valine-diy,用到jQuery
-    $(document).ready(function(){
-        //$('.vemoji-btn').text('😀');
-        $("#vcomments").on('click', 'span.vat',function(){
-            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
-            $('textarea#veditor').focus();
-        })
-    })
-</script>
-<script>
-    // 点击回复直接评论,官方版本点击回复时都是跳回到页面上方的评论框进行回复，评论框是固定不动的
-    // 参考https://immmmm.com/valine-diy,用到jQuery
-    $(document).ready(function(){
-        //$('.vemoji-btn').text('😀');
-        $("#vcomments").on('click', 'span.vat',function(){
-            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
-            $('textarea#veditor').focus();
-        })
-    })
-</script>
-<!-- 评论框美化 -->
-<style>
-    #comments .veditor{
-        min-height: 10rem;
-        background-image: url(https://gitee.com/wugenqiang/PictureBed/raw/master/CS-Notes/20200425091751.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-        background-color: rgba(255,255,255,0);
-        resize: none;}
-</style>
-
-<footer class="page-footer bg-color">
+    <footer class="page-footer bg-color">
     
 
     <div class="container row center-align"

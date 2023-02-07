@@ -4,9 +4,13 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="vector用法总结, Ayanami&#39;s blog">
-    <meta name="description" content="vector相关的用法总结因为最近经常用，于是总结在这个地方。
-向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够">
+    <meta name="keywords" content="日语语法——4.形容词，形容动词, Ayanami&#39;s blog">
+    <meta name="description" content="形容词空は青い。空は青いです。//更礼貌天空是蓝色的。
+形容词可以直接做谓语后不需加だ，做终止形
+青い空。蓝色的天空。
+形容词做定语，直接加名词，不加の，做连体形名词代词等即体言
+形容动词形容动词的变化方式和动词相同
+教室は静かだ。教室は静">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vector用法总结 | Ayanami&#39;s blog</title>
+    <title>日语语法——4.形容词，形容动词 | Ayanami&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -174,7 +178,7 @@
         <div class="logo-name">Ayanami&#39;s blog</div>
         <div class="logo-desc">
             
-            频率和数量不必过分强求，有话要说就写写，没事就歇歇，随意点。因为坚持写作的那一刻起，你就已经开始受益。
+            Never really desperate, only the lost of the soul.
             
         </div>
     </div>
@@ -350,12 +354,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.png')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vector用法总结</h1>
+                    <h1 class="description center-align post-title">日语语法——4.形容词，形容动词</h1>
                 </div>
             </div>
         </div>
@@ -379,8 +383,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/C/">
-                                <span class="chip bg-color">C++</span>
+                            <a href="/tags/%E6%97%A5%E8%AF%AD/">
+                                <span class="chip bg-color">日语</span>
                             </a>
                         
                     </div>
@@ -395,28 +399,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-01
+                    2023-01-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-05
+                    2023-01-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    661
+                    449
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -431,61 +435,41 @@
         <hr class="clearfix">
 
         
-        <!-- 是否加载使用自带的 prismjs. -->
-        <link rel="stylesheet" href="/libs/prism/prism.min.css">
-        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="vector相关的用法总结"><a href="#vector相关的用法总结" class="headerlink" title="vector相关的用法总结"></a>vector相关的用法总结</h2><p>因为最近经常用，于是总结在这个地方。</p>
-<p>向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够存放任意类型的动态数组。</p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>1.顺序序列<br>顺序容器中的元素按照严格的线性顺序排序。可以通过元素在序列中的位置访问对应的元素。</p>
-<p>2.动态数组<br>支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算述进行该操作。提供了在序列末尾相对快速地添加/删除元素的操作。</p>
-<p>3.能够感知内存分配器的（Allocator-aware）<br>容器使用一个内存分配器对象来动态地处理它的存储需求。</p>
-<hr>
-<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>使用vector需要注意以下几点：</p>
-<p>1.如果你要表示的向量长度较长（需要为向量内部保存很多数），容易导致内存泄漏，而且效率会很低；</p>
-<p>2.Vector作为函数的参数或者返回值时，需要注意它的写法：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">double Distance(vector&lt;int&gt;&amp;a, vector&lt;int&gt;&amp;b); //其中的“&amp;”不能少<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>3.vector的元素不仅仅可以是int,double,string,还，可以是结构体，但是要注意：结构体要定义为全局的.</p>
-<h2 id="常见使用"><a href="#常见使用" class="headerlink" title="常见使用"></a>常见使用</h2><p>使用：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;vector&gt;
-
-vector&lt;int&gt; vec;///建立一个vector，int为数组元素的数据类型，vec为动态数组名
-vector&lt;vector&lt;long int&gt; &gt; vec2; //定义一个二维数组vec2
-vec.push_back(1);
-vec.push_back(2);//把1和2压入vector，这样vec[0]就是1,vec[1]就是2
-cout&lt;&lt;vec[0]&lt;&lt;endl;//使用下标访问元素
-
-//使用迭代器访问元素.
-vector&lt;int&gt;::iterator it;
-for(it=vec.begin();it!=vec.end();it++)
-    cout&lt;&lt;*it&lt;&lt;endl;
-
-vec.insert(vec.begin()+i,a);//插入,在第i+1个元素前面插入a
-vec.erase(vec.begin()+2);//删除元素,删除第3个元素
-vec.erase(vec.begin()+i,vec.end()+j);//删除区间[i,j-1];区间从0开始
-vec.size();//向量大小
-vec.clear();//清空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>一些算法</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;algorithm&gt;
-
-reverse(vec.begin(),vec.end());//将元素翻转，即逆序排列
-sort(vec.begin(),vec.end());//默认升序排列
-
-//降序排列需重写
-bool Comp(const int &amp;a,const int &amp;b){
-    return a&gt;b;
-}
-sort(vec.begin(),vec.end(),Comp)//降序排序
-
-//交换两个同类型向量的数据
-vector&lt;int&gt;vec2;
-swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>先这样，之后用到了再加叭qaq <span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>~</p>
+                <h3 id="形容词"><a href="#形容词" class="headerlink" title="形容词"></a>形容词</h3><p>空は青い。<br>空は青いです。//更礼貌<br>天空是蓝色的。</p>
+<p><em>形容词可以直接做谓语后不需加だ，做终止形</em></p>
+<p>青い空。<br>蓝色的天空。</p>
+<p><em>形容词做定语，直接加名词，不加の，做连体形</em><br><em>名词代词等即体言</em></p>
+<h3 id="形容动词"><a href="#形容动词" class="headerlink" title="形容动词"></a>形容动词</h3><p><em>形容动词的变化方式和动词相同</em></p>
+<p>教室は静かだ。<br>教室は静かです。<br>教室安静。</p>
+<p>静かな教室。<br>安静的教室</p>
+<p><em>だ变な由终止形变连体形</em></p>
+<h3 id="く-x2F-で"><a href="#く-x2F-で" class="headerlink" title="~く/で"></a>~く/で</h3><p><em>形容词，形容动词，与动词称为用言</em><br><em>同理，连接用眼的部分即为连用形</em></p>
+<p>教室は大きく、静かだ。<br>教室很大也很安静。</p>
+<p><em>形容词い变く，变连用形</em></p>
+<p>教室は静かで、大きい。<br>教室很安静也很大。</p>
+<p><em>形容动词以で结尾，变连用形，和名词相同</em></p>
+<h3 id="ない"><a href="#ない" class="headerlink" title="~ない"></a>~ない</h3><p>この本は面白くない。<br>この本は面白くないです。//敬<br>この本は面白くありません。//敬<br>这本书没意思。</p>
+<p><em>因为后要加ない这个补助形容词,面白い变面白く，即变为连用形</em></p>
+<p>あの俳優さんは有名ではない。<br>あの俳優さんは有名ではありません。<br>那个演员没有名气。</p>
+<h3 id="かつた-x2F"><a href="#かつた-x2F" class="headerlink" title="~かつた/"></a>~かつた/</h3><p><em>连用形的过去式</em></p>
+<p>昨日は寒かっだ。<br>昨日は寒かっだです。<br>昨天冷。</p>
+<p>昨日は寒くなかっだ。<br>昨日は寒くなかっだです。<br>昨日は寒くありませんでした。//でした表过去<br>昨天不冷。</p>
+<p>寒<del>い</del><br>　く＋な<del>い</del><br>　　　　かっだ</p>
+<p><em>为了加ない、寒い变寒く</em><br><em>然后把ない变~かっだ、即过去式的连用形</em></p>
+<h3 id="だった"><a href="#だった" class="headerlink" title="~だった"></a>~だった</h3><p>私はもともと学生だった//だ变だった表过去<br>私はもともと学生でした。//更礼貌<br>我原本是个学生。</p>
+<p>昨日教室は静かだった。<br>昨日教室は静かでした。<br>昨天教室安静。</p>
+<p>昨日教室は静かではなかっだ。<br>昨日教室は静かではありませんでした。<br>昨天教室不安静。</p>
+<h3 id="连体词"><a href="#连体词" class="headerlink" title="连体词"></a>连体词</h3><p><em>只能连接体言的词语</em></p>
+<p>大きな<br>大的</p>
+<p>小さな<br>小的</p>
+<p>色んな<br>各式各样的</p>
+<p><em>上面三个只有连体词一种词性</em></p>
+<p>同じ<br>一样的<br><em>而同じ还是个形容动词，同じだ/です等</em></p>
 
                 
             </div>
@@ -512,7 +496,7 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://myq0721.github.io/2023/02/01/vector-yong-fa-zong-jie/">http://myq0721.github.io/2023/02/01/vector-yong-fa-zong-jie/</a>
+                    <a href="http://myq0721.github.io/2023/01/28/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%944-%E5%BD%A2%E5%AE%B9%E8%AF%8D%EF%BC%8C%E5%BD%A2%E5%AE%B9%E5%8A%A8%E8%AF%8D/">http://myq0721.github.io/2023/01/28/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%944-%E5%BD%A2%E5%AE%B9%E8%AF%8D%EF%BC%8C%E5%BD%A2%E5%AE%B9%E5%8A%A8%E8%AF%8D/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -550,8 +534,8 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/C/">
-                                    <span class="chip bg-color">C++</span>
+                                <a href="/tags/%E6%97%A5%E8%AF%AD/">
+                                    <span class="chip bg-color">日语</span>
                                 </a>
                             
                         </div>
@@ -901,13 +885,13 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/05/tuple-yong-fa-zong-jie/">
+                <a href="/2023/02/01/vector%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="tuple用法总结">
+                        <img src="/medias/featureimages/8.png" class="responsive-img" alt="vector用法总结">
                         
-                        <span class="card-title">tuple用法总结</span>
+                        <span class="card-title">vector用法总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -918,7 +902,7 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
                         </span>
                         <span class="publish-author">
                             
@@ -946,13 +930,13 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/28/ri-yu-yu-fa-4-xing-rong-ci-xing-rong-dong-ci/">
+                <a href="/2023/01/25/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95%E2%80%94%E2%80%943-%E4%BA%BA%E7%A7%B0%E4%BB%A3%E8%AF%8D/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.png" class="responsive-img" alt="日语语法——4.形容词，形容动词">
+                        <img src="/medias/featureimages/5.png" class="responsive-img" alt="日语语法——3.人称代词">
                         
-                        <span class="card-title">日语语法——4.形容词，形容动词</span>
+                        <span class="card-title">日语语法——3.人称代词</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -963,7 +947,7 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-25
                             </span>
                         <span class="publish-author">
                             
@@ -1032,9 +1016,6 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
-
-  <!-- 是否加载使用自带的 prismjs. -->
-  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
@@ -1141,41 +1122,7 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
 
 
 
-    <script>
-    // 点击回复直接评论,官方版本点击回复时都是跳回到页面上方的评论框进行回复，评论框是固定不动的
-    // 参考https://immmmm.com/valine-diy,用到jQuery
-    $(document).ready(function(){
-        //$('.vemoji-btn').text('😀');
-        $("#vcomments").on('click', 'span.vat',function(){
-            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
-            $('textarea#veditor').focus();
-        })
-    })
-</script>
-<script>
-    // 点击回复直接评论,官方版本点击回复时都是跳回到页面上方的评论框进行回复，评论框是固定不动的
-    // 参考https://immmmm.com/valine-diy,用到jQuery
-    $(document).ready(function(){
-        //$('.vemoji-btn').text('😀');
-        $("#vcomments").on('click', 'span.vat',function(){
-            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
-            $('textarea#veditor').focus();
-        })
-    })
-</script>
-<!-- 评论框美化 -->
-<style>
-    #comments .veditor{
-        min-height: 10rem;
-        background-image: url(https://gitee.com/wugenqiang/PictureBed/raw/master/CS-Notes/20200425091751.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-        background-color: rgba(255,255,255,0);
-        resize: none;}
-</style>
-
-<footer class="page-footer bg-color">
+    <footer class="page-footer bg-color">
     
 
     <div class="container row center-align"
