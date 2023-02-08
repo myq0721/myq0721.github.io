@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="markdown基础语法, Ayanami&#39;s blog">
+    <meta name="keywords" content="markdown基础语法, 猫猫">
     <meta name="description" content="什么是Markdown?&amp;nbsp;  Markdown就是一种文档的格式，文件名的末尾是.md，正如我们常用的word文档格式是.doc、.docx，需要对应的软件来打开这一种格式。
 为什么要用Markdown？作为一种新的文档格式，我们">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -409,14 +409,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    998
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    3 分
                 </div>
                 
 
@@ -431,7 +431,15 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -554,11 +562,17 @@
 <p>显示：<u>HelloWorld</u></p>
 <p><em>（之前的下划线就是用的HTML标签，而不是Markdown语法）</em></p>
 <h2 id="14-表格："><a href="#14-表格：" class="headerlink" title="14.表格："></a>14.表格：</h2><h2 id="正常"><a href="#正常" class="headerlink" title="正常"></a>正常</h2><p>用法：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 标题1   | 标题2 |</span><br><span class="line">| -------|------ |</span><br><span class="line">| 内容1   | 内容3 |</span><br><span class="line">| 内容2   | 内容4 |</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">| 标题1   | 标题2 |
+| -------|------ |
+| 内容1   | 内容3 |
+| 内容2   | 内容4 |<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>（“|”是分割，”—“是竖着的分割线加粗）</p>
 <p>例如：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| Syntax      | Description |</span><br><span class="line">| ----------- | ----------- |</span><br><span class="line">| Header      | Title       |</span><br><span class="line">| Paragraph   | Text        |</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>显示：</p>
 <table>
@@ -578,7 +592,10 @@
 </tr>
 </tbody></table>
 <h2 id="自动对齐"><a href="#自动对齐" class="headerlink" title="自动对齐"></a>自动对齐</h2><p>用法：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 标题1      | 标题2 | 标题3     |</span><br><span class="line">| :---:        |    :----:   |          :---: |</span><br><span class="line">| 内容1      | 内容3     | 内容5   |</span><br><span class="line">| 内容2   | 内容4        |内容6      |</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">| 标题1      | 标题2 | 标题3     |
+| :---:        |    :----:   |          :---: |
+| 内容1      | 内容3     | 内容5   |
+| 内容2   | 内容4        |内容6      |<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <table>
 <thead>
@@ -895,6 +912,9 @@ Word Yes</p>
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -1019,7 +1039,7 @@ Word Yes</p>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.3k</span>
+                        class="white-color">11.9k</span>
             
             
             

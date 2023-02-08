@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="vector用法总结, Ayanami&#39;s blog">
+    <meta name="keywords" content="vector用法总结, 猫猫">
     <meta name="description" content="vector相关的用法总结因为最近经常用，于是总结在这个地方。
 向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -409,7 +409,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    657
+                    661
                 </div>
                 
 
@@ -431,7 +431,15 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -445,13 +453,43 @@
 <h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>使用vector需要注意以下几点：</p>
 <p>1.如果你要表示的向量长度较长（需要为向量内部保存很多数），容易导致内存泄漏，而且效率会很低；</p>
 <p>2.Vector作为函数的参数或者返回值时，需要注意它的写法：</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">double</span> <span class="title">Distance</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp;a, vector&lt;<span class="type">int</span>&gt;&amp;b)</span></span>; <span class="comment">//其中的“&amp;”不能少</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">double Distance(vector&lt;int&gt;&amp;a, vector&lt;int&gt;&amp;b); //其中的“&amp;”不能少<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>3.vector的元素不仅仅可以是int,double,string,还，可以是结构体，但是要注意：结构体要定义为全局的.</p>
 <h2 id="常见使用"><a href="#常见使用" class="headerlink" title="常见使用"></a>常见使用</h2><p>使用：</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; vec;<span class="comment">///建立一个vector，int为数组元素的数据类型，vec为动态数组名</span></span><br><span class="line">vector&lt;vector&lt;<span class="type">long</span> <span class="type">int</span>&gt; &gt; vec2; <span class="comment">//定义一个二维数组vec2</span></span><br><span class="line">vec.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">vec.<span class="built_in">push_back</span>(<span class="number">2</span>);<span class="comment">//把1和2压入vector，这样vec[0]就是1,vec[1]就是2</span></span><br><span class="line">cout&lt;&lt;vec[<span class="number">0</span>]&lt;&lt;endl;<span class="comment">//使用下标访问元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用迭代器访问元素.</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt;::iterator it;</span><br><span class="line"><span class="keyword">for</span>(it=vec.<span class="built_in">begin</span>();it!=vec.<span class="built_in">end</span>();it++)</span><br><span class="line">    cout&lt;&lt;*it&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">vec.<span class="built_in">insert</span>(vec.<span class="built_in">begin</span>()+i,a);<span class="comment">//插入,在第i+1个元素前面插入a</span></span><br><span class="line">vec.<span class="built_in">erase</span>(vec.<span class="built_in">begin</span>()+<span class="number">2</span>);<span class="comment">//删除元素,删除第3个元素</span></span><br><span class="line">vec.<span class="built_in">erase</span>(vec.<span class="built_in">begin</span>()+i,vec.<span class="built_in">end</span>()+j);<span class="comment">//删除区间[i,j-1];区间从0开始</span></span><br><span class="line">vec.<span class="built_in">size</span>();<span class="comment">//向量大小</span></span><br><span class="line">vec.<span class="built_in">clear</span>();<span class="comment">//清空</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;vector&gt;
+
+vector&lt;int&gt; vec;///建立一个vector，int为数组元素的数据类型，vec为动态数组名
+vector&lt;vector&lt;long int&gt; &gt; vec2; //定义一个二维数组vec2
+vec.push_back(1);
+vec.push_back(2);//把1和2压入vector，这样vec[0]就是1,vec[1]就是2
+cout&lt;&lt;vec[0]&lt;&lt;endl;//使用下标访问元素
+
+//使用迭代器访问元素.
+vector&lt;int&gt;::iterator it;
+for(it=vec.begin();it!=vec.end();it++)
+    cout&lt;&lt;*it&lt;&lt;endl;
+
+vec.insert(vec.begin()+i,a);//插入,在第i+1个元素前面插入a
+vec.erase(vec.begin()+2);//删除元素,删除第3个元素
+vec.erase(vec.begin()+i,vec.end()+j);//删除区间[i,j-1];区间从0开始
+vec.size();//向量大小
+vec.clear();//清空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>一些算法</p>
-<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">reverse</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//将元素翻转，即逆序排列</span></span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>());<span class="comment">//默认升序排列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//降序排列需重写</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">Comp</span><span class="params">(<span class="type">const</span> <span class="type">int</span> &amp;a,<span class="type">const</span> <span class="type">int</span> &amp;b)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">}</span><br><span class="line"><span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(),vec.<span class="built_in">end</span>(),Comp)<span class="comment">//降序排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//交换两个同类型向量的数据</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt;vec2;</span><br><span class="line"><span class="built_in">swap</span>(vec,vec2);</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;algorithm&gt;
+
+reverse(vec.begin(),vec.end());//将元素翻转，即逆序排列
+sort(vec.begin(),vec.end());//默认升序排列
+
+//降序排列需重写
+bool Comp(const int &amp;a,const int &amp;b){
+    return a&gt;b;
+}
+sort(vec.begin(),vec.end(),Comp)//降序排序
+
+//交换两个同类型向量的数据
+vector&lt;int&gt;vec2;
+swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>先这样，之后用到了再加叭qaq <span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>~</p>
 
                 
@@ -733,6 +771,9 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
 
 <!-- 代码语言 -->
 
@@ -857,7 +898,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.3k</span>
+                        class="white-color">11.9k</span>
             
             
             
