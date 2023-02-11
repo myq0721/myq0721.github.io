@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>游戏开发相关比赛</title>
+      <link href="/2023/02/11/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3%E6%AF%94%E8%B5%9B/"/>
+      <url>/2023/02/11/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3%E6%AF%94%E8%B5%9B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、中国大学生计算机设计大赛"><a href="#一、中国大学生计算机设计大赛" class="headerlink" title="一、中国大学生计算机设计大赛"></a>一、<a href="http://jsjds.blcu.edu.cn/info/1041/1734.htm">中国大学生计算机设计大赛</a></h2><p>其中： 2023年（第16届）中国大学生计算机设计大赛，（9）数媒游戏与交互设计；杭州；浙江传媒学院/杭州电子科技大学/浙江音乐学院；8.18～8.22</p><p>相对简单，容易拿奖(大概)</p><h2 id="二、CiGA-Game-Jam"><a href="#二、CiGA-Game-Jam" class="headerlink" title="二、CiGA Game Jam"></a>二、<a href="https://www.ciga.me/cgj">CiGA Game Jam</a></h2><p>已知21年开发时间为2021年7月9日17：00（主题发布）-2021年7月11日16：00 （线下展示）</p><p>线下48小时游戏极限开发活动。(也可线上)</p><h2 id="各大厂的比赛"><a href="#各大厂的比赛" class="headerlink" title="各大厂的比赛"></a>各大厂的比赛</h2><h3 id="鹅厂"><a href="#鹅厂" class="headerlink" title="鹅厂"></a><a href="https://gameinstitute.qq.com/college">鹅厂</a></h3><p>5月7日-7月30日</p><h3 id="猪厂"><a href="#猪厂" class="headerlink" title="猪厂"></a><a href="https://game.academy.163.com/activity">猪厂</a></h3><p>22年的刚结束</p><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p><a href="https://gamecreator.g-bits.com/pc/sh_rules.html">吉比特未来游戏制作人</a>，完美世界文创，莉莉丝达芬奇……</p><h2 id="indiePlay"><a href="#indiePlay" class="headerlink" title="indiePlay"></a><a href="https://indienova.com/">indiePlay</a></h2><p>独立游戏界的比赛,有含金量,奖金有些拮据</p><h2 id="UGDAP"><a href="#UGDAP" class="headerlink" title="UGDAP"></a><a href="https://www.ugdap.com/">UGDAP</a></h2><p>同上</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 游戏开发杂谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mini引擎(Ayana engine)开发日志</title>
       <link href="/2023/02/07/mini%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/"/>
       <url>/2023/02/07/mini%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/</url>
@@ -64,7 +89,7 @@
       
         <tags>
             
-            <tag> other </tag>
+            <tag> 其他 </tag>
             
         </tags>
       
@@ -108,7 +133,7 @@
       
         <tags>
             
-            <tag> other </tag>
+            <tag> 其他 </tag>
             
         </tags>
       
@@ -123,6 +148,12 @@
       
         <content type="html"><![CDATA[<h2 id="tuple简介"><a href="#tuple简介" class="headerlink" title="tuple简介"></a>tuple简介</h2><p>tuple（元组）在c++11中开始引用，是一个固定大小的不同类型值的集合，是泛化的std::pair。</p><p>我们也可以把他当做一个通用的结构体来用，不需要创建结构体又获取结构体的特征，在某些情况下可以取代结构体使程序更简洁，直观。</p><p>std::tuple理论上可以有无数个任意类型的成员变量，而std::pair只能是2个成员，因此在需要保存3个及以上的数据时就需要使用tuple元组了。</p><h2 id="tuple的创建和初始化"><a href="#tuple的创建和初始化" class="headerlink" title="tuple的创建和初始化"></a>tuple的创建和初始化</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> std::tuple&lt;T1, T2, TN&gt; t1;//创建一个空的tuple对象,它对应的元素分别是T1和T2...Tn类型，采用值初始化。std::tuple&lt;T1, T2, TN&gt; t2(v1, v2, ... TN);//创建一个tuple对象，它的两个元素分别是T1和T2 ...Tn类型; 要获取元素的值需要通过tuple的成员get&lt;Ith&gt;(obj)进行获取(Ith是指获取在tuple中的第几个元素)。std::tuple&lt;T1&amp;&gt; t3(ref&amp;); // tuple的元素类型可以是一个引用std::make_tuple(v1, v2); // 像pair一样也可以通过make_tuple进行创建一个tuple对象// tuple的元素类型为引用：std::string name;std::tuple&lt;string &amp;, int&gt; tpRef(name, 30);// 对tpRef第一个元素赋值，同时name也被赋值 - 引用std::get&lt;0&gt;(tpRef) = "Sven"; // name输出也是Svenstd::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; '\n';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="tuple的操作"><a href="#tuple的操作" class="headerlink" title="tuple的操作"></a>tuple的操作</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//1.等价结构体struct person {    char *m_name;    char *m_addr;    int  *m_ages;};//可以用tuple来表示这样的一个结构类型，作用是一样的。std::tuple&lt;const char *, const char *, int&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//2.获取tuple个数#include &lt;iostream&gt;#include &lt;tuple&gt;int main (){  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);  std::cout &lt;&lt; "mytuple has ";  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;  std::cout &lt;&lt; " elements." &lt;&lt; '\n';  return 0;}//输出结果：mytuple has 3 elements<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//3.获取元素的值#include &lt;iostream&gt;#include &lt;tuple&gt;int main (){  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);  std::cout &lt;&lt; "mytuple has ";  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;  std::cout &lt;&lt; " elements." &lt;&lt; '\n';  //获取元素  std::cout &lt;&lt; "the elements is: ";  std::cout &lt;&lt; std::get&lt;0&gt;(mytuple) &lt;&lt; " ";  std::cout &lt;&lt; std::get&lt;1&gt;(mytuple) &lt;&lt; " ";  std::cout &lt;&lt; std::get&lt;2&gt;(mytuple) &lt;&lt; " ";  std::cout &lt;&lt; '\n';  return 0;}/*输出结果：mytuple has 3 elements.the elements is: 10 a 3.14 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p><strong>注意：tuple不支持迭代，只能通过元素索引(或tie解包)进行获取元素的值。但是给定的索引必须是在编译器就已经给定，不能在运行期进行动态传递，否则将发生编译错误：如：</strong></p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&gt;for(int i=0; i&lt;3; i++)   std::cout &lt;&lt; std::get&lt;i&gt;(mytuple) &lt;&lt; " "; //将引发编译错误<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></blockquote><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//4.获取元素的类型//要想得到元素类型可以通过tuple_element方法获取，如有以下元组对象：std::tuple&lt;std::string, int&gt; tp("Sven", 20);// 得到第二个元素类型std::tuple_element&lt;1, decltype(tp)&gt;::type ages;  // ages就为int类型 ages = std::get&lt;1&gt;(tp); std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; '\n'; //输出结果:ages: 20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> //5.利用tie进行解包元素的值 //如同pair一样也是可以通过tie进行解包tuple的各个元素的值。如下tuple对象有4个元素，通过tie解将会把这4个元素的值分别赋值给tie提供的4个变量中。#include &lt;iostream&gt;#include &lt;tuple&gt;#include &lt;utility&gt; int main(int argc, char **argv) {    std::tuple&lt;std::string, int, std::string, int&gt; tp;    tp = std::make_tuple("Sven", 25, "Shanghai", 21);     // 定义接收变量    std::string name;    std::string addr;    int ages;    int areaCode;     std::tie(name, ages, addr, areaCode) = tp;    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';     return 0;} /*输出结果：Output: name: Sven, addr: Shanghai, ages: 25, areaCode: 21*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但有时候tuple包含的多个元素时只需要其中的一个或两个元素，如此可以通过std::ignore进行变量占位，这样将会忽略提取对应的元素。可以修改上述例程：</p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;#include &lt;tuple&gt;#include &lt;utility&gt; int main(int argc, char **argv) {    std::tuple&lt;std::string, int, std::string, int&gt; tp;    tp = std::make_tuple("Sven", 25, "Shanghai", 21);     // 定义接收变量    std::string name;    std::string addr;    int ages;    int areaCode = 110;     std::tie(name, ages, std::ignore, std::ignore) = tp;    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';     return 0;} /*输出结果：Output: name: Sven, addr: , ages: 25, areaCode: 110*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//6. tuple元素的引用//前面已经列举了将引用作为tuple的元素类型。下面通过引用搭配make_tuple()可以提取tuple的元素值，将某些变量值设给它们，并通过改变这些变量来改变tuple元素的值：#include &lt;iostream&gt;#include &lt;tuple&gt;#include &lt;functional&gt; int main(int argc, char **agrv) {     std::tuple&lt;std::string, int, float&gt; tp1("Sven Cheng", 77, 66.1);     std::string name;    int weight;    float f;     auto tp2 = std::make_tuple(std::ref(name), std::ref(weight), std::ref(f)) = tp1;     std::cout &lt;&lt; "Before change: " &lt;&lt; '\n';    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; ", ";    std::cout &lt;&lt; "weight: " &lt;&lt; weight &lt;&lt; ", ";    std::cout &lt;&lt; "f: " &lt;&lt; f &lt;&lt; '\n';     name = "Sven";    weight = 80;    f = 3.14; std::cout &lt;&lt; "After change: " &lt;&lt; '\n';std::cout &lt;&lt; "element 1st: " &lt;&lt; std::get&lt;0&gt;(tp2) &lt;&lt; ", ";std::cout &lt;&lt; "element 2nd: " &lt;&lt; std::get&lt;1&gt;(tp2) &lt;&lt; ", ";std::cout &lt;&lt; "element 3rd: " &lt;&lt; std::get&lt;2&gt;(tp2) &lt;&lt; '\n';     return 0;} /*输出结果：Before change: name: Sven Cheng, weight: 77, f: 66.1After change: element 1st: Sven, element 2nd: 80, element 3rd: 3.14*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
+      
+      <categories>
+          
+          <category> 编程语言 </category>
+          
+      </categories>
       
       
         <tags>
@@ -143,6 +174,12 @@
         <content type="html"><![CDATA[<h2 id="vector相关的用法总结"><a href="#vector相关的用法总结" class="headerlink" title="vector相关的用法总结"></a>vector相关的用法总结</h2><p>因为最近经常用，于是总结在这个地方。</p><p>向量（Vector）是一个封装了动态大小数组的顺序容器（Sequence Container）。跟任意其它类型容器一样，它能够存放各种类型的对象。可以简单的认为，向量是一个能够存放任意类型的动态数组。</p><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><p>1.顺序序列<br>顺序容器中的元素按照严格的线性顺序排序。可以通过元素在序列中的位置访问对应的元素。</p><p>2.动态数组<br>支持对序列中的任意元素进行快速直接访问，甚至可以通过指针算述进行该操作。提供了在序列末尾相对快速地添加/删除元素的操作。</p><p>3.能够感知内存分配器的（Allocator-aware）<br>容器使用一个内存分配器对象来动态地处理它的存储需求。</p><hr><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>使用vector需要注意以下几点：</p><p>1.如果你要表示的向量长度较长（需要为向量内部保存很多数），容易导致内存泄漏，而且效率会很低；</p><p>2.Vector作为函数的参数或者返回值时，需要注意它的写法：</p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">double Distance(vector&lt;int&gt;&amp;a, vector&lt;int&gt;&amp;b); //其中的“&amp;”不能少<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>3.vector的元素不仅仅可以是int,double,string,还，可以是结构体，但是要注意：结构体要定义为全局的.</p><h2 id="常见使用"><a href="#常见使用" class="headerlink" title="常见使用"></a>常见使用</h2><p>使用：</p><pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;vector&gt;vector&lt;int&gt; vec;///建立一个vector，int为数组元素的数据类型，vec为动态数组名vector&lt;vector&lt;long int&gt; &gt; vec2; //定义一个二维数组vec2vec.push_back(1);vec.push_back(2);//把1和2压入vector，这样vec[0]就是1,vec[1]就是2cout&lt;&lt;vec[0]&lt;&lt;endl;//使用下标访问元素//使用迭代器访问元素.vector&lt;int&gt;::iterator it;for(it=vec.begin();it!=vec.end();it++)    cout&lt;&lt;*it&lt;&lt;endl;vec.insert(vec.begin()+i,a);//插入,在第i+1个元素前面插入avec.erase(vec.begin()+2);//删除元素,删除第3个元素vec.erase(vec.begin()+i,vec.end()+j);//删除区间[i,j-1];区间从0开始vec.size();//向量大小vec.clear();//清空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>一些算法</p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;algorithm&gt;reverse(vec.begin(),vec.end());//将元素翻转，即逆序排列sort(vec.begin(),vec.end());//默认升序排列//降序排列需重写bool Comp(const int &amp;a,const int &amp;b){    return a&gt;b;}sort(vec.begin(),vec.end(),Comp)//降序排序//交换两个同类型向量的数据vector&lt;int&gt;vec2;swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>先这样，之后用到了再加叭qaq <span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>~</p>]]></content>
       
       
+      <categories>
+          
+          <category> 编程语言 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -162,10 +199,16 @@
         <content type="html"><![CDATA[<h3 id="形容词"><a href="#形容词" class="headerlink" title="形容词"></a>形容词</h3><p>空は青い。<br>空は青いです。//更礼貌<br>天空是蓝色的。</p><p><em>形容词可以直接做谓语后不需加だ，做终止形</em></p><p>青い空。<br>蓝色的天空。</p><p><em>形容词做定语，直接加名词，不加の，做连体形</em><br><em>名词代词等即体言</em></p><h3 id="形容动词"><a href="#形容动词" class="headerlink" title="形容动词"></a>形容动词</h3><p><em>形容动词的变化方式和动词相同</em></p><p>教室は静かだ。<br>教室は静かです。<br>教室安静。</p><p>静かな教室。<br>安静的教室</p><p><em>だ变な由终止形变连体形</em></p><h3 id="く-x2F-で"><a href="#く-x2F-で" class="headerlink" title="~く/で"></a>~く/で</h3><p><em>形容词，形容动词，与动词称为用言</em><br><em>同理，连接用眼的部分即为连用形</em></p><p>教室は大きく、静かだ。<br>教室很大也很安静。</p><p><em>形容词い变く，变连用形</em></p><p>教室は静かで、大きい。<br>教室很安静也很大。</p><p><em>形容动词以で结尾，变连用形，和名词相同</em></p><h3 id="ない"><a href="#ない" class="headerlink" title="~ない"></a>~ない</h3><p>この本は面白くない。<br>この本は面白くないです。//敬<br>この本は面白くありません。//敬<br>这本书没意思。</p><p><em>因为后要加ない这个补助形容词,面白い变面白く，即变为连用形</em></p><p>あの俳優さんは有名ではない。<br>あの俳優さんは有名ではありません。<br>那个演员没有名气。</p><h3 id="かつた-x2F"><a href="#かつた-x2F" class="headerlink" title="~かつた/"></a>~かつた/</h3><p><em>连用形的过去式</em></p><p>昨日は寒かっだ。<br>昨日は寒かっだです。<br>昨天冷。</p><p>昨日は寒くなかっだ。<br>昨日は寒くなかっだです。<br>昨日は寒くありませんでした。//でした表过去<br>昨天不冷。</p><p>寒<del>い</del><br>　く＋な<del>い</del><br>　　　　かっだ</p><p><em>为了加ない、寒い变寒く</em><br><em>然后把ない变~かっだ、即过去式的连用形</em></p><h3 id="だった"><a href="#だった" class="headerlink" title="~だった"></a>~だった</h3><p>私はもともと学生だった//だ变だった表过去<br>私はもともと学生でした。//更礼貌<br>我原本是个学生。</p><p>昨日教室は静かだった。<br>昨日教室は静かでした。<br>昨天教室安静。</p><p>昨日教室は静かではなかっだ。<br>昨日教室は静かではありませんでした。<br>昨天教室不安静。</p><h3 id="连体词"><a href="#连体词" class="headerlink" title="连体词"></a>连体词</h3><p><em>只能连接体言的词语</em></p><p>大きな<br>大的</p><p>小さな<br>小的</p><p>色んな<br>各式各样的</p><p><em>上面三个只有连体词一种词性</em></p><p>同じ<br>一样的<br><em>而同じ还是个形容动词，同じだ/です等</em></p>]]></content>
       
       
+      <categories>
+          
+          <category> 日语学习 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 日语 </tag>
+            <tag> 日语语法 </tag>
             
         </tags>
       
@@ -181,10 +224,16 @@
         <content type="html"><![CDATA[<h3 id="一人称"><a href="#一人称" class="headerlink" title="一人称"></a>一人称</h3><table><thead><tr><th align="center">私（わたし）</th><th align="center">日常女性使用，正式场合男女通用</th></tr></thead><tbody><tr><td align="center">私（わたくし）</td><td align="center">男女通用，正式场合</td></tr><tr><td align="center">僕</td><td align="center">男，非正式</td></tr><tr><td align="center">俺</td><td align="center">男，粗鲁</td></tr><tr><td align="center">俺様</td><td align="center">男，居高临下，十分粗鲁</td></tr><tr><td align="center">あたし</td><td align="center">女性，随意，日常</td></tr><tr><td align="center">うち</td><td align="center">女性</td></tr></tbody></table><h3 id="二人称"><a href="#二人称" class="headerlink" title="二人称"></a>二人称</h3><h4 id="不知道对方姓名时："><a href="#不知道对方姓名时：" class="headerlink" title="不知道对方姓名时："></a>不知道对方姓名时：</h4><table><thead><tr><th align="center">あなた</th><th align="center">最常用，对平辈与晚辈使用，</th></tr></thead><tbody><tr><td align="center">君</td><td align="center">男性对同辈与晚辈使用</td></tr><tr><td align="center">お前</td><td align="center">男性对同辈与晚辈使用</td></tr><tr><td align="center">あんた</td><td align="center">比あなた更随意</td></tr><tr><td align="center">僕</td><td align="center">对不认识的小孩</td></tr></tbody></table><h4 id="知道对方姓名后，更礼貌的用语："><a href="#知道对方姓名后，更礼貌的用语：" class="headerlink" title="知道对方姓名后，更礼貌的用语："></a>知道对方姓名后，更礼貌的用语：</h4><h5 id="様-x2F-ちん-x2F-君-x2F-ちやん-x2F-殿（どの）-x2F-氏（し）"><a href="#様-x2F-ちん-x2F-君-x2F-ちやん-x2F-殿（どの）-x2F-氏（し）" class="headerlink" title="~様/~ちん/君/ちやん/殿（どの）/氏（し）"></a>~様/~ちん/君/ちやん/殿（どの）/氏（し）</h5><table><thead><tr><th align="center">佐藤様</th><th align="center">广泛，较礼貌，店家对客人等</th></tr></thead><tbody><tr><td align="center">佐藤さん</td><td align="center">日常</td></tr><tr><td align="center">佐藤君</td><td align="center">对同辈和晚辈，日常男性使用</td></tr><tr><td align="center">佐藤ちやん</td><td align="center">比较亲密</td></tr><tr><td align="center">営業部長殿</td><td align="center">前加职务，正式公文</td></tr><tr><td align="center">佐藤氏</td><td align="center">前加姓</td></tr><tr><td align="center">佐藤</td><td align="center">直呼，很亲密，或上对下，或对外人说自己人时</td></tr></tbody></table><h3 id="三人称"><a href="#三人称" class="headerlink" title="三人称"></a>三人称</h3><h4 id="人物："><a href="#人物：" class="headerlink" title="人物："></a>人物：</h4><table><thead><tr><th align="center">彼（かれ）</th><th align="center">他</th></tr></thead><tbody><tr><td align="center">彼女（かのじお）</td><td align="center">她</td></tr><tr><td align="center">こ/そ/あいつ</td><td align="center">它，家伙</td></tr></tbody></table><h4 id="物体："><a href="#物体：" class="headerlink" title="物体："></a>物体：</h4><p>こ/そ/あ/どれ       </p><hr><h3 id="复数表现"><a href="#复数表现" class="headerlink" title="复数表现"></a>复数表现</h3><table><thead><tr><th align="center">私（わたし）たち</th><th align="center">最常用，相当于“们”</th></tr></thead><tbody><tr><td align="center">あなたがだ</td><td align="center">较礼貌</td></tr><tr><td align="center">彼ら</td><td align="center">较不礼貌 <em>只有彼没有彼だち的用法</em></td></tr><tr><td align="center">私（わたくし）ども</td><td align="center">最礼貌，自谦语</td></tr></tbody></table>]]></content>
       
       
+      <categories>
+          
+          <category> 日语学习 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 日语 </tag>
+            <tag> 日语语法 </tag>
             
         </tags>
       
@@ -200,10 +249,16 @@
         <content type="html"><![CDATA[<h3 id="こ-指离说话人近的事物-x2F-近"><a href="#こ-指离说话人近的事物-x2F-近" class="headerlink" title="こ　指离说话人近的事物/近"></a>こ　指离说话人近的事物/近</h3><h3 id="そ-指离听话人近的事物-x2F-稍远"><a href="#そ-指离听话人近的事物-x2F-稍远" class="headerlink" title="そ　指离听话人近的事物/稍远"></a>そ　指离听话人近的事物/稍远</h3><h3 id="あ-指离双方都远的事物-x2F-很远"><a href="#あ-指离双方都远的事物-x2F-很远" class="headerlink" title="あ　指离双方都远的事物/很远"></a>あ　指离双方都远的事物/很远</h3><h3 id="ど-不定"><a href="#ど-不定" class="headerlink" title="ど　不定"></a>ど　不定</h3><hr><h3 id="れ、-の、-の"><a href="#れ、-の、-の" class="headerlink" title="~れ、~の、~の~"></a>~れ、~の、~の~</h3><p>これは本だ<br>这是书</p><p>この本は私の（本）だ<br>这本书是我的</p><h3 id="ような"><a href="#ような" class="headerlink" title="~ような"></a>~ような</h3><p>このような本//比较书面<br>这样的书</p><p>こんな本//口语化<br>这样的书</p><h3 id="こ"><a href="#こ" class="headerlink" title="~こ"></a>~こ</h3><p>ここは学校だ<br>这里是学校</p><p><em>没有あこ的用法，应是あそこ</em></p><p>教室はどこですか。//は提示后面的<br>どこが教室ですか。//が提示前面的<br>教室在哪儿？</p><h3 id="ちら-用法等于-こ-更加礼貌"><a href="#ちら-用法等于-こ-更加礼貌" class="headerlink" title="~ちら 用法等于~こ,更加礼貌"></a>~ちら 用法等于~こ,更加礼貌</h3><p>こちらは私の先生です。<br>这位是我的老师。</p><p>こちらは毛利探偵事務所でございます。<br>这里是毛利侦探事务所。</p><p><em>こちら在口语中可简化为こち</em></p><h3 id="指示代词总结"><a href="#指示代词总结" class="headerlink" title="指示代词总结"></a>指示代词总结</h3><table><thead><tr><th align="center"></th><th align="center">こ</th><th align="center">そ</th><th align="center">あ</th><th align="center">ど</th><th align="center"></th></tr></thead><tbody><tr><td align="center">~れ</td><td align="center">これ</td><td align="center">それ</td><td align="center">あれ</td><td align="center">どれ</td><td align="center">后加助词，指代事物</td></tr><tr><td align="center">~の</td><td align="center">この</td><td align="center">その</td><td align="center">あの</td><td align="center">どの</td><td align="center">后加名词，指代事物</td></tr><tr><td align="center">~ような</td><td align="center">このような</td><td align="center">そのような</td><td align="center">あのような</td><td align="center">どのような</td><td align="center">指代样态，“这样的，怎样的”</td></tr><tr><td align="center">~んな</td><td align="center">こんな</td><td align="center">そんな</td><td align="center">あんな</td><td align="center">どんな</td><td align="center">为上一行的缩略表达</td></tr><tr><td align="center">~こ</td><td align="center">ここ</td><td align="center">そこ</td><td align="center">あそこ</td><td align="center">どこ</td><td align="center">指代地点</td></tr><tr><td align="center">~ちら</td><td align="center">こちら</td><td align="center">そちら</td><td align="center">あちら</td><td align="center">どちら</td><td align="center">指代地点，郑重，还可间接指代人</td></tr></tbody></table>]]></content>
       
       
+      <categories>
+          
+          <category> 日语学习 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 日语 </tag>
+            <tag> 日语语法 </tag>
             
         </tags>
       
@@ -244,10 +299,16 @@
         <content type="html"><![CDATA[<h1 id="日语中形容词和动词可直接作谓语，而名词不行。若需用名词作谓语，则需要借助助动词来表达。"><a href="#日语中形容词和动词可直接作谓语，而名词不行。若需用名词作谓语，则需要借助助动词来表达。" class="headerlink" title="日语中形容词和动词可直接作谓语，而名词不行。若需用名词作谓语，则需要借助助动词来表达。"></a>日语中形容词和动词可直接作谓语，而名词不行。若需用名词作谓语，则需要借助助动词来表达。</h1><h3 id="だ-表达判断"><a href="#だ-表达判断" class="headerlink" title="~だ 表达判断"></a>~だ 表达判断</h3><p>学生だ<br>是学生</p><p>学生ではない<br>不是学生</p><p>学生（か）？<br>是学生吗？</p><h3 id="です-表达判断（对听话人礼貌）"><a href="#です-表达判断（对听话人礼貌）" class="headerlink" title="~です　表达判断（对听话人礼貌）"></a>~です　表达判断（对听话人礼貌）</h3><p>学生です<br>是学生</p><p>学生でわありませえ<br>不是学生</p><p>学生ですか？<br>是学生吗？</p><p>先生ですか、学生ですか。//前读降调后读声调<br>是老师还是学生</p><h3 id="である-表判断（用在演讲或论文中，非常正式）"><a href="#である-表判断（用在演讲或论文中，非常正式）" class="headerlink" title="~である　表判断（用在演讲或论文中，非常正式）"></a>~である　表判断（用在演讲或论文中，非常正式）</h3><p>学生である</p><p>学生であります</p><h3 id="でございます（敬语，店家对客人等）"><a href="#でございます（敬语，店家对客人等）" class="headerlink" title="~でございます（敬语，店家对客人等）"></a>~でございます（敬语，店家对客人等）</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table><thead><tr><th align="center"></th><th align="center">一般</th><th align="center">礼貌</th><th align="center">正式</th><th align="center">正式+礼貌</th><th align="center">郑重</th></tr></thead><tbody><tr><td align="center">肯定</td><td align="center">だ</td><td align="center">です</td><td align="center">である</td><td align="center">であります</td><td align="center">でございます</td></tr><tr><td align="center">否定</td><td align="center">ではない</td><td align="center">ではありません</td><td align="center">/</td><td align="center">/</td><td align="center">/</td></tr></tbody></table><hr><h3 id="は-x2F-が"><a href="#は-x2F-が" class="headerlink" title="~は/が"></a>~は/が</h3><ul><li><p>你是谁？<br>我是学生。——&gt; 私は学生だ。//强调は后的部分</p></li><li><p>谁是学生？<br>我是学生。——&gt; 私が学生だ。//强调が前的部分</p></li></ul><h3 id="も"><a href="#も" class="headerlink" title="~も"></a>~も</h3><p>我是学生，他也是学生。<br>私は学生です。彼も学生です。//</p>]]></content>
       
       
+      <categories>
+          
+          <category> 日语学习 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 日语 </tag>
+            <tag> 日语语法 </tag>
             
         </tags>
       
@@ -266,7 +327,7 @@
       
         <tags>
             
-            <tag> others </tag>
+            <tag> 其他 </tag>
             
         </tags>
       
@@ -285,7 +346,7 @@
       
         <tags>
             
-            <tag> other </tag>
+            <tag> 其他 </tag>
             
         </tags>
       
@@ -304,7 +365,7 @@
       
         <tags>
             
-            <tag> others </tag>
+            <tag> 其他 </tag>
             
         </tags>
       
@@ -320,6 +381,12 @@
         <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> 其他 </tag>
+            
+        </tags>
       
     </entry>
     
