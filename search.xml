@@ -107,14 +107,14 @@
       
       <categories>
           
-          <category> 游戏引擎 </category>
+          <category> 图形学 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 图形学 </tag>
+            <tag> 图形学杂谈 </tag>
             
         </tags>
       
@@ -328,6 +328,31 @@
         <tags>
             
             <tag> 其他 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用现代OpenGL绘制三角形</title>
+      <link href="/2023/01/12/shi-yong-xian-dai-opengl-hui-zhi-san-jiao-xing/"/>
+      <url>/2023/01/12/shi-yong-xian-dai-opengl-hui-zhi-san-jiao-xing/</url>
+      
+        <content type="html"><![CDATA[<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;GL/glew.h&gt;//glew必须在glfw前#include &lt;GLFW/glfw3.h&gt;#include&lt;iostream&gt;int main(void){    GLFWwindow* window;    /* Initialize the library */    if (!glfwInit())        return -1;    glewInit();    /* Create a windowed mode window and its OpenGL context */    window = glfwCreateWindow(640, 480, "OpenGl", NULL, NULL);    if (!window)    {        glfwTerminate();        return -1;    }    /* Make the window's context current */    glfwMakeContextCurrent(window);    //---此后才有有效的渲染环境---    if (glewInit() != GLEW_OK) {//检测        std::cout &lt;&lt; "Error" &lt;&lt; std::endl;    }    std::cout &lt;&lt; glGetString(GL_VERSION) &lt;&lt; std::endl;    float position[6] = {        -0.5f, -0.5f,         0.0f,  0.5f,         0.5f, -0.5f    };        unsigned int buffer;    glGenBuffers(1, &amp;buffer);    glBindBuffer(GL_ARRAY_BUFFER, buffer);    glBufferData(GL_ARRAY_BUFFER,sizeof(position),position,GL_STATIC_DRAW);    glEnableVertexAttribArray(0);    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);    glBindBuffer(GL_ARRAY_BUFFER, 0);    /* Loop until the user closes the window */    while (!glfwWindowShouldClose(window))    {        /* Render here */        glClear(GL_COLOR_BUFFER_BIT);        glDrawArrays(GL_TRIANGLES,0,3);        /* Swap front and back buffers */        glfwSwapBuffers(window);        /* Poll for and process events */        glfwPollEvents();    }    glfwTerminate();    return 0;}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 图形学 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> OpenGl </tag>
             
         </tags>
       
