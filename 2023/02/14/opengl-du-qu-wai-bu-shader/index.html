@@ -4,8 +4,15 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="随笔与牢骚与乱七八糟的合集/发癫日记, 猫猫">
-    <meta name="description" content="………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………">
+    <meta name="keywords" content="OpenGL_读取外部shader、建立索引缓冲区, 猫猫">
+    <meta name="description" content="上次通过字符串的形式写了简单的顶点和片元着色器
+这次优化为把shader放在外部，用类状态机的方式读取
+为shader的编写带来了极大便利
+见代码
+
+
+#include&amp;lt;GL/glew.h&amp;gt;
+#include &amp;lt;GLFW/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +24,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>随笔与牢骚与乱七八糟的合集/发癫日记 | Ayanami&#39;s blog</title>
+    <title>OpenGL_读取外部shader、建立索引缓冲区 | Ayanami&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,7 +343,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '43daa0991aa0e7562d780eae91e49beb6f494fad896a24cde558cd7bf0e1f633';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码(Ayanami的0d00(确信))')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误QAQ,将返回主页');
@@ -349,12 +356,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://i.postimg.cc/wvNpDkmk/QQ-20221228210224.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">随笔与牢骚与乱七八糟的合集/发癫日记</h1>
+                    <h1 class="description center-align post-title">OpenGL_读取外部shader、建立索引缓冲区</h1>
                 </div>
             </div>
         </div>
@@ -378,14 +385,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%85%B6%E4%BB%96/">
-                                <span class="chip bg-color">其他</span>
+                            <a href="/tags/OpenGL/">
+                                <span class="chip bg-color">OpenGL</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="post-category">
+                                图形学
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -394,28 +410,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-05
+                    2023-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-11
+                    2023-02-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    576
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 
@@ -443,99 +459,174 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………….</p>
-<p><code>warning!警告!</code></p>
-<p><code>以下内容将毫无营养</code></p>
-<hr>
-<hr>
-<hr>
-<h2 id="以下是手机的笔记，时间线上在大一到大二"><a href="#以下是手机的笔记，时间线上在大一到大二" class="headerlink" title="以下是手机的笔记，时间线上在大一到大二"></a>以下是手机的笔记，时间线上在大一到大二</h2><p>稍微整理分类以后如下</p>
-<h3 id="音乐"><a href="#音乐" class="headerlink" title="音乐"></a>音乐</h3><p>小提琴有一种孤怆的美感，像“喑哑的嘶鸣”</p>
-<p>一长声小提琴加两声清脆的钢琴，从屋檐滑落的雨滴洒在地板上溅开，和缓缓飘落的枫叶落在路上被行人踏碎的感觉</p>
-<p>钢琴的如雨般宁静，不同吉他平静中悠闲，而有很强的归属与抚平一切的温柔，即便再奔放的表达，也有一种含蓄的优雅在。</p>
-<hr>
-<p>我心中的音乐是真诚而炽热感情的表达，即使是摇滚和说唱也类，也不应该是所谓高歌人的恶混沌和黑暗的东西。</p>
-<p>我个人来说一直不是特别喜欢鼓点特别大或是节奏特别快的的音乐。但是因为beyond的爱上摇滚，因为周杰伦爱上说唱。我才发现。摇滚和说唱，在有些个别的艺术家的手中已经被曲解了。真正的摇滚和说唱是什么？</p>
-<p>摇滚是革命，改革自我，改革命运，告别懦弱和退让，而且，不是在言语上，是在艺术里。风雨中绝不熄灭的烛火，岩洞下永远沸腾的岩浆……无人可挡，无法停止的气魄，这才是我的摇滚。</p>
-<h3 id="发癫"><a href="#发癫" class="headerlink" title="发癫"></a>发癫</h3><p>想到未来，想到死亡，以及迄今为止废物的二十年……</p>
-<p>魔幻又泛着恶臭油腥味儿的世界，我寥寥无几的重要的人……</p>
-<p>对自己死亡倒是很释然，对爱着的人的离去无法抑制又无力的悲伤……</p>
-<p>不管什么死亡赋予生命意义，可是当相处很久的人突然离去，还是会伤心……</p>
-<p>有时候豁达到什么都无所谓，有时候又会因为很小的事情在头脑里放大……</p>
-<h3 id="赛博朋克与美"><a href="#赛博朋克与美" class="headerlink" title="赛博朋克与美"></a>赛博朋克与美</h3><p>赛博朋克边缘行者<br>年龄大了越来越接受不了赛博朋克和黑深残这类的设定了，反而是之前略觉寡淡的日常系更对我胃口，而且越来越喜欢校园感，单纯的日常……</p>
-<p>而且更喜欢纯粹表达的美感……</p>
-<p>初高中是喜欢看科幻，或者是赛博风格题材的什么黑深残，阴谋论，恰好满足那个年龄寻求的感官刺激，狂妄的想象和自认的成熟。不过现在对一个大学生来说或许过于刺激了=_=</p>
-<p>今天下午课前我提议说再走一次时常无人的小道，半开玩笑的讲，再回味一下桂花香，秋冬冷日中的余香像是因为某种不可抗力而被迫断裂的爱情，在她回头，即将离开迈出第一步之前飘扬发丝尾端的余味。恰是“孔雀东南飞，五里一徘徊”。</p>
-<p>为什么，感觉自己越来越理想主义了</p>
-<p>这种单纯的美感emm……</p>
-<p>“你这都是电影里的，现在都是晚上QQ一删，翌日相遇就是路人”</p>
-<p>这是现实。</p>
-<p>如果被迫在影视作品中还要被迫面对现实，反正我不接受。好在这部作品结尾仍然是浪漫的，恰是因为在不允许信任的世界里，心与心的联结才更加浪漫。</p>
-<p>这种设定之下就注定是悲剧，是末世废土中开出的白百合，或者说，是喧嚣的血液和肢节满天横飞，无尽奏响着的飞扬进行曲时，在世界的中心，是纯白的旧建筑里薰嗣的简单钢琴声与旁边单一棵翠绿的树的共鸣……</p>
-<p>另外感觉这番好浓的EVA味，之前刚看的斩服少女也是，不愧是扳机社。另外这部作品本身一定是一部好作品，不然我也不会意难平在这里逼逼叨叨了，瞎扯一通了。</p>
-<p>最后，</p>
-<p>“老板！点歌！《FLY ME TO THE MOON》！”</p>
-<h3 id="然后在这里插一个高考前的文章"><a href="#然后在这里插一个高考前的文章" class="headerlink" title="然后在这里插一个高考前的文章"></a>然后在这里插一个高考前的文章</h3><br>
-<font size="4">《水到渠成》</font>
-<br><br>
-
-<p>我的前面是一望无际的弯曲的路</p>
-<p>我的后面是一望无际的弯曲的路</p>
-<p>我的两边是喘着热气的、无尽的灰土</p>
-<p>全是裂痕，全是裂痕</p>
-<p>浮着奇异的波纹</p>
-<p>————我的头上是死死的太阳</p>
+                <p>上次通过字符串的形式写了简单的顶点和片元着色器</p>
+<p>这次优化为把shader放在外部，用类状态机的方式读取</p>
+<p>为shader的编写带来了极大便利</p>
+<p>见代码</p>
 <br>
 
-<p>“顶住那车！”</p>
-<p>从远方而来，里面是我所有的一切</p>
-<p>我所有的爱、我所有的智慧</p>
-<p>“我不能后退！！”</p>
-<br>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;GL/glew.h&gt;
+#include &lt;GLFW/glfw3.h&gt;
 
-<p>车轮轧碎了我的前脚掌</p>
-<p>在路上流下两条殷红的平行线</p>
-<p>我的胳膊已经折断</p>
-<p>我的脊骨正在变形</p>
-<p>我大叫，喉咙里往外翻血</p>
-<p>蚊子般的长鸣</p>
-<p>我拼命地让身体立着</p>
-<p>青蓝泛紫的金属机壳进入右臂，进入肺，进入心脏……</p>
-<p>身体就染红了</p>
-<p>是多么自然而然的事情</p>
-<p>我有些害怕，有些犹豫</p>
-<p>我终于选择了逃避</p>
-<br>
+#include&lt;iostream&gt;
+#include&lt;fstream&gt;
+#include&lt;string&gt;
+#include&lt;sstream&gt;
 
-<p>我瘫坐在灰土地上</p>
-<p>望着那辆车</p>
-<p>沿着蛇一样的路</p>
-<p>慢慢地，慢慢地，走过了许多时间</p>
-<br>
+struct ShaderProgramSource
+{
+	std::string VertexShader;
+	std::string FragmentShader;
+};
+static ShaderProgramSource ParseShader(const std::string&amp; filepath)
+{
+	std::ifstream stream(filepath);
 
-<p>我拖着扭曲后无用的身体</p>
-<p>像蛇一样地爬</p>
-<p>无可奈何，也没有办法</p>
-<br>
+	enum class ShaderType
+	{
+		NONE = -1, VERTEX = 0, FRAGMENT = 1
+	};
 
-<p>扭曲无用的身体……</p>
-<p>水分也慢慢蒸发</p>
-<p>到空气里，再也找不见了</p>
-<p>我终于也成了土地</p>
-<br>
+	std::string line;
+	std::stringstream ss[2];
+	ShaderType type = ShaderType::NONE;
+	while (getline(stream, line))
+	{
+		if (line.find("#shader") != std::string::npos)
+		{
+			if (line.find("vertex") != std::string::npos)
+				type = ShaderType::VERTEX;
+			else if (line.find("fragment") != std::string::npos)
+				type = ShaderType::FRAGMENT;
+		}
+		else
+		{
+			ss[int(type)] &lt;&lt; line &lt;&lt; '\n';
+		}
+	}
+	return{ ss[0].str(),ss[1].str() };
+}
+static unsigned int CompileShader(unsigned int type, const std::string&amp; source)
+{
+	unsigned int id = glCreateShader(type);
+	const char* src = source.c_str();
+	glShaderSource(id, 1, &amp;src, nullptr);
+	glCompileShader(id);
 
+	int result;
+	glGetShaderiv(id, GL_COMPILE_STATUS, &amp;result);
+	if (result == GL_FALSE)
+	{
+		int length;
+		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &amp;length);
+		char* message = (char*)alloca(length * sizeof(char));
+		glGetShaderInfoLog(id, length, &amp;length, message);
+		std::cout &lt;&lt; "Failed To Compile" &lt;&lt; (type == GL_VERTEX_SHADER ? "vertex" : "fragmenrt") &lt;&lt; " Shader Nya~" &lt;&lt; std::endl;
+		std::cout &lt;&lt; message &lt;&lt; std::endl;
 
-<h2 id="02-x2F-05"><a href="#02-x2F-05" class="headerlink" title="02/05"></a>02/05</h2><p>什么都没有发生，无聊的一天捏，虽说是元宵节但是真无聊</p>
-<p>晚上吃饭的中年大叔指点江山环节，各种大学的任何专业都能评判的头头是道</p>
-<p>我一个人缩在角落玩手机就是了</p>
-<p>等以后工作了这种亲戚饭局一定能推就推，奶奶滴</p>
-<p>离开这河南，再也不回来了……</p>
-<h2 id="02-x2F-07"><a href="#02-x2F-07" class="headerlink" title="02/07"></a>02/07</h2><p>其实你主要是想的太多而做的太少了</p>
-<p>好好弄一下绩点与基本功，四大件就是了</p>
-<h2 id="02-x2F-08"><a href="#02-x2F-08" class="headerlink" title="02/08"></a>02/08</h2><p>我要被飘着油的水塘淹死了</p>
-<p>不是被水淹死的</p>
-<p>而是上面泛着的油光</p>
+		glDeleteShader(id);
+		return 0;
+	}
+	return id;
+}
+static unsigned int CreateShader(const std::string&amp; vertexShader, const std::string&amp; fragmentShader)
+{
+	unsigned int program = glCreateProgram();
+	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
+	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
 
+	glAttachShader(program, vs);
+	glAttachShader(program, fs);
+	glLinkProgram(program);
+	glValidateProgram(program);
+
+	glDeleteShader(vs);
+	glDeleteShader(fs);
+
+	return program;
+}
+int main(void)
+{
+	GLFWwindow* window;
+
+	/* Initialize the library */
+	if (!glfwInit())
+		return -1;
+
+	glewInit();
+
+	/* Create a windowed mode window and its OpenGL context */
+	window = glfwCreateWindow(640, 480, "OpenGl", NULL, NULL);
+	if (!window)
+	{
+		glfwTerminate();
+		return -1;
+	}
+
+	/* Make the window's context current */
+	glfwMakeContextCurrent(window);
+
+	if (glewInit() != GLEW_OK) {
+		std::cout &lt;&lt; "Error" &lt;&lt; std::endl;
+	}
+	std::cout &lt;&lt; glGetString(GL_VERSION) &lt;&lt; std::endl;
+
+	float position[] = {
+		-0.5f, -0.5f,//0
+		 0.5f, -0.5f,//1
+		 0.5f,  0.5f,//2
+		 -0.5f, 0.5f,//3
+	};
+
+	unsigned int indices[] = {
+		0,1,2,
+		2,3,0
+	};
+
+	unsigned int buffer;
+	glGenBuffers(1, &amp;buffer);
+	glBindBuffer(GL_ARRAY_BUFFER, buffer);
+	glBufferData(GL_ARRAY_BUFFER, 2 * 6 * sizeof(float), position, GL_STATIC_DRAW);
+
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+
+	/*glbindbuffer(gl_array_buffer, 0);*/
+
+	unsigned int ibo;//索引缓冲区对象,必须无符号整形
+	glGenBuffers(1, &amp;ibo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);//索引缓冲区插槽
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+
+	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
+	std::cout &lt;&lt; "VERREX" &lt;&lt; std::endl;
+	std::cout &lt;&lt; source.VertexShader &lt;&lt; std::endl;
+	std::cout &lt;&lt; "FRAGMENT" &lt;&lt; std::endl;
+	std::cout &lt;&lt; source.FragmentShader &lt;&lt; std::endl;
+
+	unsigned int shader = CreateShader(source.VertexShader,source.FragmentShader);
+	glUseProgram(shader);
+
+	/* Loop until the user closes the window */
+	while (!glfwWindowShouldClose(window))
+	{
+		/* Render here */
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		glDrawElements(GL_TRIANGLES, 6,GL_UNSIGNED_INT, nullptr);
+
+		/* Swap front and back buffers */
+		glfwSwapBuffers(window);
+
+		/* Poll for and process events */
+		glfwPollEvents();
+	}
+
+	glDeleteProgram(shader);
+
+	glfwTerminate();
+	return 0;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -561,7 +652,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://myq0721.github.io/2023/02/05/sui-bi-yu-lao-sao-he-luan-qi-ba-zao-de-he-ji/">http://myq0721.github.io/2023/02/05/sui-bi-yu-lao-sao-he-luan-qi-ba-zao-de-he-ji/</a>
+                    <a href="http://myq0721.github.io/2023/02/14/opengl-du-qu-wai-bu-shader/">http://myq0721.github.io/2023/02/14/opengl-du-qu-wai-bu-shader/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -599,8 +690,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%85%B6%E4%BB%96/">
-                                    <span class="chip bg-color">其他</span>
+                                <a href="/tags/OpenGL/">
+                                    <span class="chip bg-color">OpenGL</span>
                                 </a>
                             
                         </div>
@@ -683,12 +774,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/07/mini-yin-qing-kai-fa-ri-zhi/">
+                <a href="/2023/02/14/opengl-zhong-debug/">
                     <div class="card-image">
                         
-                        <img src="https://i.postimg.cc/zv2WgWR8/85f618385196c7b0ea3cb7bc52c5eb75388411170.png" class="responsive-img" alt="mini引擎(Ayana engine)开发日志">
                         
-                        <span class="card-title">mini引擎(Ayana engine)开发日志</span>
+                        <img src="/medias/featureimages/11.png" class="responsive-img" alt="OpenGL中Debug">
+                        
+                        <span class="card-title">OpenGL中Debug</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -699,16 +791,12 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-14
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/" class="post-category">
-                                    游戏引擎
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Ayanami
                             
                         </span>
                     </div>
@@ -716,8 +804,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Ayana%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91/">
-                        <span class="chip bg-color">Ayana引擎开发</span>
+                    <a href="/tags/OpenGL/">
+                        <span class="chip bg-color">OpenGL</span>
                     </a>
                     
                 </div>
@@ -731,12 +819,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/05/ru-he-xue-xi-ji-suan-ji-tu-xing-xue/">
+                <a href="/2023/02/13/chatgpt-de-shi-ji/">
                     <div class="card-image">
                         
-                        <img src="https://i.postimg.cc/L542kxmM/v2-62127ab7bace4197b07e500ff27031a6-720w.jpg" class="responsive-img" alt="计算机图形学">
                         
-                        <span class="card-title">计算机图形学</span>
+                        <img src="/medias/featureimages/0.png" class="responsive-img" alt="chatgpt的诗集">
+                        
+                        <span class="card-title">chatgpt的诗集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -747,14 +836,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="post-category">
-                                    图形学
+                            <a href="/categories/ChatGPT/" class="post-category">
+                                    ChatGPT
                                 </a>
                             
                             
@@ -764,8 +853,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6%E6%9D%82%E8%B0%88/">
-                        <span class="chip bg-color">图形学杂谈</span>
+                    <a href="/tags/%E8%AF%97/">
+                        <span class="chip bg-color">诗</span>
                     </a>
                     
                 </div>
