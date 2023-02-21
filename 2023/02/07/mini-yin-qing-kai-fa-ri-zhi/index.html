@@ -5,13 +5,17 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="mini引擎(Ayana engine)开发日志, 猫猫">
-    <meta name="description" content="第一部分02/08
-架构一、底层与第三方包openGLLearnOpenGL_CN
-PhysXPhysX4.1documentation
-boostBoost Library Documentation
-速查手册
-中文教程
-STL/STLP">
+    <meta name="description" content="第二部分（02/18项目设置
+创建Ayana DLL文件
+
+
+完成与Ayana链接的Sandbox启动项
+
+
+建立GitHub存储库
+
+github : https://github.com/myq0721/Ayana
+c++17,x64,">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -416,21 +420,21 @@ STL/STLP">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-09
+                    2023-02-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    13 分
                 </div>
                 
 
@@ -458,17 +462,131 @@ STL/STLP">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><p>02/08</p>
+                <h1 id="第二部分（02-x2F-18"><a href="#第二部分（02-x2F-18" class="headerlink" title="第二部分（02/18"></a>第二部分（02/18</h1><h2 id="项目设置"><a href="#项目设置" class="headerlink" title="项目设置"></a>项目设置</h2><blockquote>
+<p>创建Ayana DLL文件</p>
+</blockquote>
+<blockquote>
+<p>完成与Ayana链接的Sandbox启动项</p>
+</blockquote>
+<blockquote>
+<p>建立GitHub存储库</p>
+</blockquote>
+<p>github : <a target="_blank" rel="noopener" href="https://github.com/myq0721/Ayana">https://github.com/myq0721/Ayana</a></p>
+<p>c++17,x64,vs2017(v141)</p>
+<blockquote>
+<p><em>SDK版本要改为10.0.19041.0,不然会有无法打开源文件的错</em></p>
+</blockquote>
+<p>配置：</p>
+<p>输出目录:   $(SolutionDir)bin\$(Configuration)-$(Platform)\$(ProjectName)\</p>
+<p>中间目录: $(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</p>
+<p>完成基础配置并链接dl与exe后</p>
+<p>测试一:</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#pragma once
+
+namespace Ayana {
+
+	__declspec(dllexport) void Print();
+
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include "Test.h"
+#include &lt;stdio.h&gt;
+
+namespace Ayana {
+
+	void Print()
+	{
+		printf("Hello Ayana!");
+	}
+
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">已启动生成…
+1&gt;------ 已启动生成: 项目: Ayana, 配置: Debug x64 ------
+1&gt;Test.cpp
+1&gt;  正在创建库 G:\VS\Ayana\bin\Debug-x64\Ayana\Ayana.lib 和对象 G:\VS\Ayana\bin\Debug-x64\Ayana\Ayana.exp
+1&gt;Ayana.vcxproj -&gt; G:\VS\Ayana\bin\Debug-x64\Ayana\Ayana.dll
+========== 生成: 成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>测试二</p>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">
+namespace Ayana {
+
+	__declspec(dllimport) void Print();
+
+}
+
+
+void main()
+{
+	Ayana::Print();
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">Hello Ayana!
+G:\VS\Ayana\bin\Debug-x64\Sandbox\Sandbox.exe (进程 15832)已退出，代码为 0。
+要在调试停止时自动关闭控制台，请启用“工具”-&gt;“选项”-&gt;“调试”-&gt;“调试停止时自动关闭控制台”。
+按任意键关闭此窗口. . .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>好诶，环境准备完毕！~</p>
+<h2 id="入口点"><a href="#入口点" class="headerlink" title="入口点"></a>入口点</h2><blockquote>
+<p>创建宏，控制导入和导出</p>
+</blockquote>
+<blockquote>
+<p>完成基本的入口点，并且将入口移动到了引擎内部并进行了适当的处理</p>
+</blockquote>
+<blockquote>
+<p>推到github上，并通过.gitignore忽略部分文件</p>
+</blockquote>
+<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//根据building的DLL文件决定导入或导出
+#ifdef AY_PLATFORM_WINDOWS
+	#ifdef AY_BUILD_DLL
+		#define AYANA_API __declspec(dllexport)
+	#else
+		#define AYANA_API __declspec(dllimport)
+	#endif // AY_BUILD_DLL
+#else
+	#error Ayana only support windows!
+#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">git reset
+git add <span class="token operator">*</span>
+git status
+<span class="token comment">//确认无误后提交设置</span>
+git commit <span class="token operator">-</span>m <span class="token string">"Setup basic Application and Entry Point."</span>
+<span class="token comment">//结果</span>
+G<span class="token operator">:</span>\VS\Ayana<span class="token operator">&gt;</span>git commit <span class="token operator">-</span>m <span class="token string">"Setup basic Application and Entry Point."</span>
+<span class="token punctuation">[</span>main <span class="token number">43e7</span>b11<span class="token punctuation">]</span> Setup basic Application and Entry Point<span class="token punctuation">.</span>
+ <span class="token number">12</span> files changed<span class="token punctuation">,</span> <span class="token number">385</span> <span class="token function">insertions</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token punctuation">)</span>
+ create mode <span class="token number">100644</span> <span class="token punctuation">.</span>gitignore
+ create mode <span class="token number">100644</span> Ayana<span class="token punctuation">.</span>sln
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>Ayana<span class="token punctuation">.</span>vcxproj
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>Ayana<span class="token punctuation">.</span>vcxproj<span class="token punctuation">.</span>filters
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>src<span class="token operator">/</span>Ayana<span class="token punctuation">.</span>h
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>src<span class="token operator">/</span>Ayana<span class="token operator">/</span>Application<span class="token punctuation">.</span>cpp
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>src<span class="token operator">/</span>Ayana<span class="token operator">/</span>Application<span class="token punctuation">.</span>h
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>src<span class="token operator">/</span>Ayana<span class="token operator">/</span>Core<span class="token punctuation">.</span>h
+ create mode <span class="token number">100644</span> Ayana<span class="token operator">/</span>src<span class="token operator">/</span>Ayana<span class="token operator">/</span>EntryPoint<span class="token punctuation">.</span>h
+ create mode <span class="token number">100644</span> Sandbox<span class="token operator">/</span>Sandbox<span class="token punctuation">.</span>vcxproj
+ create mode <span class="token number">100644</span> Sandbox<span class="token operator">/</span>Sandbox<span class="token punctuation">.</span>vcxproj<span class="token punctuation">.</span>filters
+ create mode <span class="token number">100644</span> Sandbox<span class="token operator">/</span>src<span class="token operator">/</span>SandboxApp<span class="token punctuation">.</span>cpp
+ <span class="token comment">//OK，没问题，推过去</span>
+ git push origin master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p><em>错误记录1</em></p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;error: src refspec master does not match any.
+&gt;error: failed to push some refs to <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><em>原因：<br>1.本地git仓库目录下为空;<br>2.本地仓库add后未commit;<br>3.git init错误;<br>用命令 git add + 文件名，把文件添加到仓库就行 ，然后正常push就好</em></p>
+</blockquote>
+<blockquote>
+<p><em>错误记录2</em></p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;remote: Invalid username or password. fatal: Authentication failed for 'https://github.com/myq0721/Ayana.git/'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><em>原因：长时间未上传过远程仓库或者存在多个远程仓库。<br>解决方案：<br>需要获取一个新的 token</em></p>
+</blockquote>
+<p>–02/21</p>
+<p><br><br></p>
+<h1 id="第一部分（02-x2F-08"><a href="#第一部分（02-x2F-08" class="headerlink" title="第一部分（02/08"></a>第一部分（02/08</h1><p>开了天坑了（悲）</p>
 <h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="一、底层与第三方包"><a href="#一、底层与第三方包" class="headerlink" title="一、底层与第三方包"></a>一、底层与第三方包</h3><h4 id="openGL"><a href="#openGL" class="headerlink" title="openGL"></a><a target="_blank" rel="noopener" href="https://www.opengl.org/">openGL</a></h4><p><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/#_1">LearnOpenGL_CN</a></p>
 <h4 id="PhysX"><a href="#PhysX" class="headerlink" title="PhysX"></a><a target="_blank" rel="noopener" href="https://developer.nvidia.cn/zh-cn/physx-sdk">PhysX</a></h4><p><a href="PhysX/4.1/documentation">PhysX4.1documentation</a></p>
 <h4 id="boost"><a href="#boost" class="headerlink" title="boost"></a><a target="_blank" rel="noopener" href="https://www.boost.org/">boost</a></h4><p><a target="_blank" rel="noopener" href="https://www.boost.org/doc/libs/">Boost Library Documentation</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/wuye9036/BoostLibrariesCheetsheetChn">速查手册</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lidabo/p/9294874.html">中文教程</a></p>
 <h4 id="STL-x2F-STLPort"><a href="#STL-x2F-STLPort" class="headerlink" title="STL/STLPort"></a><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/standard-library/cpp-standard-library-reference?view=msvc-170">STL/STLPort</a></h4><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/stl/">c语言中文网</a></p>
-<h4 id="Kynapse-AI"><a href="#Kynapse-AI" class="headerlink" title="Kynapse(AI)"></a>Kynapse(AI)</h4><h4 id="Euphoria（动画）"><a href="#Euphoria（动画）" class="headerlink" title="Euphoria（动画）"></a>Euphoria（动画）</h4><h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><h3 id="二、平台独立层"><a href="#二、平台独立层" class="headerlink" title="二、平台独立层"></a>二、平台独立层</h3><blockquote>
-<p>不管，只支持win32好了（</p>
-</blockquote>
-<h4 id="平台检测"><a href="#平台检测" class="headerlink" title="平台检测"></a>平台检测</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if defined(WIN32)
+<h4 id="Kynapse-AI"><a href="#Kynapse-AI" class="headerlink" title="Kynapse(AI)"></a>Kynapse(AI)</h4><h4 id="Euphoria（动画）"><a href="#Euphoria（动画）" class="headerlink" title="Euphoria（动画）"></a>Euphoria（动画）</h4><h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><h3 id="二、平台独立层"><a href="#二、平台独立层" class="headerlink" title="二、平台独立层"></a>二、平台独立层</h3><h4 id="平台检测"><a href="#平台检测" class="headerlink" title="平台检测"></a>平台检测</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if defined(WIN32)
 
 // Win32 Platform
 #include "Win32Window.h"
@@ -699,7 +817,7 @@ typedef long HRESULT;
 <p><em>《数字图像处理第四版》</em></p>
 <p><em><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1X7411F744/?vd_source=b0edc91d595b72577053303a4da8a361">GAMES101-现代计算机图形学入门-闫令琪</a><br><a target="_blank" rel="noopener" href="https://www.notion.so/GAMES101-b0e27c856cde429b8672671a54c34817">GAMEs101笔记</a></em></p>
 <p><em><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1oU4y1R7Km/">GAMES104-现代游戏引擎：从入门到实践</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/whys0far/columns">104笔记</a></em></p>
-<p><em><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2">https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT">https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/starengine">https://www.zhihu.com/column/starengine</a></em></p>
+<p><em><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2">https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT">https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT</a><br><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/starengine">https://www.zhihu.com/column/starengine</a><br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30538626">https://zhuanlan.zhihu.com/p/30538626</a></em></p>
 
                 
             </div>
@@ -1110,7 +1228,7 @@ typedef long HRESULT;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">13.8k</span>
+                        class="white-color">14.5k</span>
             
             
             
