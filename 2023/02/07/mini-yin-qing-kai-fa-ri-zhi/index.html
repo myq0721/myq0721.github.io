@@ -481,24 +481,24 @@ c++17,x64,">
 <p>中间目录: $(SolutionDir)bin-int\$(Configuration)-$(Platform)\$(ProjectName)\</p>
 <p>完成基础配置并链接dl与exe后</p>
 <p>测试一:</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#pragma once
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">pragma</span> <span class="token expression">once</span></span>
 
-namespace Ayana {
+<span class="token keyword">namespace</span> Ayana <span class="token punctuation">{</span>
 
-	__declspec(dllexport) void Print();
+	<span class="token function">__declspec</span><span class="token punctuation">(</span>dllexport<span class="token punctuation">)</span> <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include "Test.h"
-#include &lt;stdio.h&gt;
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Test.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
 
-namespace Ayana {
+<span class="token keyword">namespace</span> Ayana <span class="token punctuation">{</span>
 
-	void Print()
-	{
-		printf("Hello Ayana!");
-	}
+	<span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello Ayana!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
 
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-none"><code class="language-none">已启动生成…
 1&gt;------ 已启动生成: 项目: Ayana, 配置: Debug x64 ------
 1&gt;Test.cpp
@@ -506,18 +506,18 @@ namespace Ayana {
 1&gt;Ayana.vcxproj -&gt; G:\VS\Ayana\bin\Debug-x64\Ayana\Ayana.dll
 ========== 生成: 成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>测试二</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">
-namespace Ayana {
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">
+<span class="token keyword">namespace</span> Ayana <span class="token punctuation">{</span>
 
-	__declspec(dllimport) void Print();
+	<span class="token function">__declspec</span><span class="token punctuation">(</span>dllimport<span class="token punctuation">)</span> <span class="token keyword">void</span> <span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-}
+<span class="token punctuation">}</span>
 
 
-void main()
-{
-	Ayana::Print();
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token class-name">Ayana</span><span class="token double-colon punctuation">::</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-none"><code class="language-none">Hello Ayana!
 G:\VS\Ayana\bin\Debug-x64\Sandbox\Sandbox.exe (进程 15832)已退出，代码为 0。
 要在调试停止时自动关闭控制台，请启用“工具”-&gt;“选项”-&gt;“调试”-&gt;“调试停止时自动关闭控制台”。
@@ -533,16 +533,16 @@ G:\VS\Ayana\bin\Debug-x64\Sandbox\Sandbox.exe (进程 15832)已退出，代码�
 <blockquote>
 <p>推到github上，并通过.gitignore忽略部分文件</p>
 </blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//根据building的DLL文件决定导入或导出
-#ifdef AY_PLATFORM_WINDOWS
-	#ifdef AY_BUILD_DLL
-		#define AYANA_API __declspec(dllexport)
-	#else
-		#define AYANA_API __declspec(dllimport)
-	#endif // AY_BUILD_DLL
-#else
-	#error Ayana only support windows!
-#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//根据building的DLL文件决定导入或导出</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">AY_PLATFORM_WINDOWS</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">AY_BUILD_DLL</span></span>
+		<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">AYANA_API</span> <span class="token expression"><span class="token function">__declspec</span><span class="token punctuation">(</span>dllexport<span class="token punctuation">)</span></span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
+		<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">AYANA_API</span> <span class="token expression"><span class="token function">__declspec</span><span class="token punctuation">(</span>dllimport<span class="token punctuation">)</span></span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span> <span class="token comment">// AY_BUILD_DLL</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
+	<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">error</span> <span class="token expression">Ayana only support windows<span class="token operator">!</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c">git reset
 git add <span class="token operator">*</span>
 git status
@@ -613,167 +613,167 @@ G<span class="token operator">:</span>\VS\Ayana<span class="token operator">&gt;
 <p><a target="_blank" rel="noopener" href="https://github.com/wuye9036/BoostLibrariesCheetsheetChn">速查手册</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lidabo/p/9294874.html">中文教程</a></p>
 <h4 id="STL-x2F-STLPort"><a href="#STL-x2F-STLPort" class="headerlink" title="STL/STLPort"></a><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/standard-library/cpp-standard-library-reference?view=msvc-170">STL/STLPort</a></h4><p><a target="_blank" rel="noopener" href="http://c.biancheng.net/stl/">c语言中文网</a></p>
-<h4 id="Kynapse-AI"><a href="#Kynapse-AI" class="headerlink" title="Kynapse(AI)"></a>Kynapse(AI)</h4><h4 id="Euphoria（动画）"><a href="#Euphoria（动画）" class="headerlink" title="Euphoria（动画）"></a>Euphoria（动画）</h4><h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><h3 id="二、平台独立层"><a href="#二、平台独立层" class="headerlink" title="二、平台独立层"></a>二、平台独立层</h3><h4 id="平台检测"><a href="#平台检测" class="headerlink" title="平台检测"></a>平台检测</h4><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if defined(WIN32)
+<h4 id="Kynapse-AI"><a href="#Kynapse-AI" class="headerlink" title="Kynapse(AI)"></a>Kynapse(AI)</h4><h4 id="Euphoria（动画）"><a href="#Euphoria（动画）" class="headerlink" title="Euphoria（动画）"></a>Euphoria（动画）</h4><h4 id="other"><a href="#other" class="headerlink" title="other"></a>other</h4><h3 id="二、平台独立层"><a href="#二、平台独立层" class="headerlink" title="二、平台独立层"></a>二、平台独立层</h3><h4 id="平台检测"><a href="#平台检测" class="headerlink" title="平台检测"></a>平台检测</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">if</span> <span class="token expression"><span class="token function">defined</span><span class="token punctuation">(</span>WIN32<span class="token punctuation">)</span></span></span>
 
-// Win32 Platform
-#include "Win32Window.h"
-#include "Win32FileSystem.h"
-#include "Win32Timer.h"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// Win32 Platform</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Win32Window.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Win32FileSystem.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"Win32Timer.h"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="原子数据类型"><a href="#原子数据类型" class="headerlink" title="原子数据类型"></a>原子数据类型</h4><p>数据类型和平台、编译器相关，但基本不涉及平台相关函数，对原子数据类型的确定，主要通过对平台特定数据类型使用typedef进行类型定义。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef unsigned int uint32;	// 4B
-typedef unsigned short uint16;	// 2B
-typedef unsigned char uint8;	// 1B
-typedef int int32;		// 4B
-typedef short int16;		// 2B
-typedef char int8;		// 1B
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> uint32<span class="token punctuation">;</span>	<span class="token comment">// 4B</span>
+<span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">short</span> uint16<span class="token punctuation">;</span>	<span class="token comment">// 2B</span>
+<span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> uint8<span class="token punctuation">;</span>	<span class="token comment">// 1B</span>
+<span class="token keyword">typedef</span> <span class="token keyword">int</span> int32<span class="token punctuation">;</span>		<span class="token comment">// 4B</span>
+<span class="token keyword">typedef</span> <span class="token keyword">short</span> int16<span class="token punctuation">;</span>		<span class="token comment">// 2B</span>
+<span class="token keyword">typedef</span> <span class="token keyword">char</span> int8<span class="token punctuation">;</span>		<span class="token comment">// 1B</span>
 
-//MSVC
-typedef unsigned __int64 uint64;	// 8B
-typedef __int64 int64;			// 8B
+<span class="token comment">//MSVC</span>
+<span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> __int64 uint64<span class="token punctuation">;</span>	<span class="token comment">// 8B</span>
+<span class="token keyword">typedef</span> __int64 int64<span class="token punctuation">;</span>			<span class="token comment">// 8B</span>
 
-//其它编译器
-typedef unsigned long long uint64;	// 8B
-typedef long long int64;		// 8B<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">//其它编译器</span>
+<span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token keyword">long</span> uint64<span class="token punctuation">;</span>	<span class="token comment">// 8B</span>
+<span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> int64<span class="token punctuation">;</span>		<span class="token comment">// 8B</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>此外，与数据相关的问题还包括大小端: 大小端一般与处理器采用的架构相关。 Intel x86, MOS Technology 6502, Z80, VAX, PDP-11都是小端模式(Little Endian)。 Motorola 6800, Motorola 68000, PowerPC 970, System/370, SPARC(除V9外)为大端模式(Big Endian)。 ARM, PowerPC(除PowerPC 970外), DEC Alpha, SPARC V9, MIPS, PA-RISC, IA64的字节序是可配置的。</em></p>
 <h4 id="高分辨率时钟"><a href="#高分辨率时钟" class="headerlink" title="高分辨率时钟"></a>高分辨率时钟</h4><p>时钟作为一个游戏引擎最基本的模块，在很多方面都会使用到，如FPS统计，游戏时间线，物理系统等。 时钟模块的主要作用是获取当前时间。 C语言的time.h库提供了一些基本的时间获取函数，如下。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">// 从 1970-01-01 00:00:00 GMT 以来消逝的秒数
-time_t seconds = time(NULL);
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 从 1970-01-01 00:00:00 GMT 以来消逝的秒数</span>
+time_t seconds <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 获取时分秒结构
-struct tm* Current = localtime(&amp;seconds);
+<span class="token comment">// 获取时分秒结构</span>
+<span class="token keyword">struct</span> <span class="token class-name">tm</span><span class="token operator">*</span> Current <span class="token operator">=</span> <span class="token function">localtime</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>seconds<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 从程序启动到 clock() 调用，所消耗的CPU时间
-clock_t ticks = clock();
+<span class="token comment">// 从程序启动到 clock() 调用，所消耗的CPU时间</span>
+clock_t ticks <span class="token operator">=</span> <span class="token function">clock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 转换成秒
-long ElapsedSecond = ticks / CLOCKS_PER_SEC;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// 转换成秒</span>
+<span class="token keyword">long</span> ElapsedSecond <span class="token operator">=</span> ticks <span class="token operator">/</span> CLOCKS_PER_SEC<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面这些函数只能提供秒级精度，对于一些对时间要求不高的程序，直接使用这些函数就好。 但对游戏引擎而言，秒级精度是不够的，最少需要毫秒级精度。因此就需要使用到与平台相关的一些函数。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Win32
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Win32
 
-// 包含 windows.h
-static LARGE_INTEGER m_StartTime;
-static LONGLONG m_LastTime;
-static DWORD m_StartTick;
+<span class="token comment">// 包含 windows.h</span>
+<span class="token keyword">static</span> LARGE_INTEGER m_StartTime<span class="token punctuation">;</span>
+<span class="token keyword">static</span> LONGLONG m_LastTime<span class="token punctuation">;</span>
+<span class="token keyword">static</span> DWORD m_StartTick<span class="token punctuation">;</span>
 
-void init()
-{
-    QueryPerformanceFrequency(&amp;m_StartTime);
-    m_StartTick = GetTickCount();
-    m_LastTime = 0;
-}
-// 参考 OGRE getMilliseconds， 获取毫秒
-unsigned long getMilliseconds()
-{
-    LARGE_INTEGER frequency;
-    QueryPerformanceFrequency(&amp;frequency);
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">QueryPerformanceFrequency</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m_StartTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    m_StartTick <span class="token operator">=</span> <span class="token function">GetTickCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    m_LastTime <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 参考 OGRE getMilliseconds， 获取毫秒</span>
+<span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">getMilliseconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    LARGE_INTEGER frequency<span class="token punctuation">;</span>
+    <span class="token function">QueryPerformanceFrequency</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>frequency<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    LARGE_INTEGER endTime;
-    QueryPerformanceCounter(&amp;endTime);
+    LARGE_INTEGER endTime<span class="token punctuation">;</span>
+    <span class="token function">QueryPerformanceCounter</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    LONGLONG TimeOffset = endTime.QuadPart - m_StartTime.QuadPart;
+    LONGLONG TimeOffset <span class="token operator">=</span> endTime<span class="token punctuation">.</span>QuadPart <span class="token operator">-</span> m_StartTime<span class="token punctuation">.</span>QuadPart<span class="token punctuation">;</span>
 
-    // 毫秒：* 1000， 微秒：* 1000000
-    unsigned long Ticks = (unsigned long)(1000 * TimeOffset / frequency.QuadPart);
+    <span class="token comment">// 毫秒：* 1000， 微秒：* 1000000</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> Ticks <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">1000</span> <span class="token operator">*</span> TimeOffset <span class="token operator">/</span> frequency<span class="token punctuation">.</span>QuadPart<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    unsigned long check = GetTickCount() - m_StartTick;
-    signed long msecOff = (signed long)(Ticks - check);
-    if (msecOff &lt; -100 || msecOff &gt; 100)
-    {
-        LONGLONG adjust = (std::min)(msecOff * frequency.QuadPart / 1000, TimeOffset - m_LastTime);
-        m_StartTime.QuadPart += adjust;
-        TimeOffset -= adjust;
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> check <span class="token operator">=</span> <span class="token function">GetTickCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> m_StartTick<span class="token punctuation">;</span>
+    <span class="token keyword">signed</span> <span class="token keyword">long</span> msecOff <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">signed</span> <span class="token keyword">long</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Ticks <span class="token operator">-</span> check<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>msecOff <span class="token operator">&lt;</span> <span class="token operator">-</span><span class="token number">100</span> <span class="token operator">||</span> msecOff <span class="token operator">&gt;</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        LONGLONG adjust <span class="token operator">=</span> <span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>min<span class="token punctuation">)</span><span class="token punctuation">(</span>msecOff <span class="token operator">*</span> frequency<span class="token punctuation">.</span>QuadPart <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">,</span> TimeOffset <span class="token operator">-</span> m_LastTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        m_StartTime<span class="token punctuation">.</span>QuadPart <span class="token operator">+=</span> adjust<span class="token punctuation">;</span>
+        TimeOffset <span class="token operator">-=</span> adjust<span class="token punctuation">;</span>
 
-        Ticks = (unsigned long)(1000 * TimeOffset / frequency.QuadPart);
-    }
+        Ticks <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">1000</span> <span class="token operator">*</span> TimeOffset <span class="token operator">/</span> frequency<span class="token punctuation">.</span>QuadPart<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    m_LastTime = TimeOffset;
+    m_LastTime <span class="token operator">=</span> TimeOffset<span class="token punctuation">;</span>
 
-    return Ticks;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Unix/Linux
+    <span class="token keyword">return</span> Ticks<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Unix<span class="token operator">/</span>Linux
 
-// 包含 sys/time.h
-static struct timeval m_StartTime;
+<span class="token comment">// 包含 sys/time.h</span>
+<span class="token keyword">static</span> <span class="token keyword">struct</span> <span class="token class-name">timeval</span> m_StartTime<span class="token punctuation">;</span>
 
-void init()
-{
-    gettimeofday(&amp;m_StartTime, NULL);
-}
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">gettimeofday</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m_StartTime<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-unsigned long getMilliseconds()
-{
-    struct timeval endTime;
-    gettimeofday(&amp;endTime, NULL);
+<span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token function">getMilliseconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> <span class="token class-name">timeval</span> endTime<span class="token punctuation">;</span>
+    <span class="token function">gettimeofday</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>endTime<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    // timeval 由 tv_sec(秒)， tv_usec(微秒) 共同组成
-    unsigned long elapsedTime = (endTime.tv_sec - m_StartTime.tv_sec) * 1000;
-    elapsedTime += (endTime.tv_usec - m_StartTime.tv_usec) / 1000;
+    <span class="token comment">// timeval 由 tv_sec(秒)， tv_usec(微秒) 共同组成</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> elapsedTime <span class="token operator">=</span> <span class="token punctuation">(</span>endTime<span class="token punctuation">.</span>tv_sec <span class="token operator">-</span> m_StartTime<span class="token punctuation">.</span>tv_sec<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+    elapsedTime <span class="token operator">+=</span> <span class="token punctuation">(</span>endTime<span class="token punctuation">.</span>tv_usec <span class="token operator">-</span> m_StartTime<span class="token punctuation">.</span>tv_usec<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">;</span>
 
-    return elapsedTime;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> elapsedTime<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><p>游戏引擎的一个重要的功能就是资源管理，而文件系统则是资源管理的基石。 文件系统的主要作用是管理文件、文件夹，必须实现文件的存取，目录的创建、删除、读取等。</p>
 <p>1、文件</p>
 <p>关于文件的存取，既可以使用C中的FILE相关操作函数，也可以使用C++中的文件流对象。 当然各个操作系统也都提供了对应的用于文件操作的API。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Win32
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Win32
 
-// #include&lt;windows.h&gt;
-HANDLE WINAPI CreateFile(
-  _In_      LPCTSTR lpFileName,
-  _In_      DWORD dwDesiredAccess,
-  _In_      DWORD dwShareMode,
-  _In_opt_  LPSECURITY_ATTRIBUTES lpSecurityAttributes,
-  _In_      DWORD dwCreationDisposition,
-  _In_      DWORD dwFlagsAndAttributes,
+<span class="token comment">// #include&lt;windows.h&gt;</span>
+HANDLE WINAPI <span class="token function">CreateFile</span><span class="token punctuation">(</span>
+  _In_      LPCTSTR lpFileName<span class="token punctuation">,</span>
+  _In_      DWORD dwDesiredAccess<span class="token punctuation">,</span>
+  _In_      DWORD dwShareMode<span class="token punctuation">,</span>
+  _In_opt_  LPSECURITY_ATTRIBUTES lpSecurityAttributes<span class="token punctuation">,</span>
+  _In_      DWORD dwCreationDisposition<span class="token punctuation">,</span>
+  _In_      DWORD dwFlagsAndAttributes<span class="token punctuation">,</span>
   _In_opt_  HANDLE hTemplateFile
-);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Unix/Linux
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Unix<span class="token operator">/</span>Linux
 
-//#include &lt;fcntl.h&gt;
-int open(const char *path, int flags, mode_t mode);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">//#include &lt;fcntl.h&gt;</span>
+<span class="token keyword">int</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">,</span> <span class="token keyword">int</span> flags<span class="token punctuation">,</span> mode_t mode<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>2、目录(文件夹)</p>
 <p>Linux和Windows中都有dirent.h这个头文件，但是里面定义的函数却是不相同的。 Linux中的dirent.h提供的函数能打开目录，关闭目录，遍历目录文件。 而Windows中的dirent.h只提供了创建目录、删除目录、进入目录，已经获取当前路径等功能，并没有提供遍历目录文件的功能。 Windows中遍历目录文件的函数在io.h中。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Win32
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Win32
 
-// dirent.h
-int chdir(const char* path);
-int mkdir(const char* path);
-int rmdir(const char* path);
-char* getcwd(char* buf, int buffsize);
+<span class="token comment">// dirent.h</span>
+<span class="token keyword">int</span> <span class="token function">chdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">rmdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">getcwd</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span> buf<span class="token punctuation">,</span> <span class="token keyword">int</span> buffsize<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// io.h
-intptr_t _findfirst(const char *pattern, struct _finddata_t *data);
-int _findnext(intptr_t id, struct _finddata_t *data);
-int _findclose(intptr_t id);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// io.h</span>
+intptr_t <span class="token function">_findfirst</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>pattern<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">_finddata_t</span> <span class="token operator">*</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">_findnext</span><span class="token punctuation">(</span>intptr_t id<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">_finddata_t</span> <span class="token operator">*</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">_findclose</span><span class="token punctuation">(</span>intptr_t id<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在fileapi.h文件中，定义了Windows关于文件和目录操作的API。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Unix/Linux
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Unix<span class="token operator">/</span>Linux
 
-// dirent.h
-DIR * opendir(const char *filename);
-struct dirent * readdir(DIR *dirp);
-int closedir(DIR *dirp);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// dirent.h</span>
+DIR <span class="token operator">*</span> <span class="token function">opendir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> <span class="token class-name">dirent</span> <span class="token operator">*</span> <span class="token function">readdir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">closedir</span><span class="token punctuation">(</span>DIR <span class="token operator">*</span>dirp<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>OGRE的文件系统 在OGRE中，对于Win32平台，使用的是dirent.h和io.h中提供的函数_findfirst、_findnext、_findclose。 对于Unix/Linux平台，则通过dirent.h中的opendir、readdir、closedir实现了上面3个函数。</p>
 <h4 id="窗口"><a href="#窗口" class="headerlink" title="窗口"></a>窗口</h4><p>应用程序对于窗口的操作，主要集中在创建、删除窗口，查询、设置属性等。除此之外，还要管理绘图上下文。 与窗口相关的还有窗口的事件处理，如何让使用者也能接收到事件也是必须要考虑的问题。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">Win32
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">Win32
 
-// windows.h
+<span class="token comment">// windows.h</span>
 
-// 注册窗口类
-WNDCLASS wndClass;
-RegisterClass(&amp;wndclass);
+<span class="token comment">// 注册窗口类</span>
+WNDCLASS wndClass<span class="token punctuation">;</span>
+<span class="token function">RegisterClass</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>wndclass<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-//创建窗口
-HWND hwnd = CreateWindow("WndClassName", "WindowName", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, NULL, NULL, hInstance, NULL);
+<span class="token comment">//创建窗口</span>
+HWND hwnd <span class="token operator">=</span> <span class="token function">CreateWindow</span><span class="token punctuation">(</span><span class="token string">"WndClassName"</span><span class="token punctuation">,</span> <span class="token string">"WindowName"</span><span class="token punctuation">,</span> WS_OVERLAPPEDWINDOW<span class="token punctuation">,</span> CW_USEDEFAULT<span class="token punctuation">,</span> CW_USEDEFAULT<span class="token punctuation">,</span> CW_USEDEFAULT<span class="token punctuation">,</span> CW_USEDEFAULT<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> hInstance<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 显示（隐藏）窗口
-ShowWindow(hwnd, SW_SHOW); // ShowWindow(hwnd, SW_HIDE);
+<span class="token comment">// 显示（隐藏）窗口</span>
+<span class="token function">ShowWindow</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> SW_SHOW<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ShowWindow(hwnd, SW_HIDE);</span>
 
-// 获取窗口尺寸
-GetWindowRect(hwnd, &amp;rect);
+<span class="token comment">// 获取窗口尺寸</span>
+<span class="token function">GetWindowRect</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 获取客户区域尺寸
-GetClientRect(hwnd, &amp;rect);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// 获取客户区域尺寸</span>
+<span class="token function">GetClientRect</span><span class="token punctuation">(</span>hwnd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>rect<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Linux 关于Linux上的窗口系统，可以参考《关于X11》这篇文章。<br>Linux相关<em><a target="_blank" rel="noopener" href="https://juejin.cn/post/7006357005954711588">https://juejin.cn/post/7006357005954711588</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43833642/article/details/105341872">https://blog.csdn.net/weixin_43833642/article/details/105341872</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/tq384998430/article/details/100707619">https://blog.csdn.net/tq384998430/article/details/100707619</a></em></p>
 <h4 id="设备IO"><a href="#设备IO" class="headerlink" title="设备IO"></a>设备IO</h4><p>对于大部分应用程序而言，其输出设备主要是显示器、音箱（或耳机），输入设备则种类较多：键盘、鼠标、游戏杆、游戏手柄、摄像头、麦克风等。一个典型的跨平台的人机接口函数库如OIS（Object Oriented Input System，面向对象输入系统）。</p>
@@ -785,24 +785,24 @@ GetClientRect(hwnd, &amp;rect);<span aria-hidden="true" class="line-numbers-rows
 <p>E_OUTOFMEMORY代表内存不足，</p>
 <p>E_INVALIDARG代表非法参数。 </p>
 <p>在winerror.h中有HRESULT与相关错误代码的定义，HRESULT本质上是一个4字节值，所以我们在非Win32平台下，可以定义自己的HRESULT类型。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#if !defined(_WIN32) &amp;&amp; !defined(PLATFORM_HRESULT_DEFINE) \
-    &amp;&amp; !defined(_HRESULT_DEFINED) &amp;&amp; !defined(__midl)
-#define PLATFORM_HRESULT_DEFINE
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">if</span> <span class="token expression"><span class="token operator">!</span><span class="token function">defined</span><span class="token punctuation">(</span>_WIN32<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">defined</span><span class="token punctuation">(</span>PLATFORM_HRESULT_DEFINE<span class="token punctuation">)</span> </span><span class="token punctuation">\</span>
+    <span class="token expression"><span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">defined</span><span class="token punctuation">(</span>_HRESULT_DEFINED<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">defined</span><span class="token punctuation">(</span>__midl<span class="token punctuation">)</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">PLATFORM_HRESULT_DEFINE</span></span>
 
-// 定义4字节整形
-typedef long int32;
+<span class="token comment">// 定义4字节整形</span>
+<span class="token keyword">typedef</span> <span class="token keyword">long</span> int32<span class="token punctuation">;</span>
 
-// 定义 HRESULT 类型
-typedef long HRESULT;
+<span class="token comment">// 定义 HRESULT 类型</span>
+<span class="token keyword">typedef</span> <span class="token keyword">long</span> HRESULT<span class="token punctuation">;</span>
 
-/*
+<span class="token comment">/*
   还可以参照winerror.h定义一些工具宏，以及常用错误代码
   如  MAKE_HRESULT
       SUCCEEDED
       FAILED
-*/
+*/</span>
 
-#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>指针的处理</p>
 <p>当一个封装好的库需要向使用者提供指针的时候，必须得考虑指针所指对象的生命周期的管理。 一个简单的办法是使用智能指针，在最新的C++11中，已包括了智能指针，其他也有很多库都提供了智能指针的实现，比如Boost。 另一个办法是定义一套使用规则，保证通过Create返回的指针，使用完之后，必须调用Release，即手动管理生命周期。</p>
