@@ -420,21 +420,21 @@ c++17,x64,">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-21
+                    2023-02-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    14 分
                 </div>
                 
 
@@ -570,7 +570,7 @@ G<span class="token operator">:</span>\VS\Ayana<span class="token operator">&gt;
 <p><em>错误记录1</em></p>
 <pre class="line-numbers language-none"><code class="language-none">&gt;error: src refspec master does not match any.
 &gt;error: failed to push some refs to <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><em>原因：<br>1.本地git仓库目录下为空;<br>2.本地仓库add后未commit;<br>3.git init错误;<br>用命令 git add + 文件名，把文件添加到仓库就行 ，然后正常push就好</em></p>
+<p><em>原因：<br>1.本地git仓库目录下为空;<br>2.本地仓库add后未commit;<br>3.git init错误;<br>用命令 git add + 文件名，把文件添加到仓库就行 ，然后正常push</em></p>
 </blockquote>
 <blockquote>
 <p><em>错误记录2</em></p>
@@ -578,6 +578,33 @@ G<span class="token operator">:</span>\VS\Ayana<span class="token operator">&gt;
 <p><em>原因：长时间未上传过远程仓库或者存在多个远程仓库。<br>解决方案：<br>需要获取一个新的 token</em></p>
 </blockquote>
 <p>–02/21</p>
+<h2 id="添加日志功能"><a href="#添加日志功能" class="headerlink" title="添加日志功能"></a>添加日志功能</h2><blockquote>
+<p>通过SPD log格式化不同的类型</p>
+</blockquote>
+<blockquote>
+<p>输出信息，错误（红色，警告（黄色等</p>
+</blockquote>
+<blockquote>
+<p>通过宏使得更容易编辑，还可以使代码剥离出来</p>
+</blockquote>
+<p>需要打印文本，数字，字符，对象，指针等，所以调用SPD log支持</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gabime/spdlog">https://github.com/gabime/spdlog</a></p>
+<pre class="line-numbers language-none"><code class="language-none">git submodule add https://github.com/gabime/spdlog.git Ayana/vendor/spdlog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后添加到c++/常规/附加包含目录中即可</p>
+<blockquote>
+<p><em>错误记录1：</em></p>
+<pre class="line-numbers language-none"><code class="language-none">s_CoreLogger = spdlog::stdout_color_mt("AYANA");<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>错误(活动)	E0135	namespace “spdlog” 没有成员 “stdout_color_mt”	Ayana	G:\VS\Ayana\Ayana\src\Ayana\Log.cpp	11	</p>
+<p><em>在查阅github上的示例后，发现需添加</em></p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;#include "spdlog/sinks/stdout_color_sinks.h"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<br>
+<br>
+</blockquote>
+<blockquote>
+<p><em>错误记录2：完成后发现Ayana可以成功编译，Sandbox找不到文件</em></p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;atal error C1083: 无法打开包括文件: “spdlog/spdlog.h”: No such file or directory<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><em>找了半天，原因是属性中c++的附加包含目录，最后一项不慎加了分号，真是傻呗设计</em><br><br><br><br></p>
+</blockquote>
 <p><br><br></p>
 <h1 id="第一部分（02-x2F-08"><a href="#第一部分（02-x2F-08" class="headerlink" title="第一部分（02/08"></a>第一部分（02/08</h1><p>开了天坑了（悲）</p>
 <h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="一、底层与第三方包"><a href="#一、底层与第三方包" class="headerlink" title="一、底层与第三方包"></a>一、底层与第三方包</h3><h4 id="openGL"><a href="#openGL" class="headerlink" title="openGL"></a><a target="_blank" rel="noopener" href="https://www.opengl.org/">openGL</a></h4><p><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/#_1">LearnOpenGL_CN</a></p>
@@ -1228,7 +1255,7 @@ typedef long HRESULT;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">14.5k</span>
+                        class="white-color">14.7k</span>
             
             
             
