@@ -400,8 +400,8 @@ c++17,x64,">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/" class="post-category">
-                                游戏引擎
+                            <a href="/categories/%E6%B8%B8%E6%88%8F-%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91-%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="post-category">
+                                游戏/引擎开发/图形学
                             </a>
                         
                     </div>
@@ -420,21 +420,21 @@ c++17,x64,">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-22
+                    2023-02-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    4.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    18 分
                 </div>
                 
 
@@ -605,6 +605,162 @@ G<span class="token operator">:</span>\VS\Ayana<span class="token operator">&gt;
 <pre class="line-numbers language-none"><code class="language-none">&gt;atal error C1083: 无法打开包括文件: “spdlog/spdlog.h”: No such file or directory<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><em>找了半天，原因是属性中c++的附加包含目录，最后一项不慎加了分号，真是傻呗设计</em><br><br><br><br></p>
 </blockquote>
+<h2 id="Premake"><a href="#Premake" class="headerlink" title="Premake"></a>Premake</h2><blockquote>
+<p>调用premake</p>
+</blockquote>
+<p>迄今为止构建工具为windows的VisualStudio，当我们需要添加其他平台时，我们需要为我们的引擎实际生成项目文件，与工具集一起使用为我们编译这些应用程序，比如生成Xcode项目文件以便在mac上构建我们的引擎。</p>
+<p>不使用过于复杂的Cmake，它在很多事情上使用自己的形式，以至于很难处理而且不必要</p>
+<p>所以我们选用这个</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/premake/premake-core.git">https://github.com/premake/premake-core.git</a></p>
+<p>参考premake的wiki，使用 lua 完成 Ayana 和 Sandbox 的结构配置</p>
+<pre class="line-numbers language-lua" data-language="lua"><code class="language-lua">workspace <span class="token string">"Ayana"</span> <span class="token comment">--解决方案名称</span>
+    architecture <span class="token string">"x86_64"</span> <span class="token comment">--编译平台 只编64位--(x86,x86_64,ARM)</span>
+
+    <span class="token function">configurations</span> 
+    <span class="token punctuation">{</span>
+        <span class="token string">"Debug"</span><span class="token punctuation">,</span>
+        <span class="token string">"Release"</span><span class="token punctuation">,</span>
+        <span class="token string">"Dist"</span>
+    <span class="token punctuation">}</span>
+<span class="token comment">--临时变量 定义 输出目录</span>
+<span class="token comment">--详细的所有支持的tokens 可参考 </span>
+outputdir <span class="token operator">=</span> <span class="token string">"%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"</span>
+
+project <span class="token string">"Ayana"</span> <span class="token comment">--项目名称</span>
+    location <span class="token string">"Ayana"</span> <span class="token comment">--相对路径</span>
+    kind <span class="token string">"SharedLib"</span> <span class="token comment">--表明该项目是dll动态库</span>
+    language <span class="token string">"c++"</span>
+
+    <span class="token function">targetdir</span> <span class="token punctuation">(</span><span class="token string">"bin/"</span> <span class="token operator">..</span> outputdir <span class="token operator">..</span> <span class="token string">"/%{prj.name}"</span><span class="token punctuation">)</span><span class="token comment">--输出目录</span>
+    <span class="token function">objdir</span> <span class="token punctuation">(</span><span class="token string">"bin-int/"</span> <span class="token operator">..</span> outputdir <span class="token operator">..</span> <span class="token string">"/%{prj.name}"</span><span class="token punctuation">)</span><span class="token comment">--中间临时文件的目录</span>
+
+    files<span class="token comment">--该项目的文件</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"%{prj.name}/src/**.h"</span><span class="token punctuation">,</span>
+        <span class="token string">"%{prj.name}/src/**.cpp"</span>
+    <span class="token punctuation">}</span>
+
+    includedirs<span class="token comment">--附加包含目录</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"%{prj.name}/vendor/spdlog/include"</span>
+    <span class="token punctuation">}</span>
+
+    filter <span class="token string">"system:windows"</span><span class="token comment">--windows平台的配置</span>
+        cppdialect <span class="token string">"c++17"</span>
+        staticruntime <span class="token string">"On"</span>
+        systemversion <span class="token string">"latest"</span>
+
+        defines <span class="token comment">--预编译宏</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"AY_BUILD_DLL"</span><span class="token punctuation">,</span>
+            <span class="token string">"AY_PLATFORM_WINDOWS"</span><span class="token punctuation">,</span>
+            <span class="token string">"_WINDLL"</span><span class="token punctuation">,</span>
+            <span class="token string">"_UNICODE"</span><span class="token punctuation">,</span>
+            <span class="token string">"UNICODE"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+
+        postbuildcommands <span class="token comment">-- build后的自定义命令</span>
+        <span class="token punctuation">{</span>
+            <span class="token punctuation">(</span><span class="token string">"{COPY} %{cfg.buildtarget.relpath} ../bin/"</span> <span class="token operator">..</span> outputdir <span class="token operator">..</span> <span class="token string">"/Sandbox"</span><span class="token punctuation">)</span> <span class="token comment">--拷贝引擎dll库到sanbox.exe的同一目录下去</span>
+        <span class="token punctuation">}</span>
+
+    filter <span class="token string">"configurations:Debug"</span>
+        defines <span class="token string">"AY_DEBUG"</span>
+        runtime <span class="token string">"Debug"</span>
+        symbols <span class="token string">"on"</span>
+
+    filter <span class="token string">"configurations:Release"</span>
+        defines <span class="token string">"AY_RELEASE"</span>
+        runtime <span class="token string">"Release"</span>
+        optimize <span class="token string">"on"</span>
+
+    filter <span class="token string">"configurations:Dist"</span>
+        defines <span class="token string">"AY_DIST"</span>
+        runtime <span class="token string">"Release"</span>
+        optimize <span class="token string">"on"</span>
+
+project <span class="token string">"Sandbox"</span>
+    location <span class="token string">"Sandbox"</span>
+    kind <span class="token string">"ConsoleApp"</span>
+    language <span class="token string">"c++"</span>
+
+    <span class="token function">targetdir</span> <span class="token punctuation">(</span><span class="token string">"bin/"</span> <span class="token operator">..</span> outputdir <span class="token operator">..</span> <span class="token string">"/%{prj.name}"</span><span class="token punctuation">)</span>
+    <span class="token function">objdir</span> <span class="token punctuation">(</span><span class="token string">"bin-int/"</span> <span class="token operator">..</span> outputdir <span class="token operator">..</span> <span class="token string">"/%{prj.name}"</span><span class="token punctuation">)</span>
+
+    <span class="token function">files</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"%{prj.name}/src/**.h"</span><span class="token punctuation">,</span>
+        <span class="token string">"%{prj.name}/src/**.cpp"</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">includedirs</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"Ayana/vendor/spdlog/include"</span><span class="token punctuation">,</span>
+        <span class="token string">"Ayana/src"</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">links</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"Ayana"</span>
+    <span class="token punctuation">}</span>
+
+    filter <span class="token string">"system:windows"</span>
+        cppdialect <span class="token string">"c++17"</span>
+        staticruntime <span class="token string">"On"</span>
+        systemversion <span class="token string">"latest"</span>
+
+        <span class="token function">defines</span>
+        <span class="token punctuation">{</span>
+            <span class="token string">"AY_PLATFORM_WINDOWS"</span><span class="token punctuation">,</span>
+            <span class="token string">"_UNICODE"</span><span class="token punctuation">,</span>
+            <span class="token string">"UNICODE"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+
+    filter <span class="token string">"configurations:Debug"</span>
+        defines <span class="token string">"AY_DEBUG"</span>
+        runtime <span class="token string">"Debug"</span>
+        symbols <span class="token string">"on"</span>
+
+    filter <span class="token string">"configurations:Release"</span>
+        defines <span class="token string">"AY_RELEASE"</span>
+        runtime <span class="token string">"Release"</span>
+        optimize <span class="token string">"on"</span>
+
+    filter <span class="token string">"configurations:Dist"</span>
+        defines <span class="token string">"AY_DIST"</span>
+        runtime <span class="token string">"Release"</span>
+        optimize <span class="token string">"on"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>完成后删除文件夹中编译的 bin 和 bin-int 文件夹。</p>
+<p>然后即可重新生成解决方案</p>
+<pre class="line-numbers language-none"><code class="language-none">G:\VS\Ayana&gt;vendor\bin\premake\premake5.exe vs2017
+Building configurations...
+Running action 'vs2017'...
+Done (11ms).<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>简直又快又好.</p>
+<p>通过bat自动执行</p>
+<pre class="line-numbers language-bat" data-language="bat"><code class="language-bat">call vendor\bin\premake\premake5.exe vs2017
+PAUSE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">G:\VS\Ayana&gt;PAUSE
+请按任意键继续. . .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>OK</p>
+<blockquote>
+<p><em>错误记录</em><br><br><br>再调试时发生</p>
+<pre class="line-numbers language-none"><code class="language-none">&gt;无法解析的外部符号 "private: static class std::shared_ptr&lt;class spdlog::logger&gt; Ayana::Log::s_CoreLogger"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>莫名其妙就好了，至今不清楚确切原因(摊手)</p>
+<br>
+</blockquote>
+<br>
+
+<h2 id="事件系统"><a href="#事件系统" class="headerlink" title="事件系统"></a>事件系统</h2><p>创建事件系统以处理窗口事件，输入事件等</p>
+<p>我们现在有一个应用程序，即我们的Application class，它就像我们游戏引擎的中心。<br>为了能够接收事件，我们把它分配到一个层上去，应用程序最终会将事件发送给这个层。</p>
+<p>我们需要某种事件类，然后需要将数据发送回Application,所以我们给Application提供一个回调窗口。</p>
+<p>本质上当我们从应用程序创建一个窗口时，我们还将设置对窗口类的回调，这样每次窗口得到一个事件，它可以检车回调是否正确。如果回调不为空，它将用这个事件的数据调用回调。</p>
+<p>然后应用程序会有一个在事件上调用的函数，接收事件引用等，它将从窗口调用这个函数，也就是窗口实际上并不知道应用程序。</p>
+<p>事件系统是相当多的代码。。。</p>
+<hr>
+<p>稍微咕一段时间-0225</p>
 <p><br><br></p>
 <h1 id="第一部分（02-x2F-08"><a href="#第一部分（02-x2F-08" class="headerlink" title="第一部分（02/08"></a>第一部分（02/08</h1><p>开了天坑了（悲）</p>
 <h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><h3 id="一、底层与第三方包"><a href="#一、底层与第三方包" class="headerlink" title="一、底层与第三方包"></a>一、底层与第三方包</h3><h4 id="openGL"><a href="#openGL" class="headerlink" title="openGL"></a><a target="_blank" rel="noopener" href="https://www.opengl.org/">openGL</a></h4><p><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/#_1">LearnOpenGL_CN</a></p>
@@ -1016,8 +1172,8 @@ HWND hwnd <span class="token operator">=</span> <span class="token function">Cre
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="post-category">
-                                    游戏开发
+                            <a href="/categories/%E6%B8%B8%E6%88%8F-%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91-%E5%9B%BE%E5%BD%A2%E5%AD%A6/" class="post-category">
+                                    游戏/引擎开发/图形学
                                 </a>
                             
                             
@@ -1255,7 +1411,7 @@ HWND hwnd <span class="token operator">=</span> <span class="token function">Cre
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">14.7k</span>
+                        class="white-color">15.8k</span>
             
             
             
