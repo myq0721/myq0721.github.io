@@ -411,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-11
+                    2023-02-25
                 </div>
                 
 
@@ -462,43 +462,43 @@
 <h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><p>使用vector需要注意以下几点：</p>
 <p>1.如果你要表示的向量长度较长（需要为向量内部保存很多数），容易导致内存泄漏，而且效率会很低；</p>
 <p>2.Vector作为函数的参数或者返回值时，需要注意它的写法：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">double Distance(vector&lt;int&gt;&amp;a, vector&lt;int&gt;&amp;b); //其中的“&amp;”不能少<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">double</span> <span class="token function">Distance</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//其中的“&amp;”不能少</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>3.vector的元素不仅仅可以是int,double,string,还，可以是结构体，但是要注意：结构体要定义为全局的.</p>
 <h2 id="常见使用"><a href="#常见使用" class="headerlink" title="常见使用"></a>常见使用</h2><p>使用：</p>
-<pre class="line-numbers language-C++" data-language="C++"><code class="language-C++">#include&lt;vector&gt;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;vector&gt;</span></span>
 
-vector&lt;int&gt; vec;///建立一个vector，int为数组元素的数据类型，vec为动态数组名
-vector&lt;vector&lt;long int&gt; &gt; vec2; //定义一个二维数组vec2
-vec.push_back(1);
-vec.push_back(2);//把1和2压入vector，这样vec[0]就是1,vec[1]就是2
-cout&lt;&lt;vec[0]&lt;&lt;endl;//使用下标访问元素
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> vec<span class="token punctuation">;</span><span class="token comment">///建立一个vector，int为数组元素的数据类型，vec为动态数组名</span>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">long</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token operator">&gt;</span> vec2<span class="token punctuation">;</span> <span class="token comment">//定义一个二维数组vec2</span>
+vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+vec<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//把1和2压入vector，这样vec[0]就是1,vec[1]就是2</span>
+cout<span class="token operator">&lt;&lt;</span>vec<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span><span class="token comment">//使用下标访问元素</span>
 
-//使用迭代器访问元素.
-vector&lt;int&gt;::iterator it;
-for(it=vec.begin();it!=vec.end();it++)
-    cout&lt;&lt;*it&lt;&lt;endl;
+<span class="token comment">//使用迭代器访问元素.</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token double-colon punctuation">::</span>iterator it<span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span>it<span class="token operator">=</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">!=</span>vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>it<span class="token operator">++</span><span class="token punctuation">)</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token operator">*</span>it<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
 
-vec.insert(vec.begin()+i,a);//插入,在第i+1个元素前面插入a
-vec.erase(vec.begin()+2);//删除元素,删除第3个元素
-vec.erase(vec.begin()+i,vec.end()+j);//删除区间[i,j-1];区间从0开始
-vec.size();//向量大小
-vec.clear();//清空<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+vec<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>i<span class="token punctuation">,</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//插入,在第i+1个元素前面插入a</span>
+vec<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//删除元素,删除第3个元素</span>
+vec<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>i<span class="token punctuation">,</span>vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//删除区间[i,j-1];区间从0开始</span>
+vec<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//向量大小</span>
+vec<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//清空</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>一些算法</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;algorithm&gt;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;algorithm&gt;</span></span>
 
-reverse(vec.begin(),vec.end());//将元素翻转，即逆序排列
-sort(vec.begin(),vec.end());//默认升序排列
+<span class="token function">reverse</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将元素翻转，即逆序排列</span>
+<span class="token function">sort</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//默认升序排列</span>
 
-//降序排列需重写
-bool Comp(const int &amp;a,const int &amp;b){
-    return a&gt;b;
-}
-sort(vec.begin(),vec.end(),Comp)//降序排序
+<span class="token comment">//降序排列需重写</span>
+<span class="token keyword">bool</span> <span class="token function">Comp</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a<span class="token operator">&gt;</span>b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">sort</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>vec<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>Comp<span class="token punctuation">)</span><span class="token comment">//降序排序</span>
 
-//交换两个同类型向量的数据
-vector&lt;int&gt;vec2;
-swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">//交换两个同类型向量的数据</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span>vec2<span class="token punctuation">;</span>
+<span class="token function">swap</span><span class="token punctuation">(</span>vec<span class="token punctuation">,</span>vec2<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>先这样，之后用到了再加叭qaq <span class="github-emoji"><span>😊</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>~</p>
 
                 
@@ -697,13 +697,13 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/22/c-biao-zhun-mo-ban-ku-stl/">
+                <a href="/2023/01/28/ri-yu-yu-fa-4-xing-rong-ci-xing-rong-dong-ci/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.png" class="responsive-img" alt="C++标准模板库(STL)">
+                        <img src="/medias/featureimages/12.png" class="responsive-img" alt="日语语法——4.形容词，形容动词">
                         
-                        <span class="card-title">C++标准模板库(STL)</span>
+                        <span class="card-title">日语语法——4.形容词，形容动词</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -714,14 +714,14 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" class="post-category">
-                                    编程语言
+                            <a href="/categories/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    日语学习
                                 </a>
                             
                             
@@ -731,8 +731,8 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/C/">
-                        <span class="chip bg-color">C++</span>
+                    <a href="/tags/%E6%97%A5%E8%AF%AD%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">日语语法</span>
                     </a>
                     
                 </div>
@@ -915,7 +915,7 @@ swap(vec,vec2);<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.8k</span>
+                        class="white-color">16.8k</span>
             
             
             

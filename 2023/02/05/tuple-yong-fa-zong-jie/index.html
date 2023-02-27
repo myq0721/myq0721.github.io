@@ -411,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-11
+                    2023-02-25
                 </div>
                 
 
@@ -456,182 +456,182 @@
                 <h2 id="tuple简介"><a href="#tuple简介" class="headerlink" title="tuple简介"></a>tuple简介</h2><p>tuple（元组）在c++11中开始引用，是一个固定大小的不同类型值的集合，是泛化的std::pair。</p>
 <p>我们也可以把他当做一个通用的结构体来用，不需要创建结构体又获取结构体的特征，在某些情况下可以取代结构体使程序更简洁，直观。</p>
 <p>std::tuple理论上可以有无数个任意类型的成员变量，而std::pair只能是2个成员，因此在需要保存3个及以上的数据时就需要使用tuple元组了。</p>
-<h2 id="tuple的创建和初始化"><a href="#tuple的创建和初始化" class="headerlink" title="tuple的创建和初始化"></a>tuple的创建和初始化</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> 
-std::tuple&lt;T1, T2, TN&gt; t1;//创建一个空的tuple对象,它对应的元素分别是T1和T2...Tn类型，采用值初始化。
+<h2 id="tuple的创建和初始化"><a href="#tuple的创建和初始化" class="headerlink" title="tuple的创建和初始化"></a>tuple的创建和初始化</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"> 
+std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>T1<span class="token punctuation">,</span> T2<span class="token punctuation">,</span> TN<span class="token operator">&gt;</span> t1<span class="token punctuation">;</span><span class="token comment">//创建一个空的tuple对象,它对应的元素分别是T1和T2...Tn类型，采用值初始化。</span>
 
-std::tuple&lt;T1, T2, TN&gt; t2(v1, v2, ... TN);//创建一个tuple对象，它的两个元素分别是T1和T2 ...Tn类型; 要获取元素的值需要通过tuple的成员get&lt;Ith&gt;(obj)进行获取(Ith是指获取在tuple中的第几个元素)。
+std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>T1<span class="token punctuation">,</span> T2<span class="token punctuation">,</span> TN<span class="token operator">&gt;</span> <span class="token function">t2</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> TN<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//创建一个tuple对象，它的两个元素分别是T1和T2 ...Tn类型; 要获取元素的值需要通过tuple的成员get&lt;Ith&gt;(obj)进行获取(Ith是指获取在tuple中的第几个元素)。</span>
 
-std::tuple&lt;T1&amp;&gt; t3(ref&amp;); // tuple的元素类型可以是一个引用
+std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>T1<span class="token operator">&amp;</span><span class="token operator">&gt;</span> <span class="token function">t3</span><span class="token punctuation">(</span>ref<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// tuple的元素类型可以是一个引用</span>
 
-std::make_tuple(v1, v2); // 像pair一样也可以通过make_tuple进行创建一个tuple对象
+std<span class="token double-colon punctuation">::</span><span class="token function">make_tuple</span><span class="token punctuation">(</span>v1<span class="token punctuation">,</span> v2<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 像pair一样也可以通过make_tuple进行创建一个tuple对象</span>
 
 
-// tuple的元素类型为引用：
-std::string name;
-std::tuple&lt;string &amp;, int&gt; tpRef(name, 30);
-// 对tpRef第一个元素赋值，同时name也被赋值 - 引用
-std::get&lt;0&gt;(tpRef) = "Sven";
+<span class="token comment">// tuple的元素类型为引用：</span>
+std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>string <span class="token operator">&amp;</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">tpRef</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 对tpRef第一个元素赋值，同时name也被赋值 - 引用</span>
+std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>tpRef<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"Sven"</span><span class="token punctuation">;</span>
  
-// name输出也是Sven
-std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; '\n';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="tuple的操作"><a href="#tuple的操作" class="headerlink" title="tuple的操作"></a>tuple的操作</h2><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//1.等价结构体
-struct person {
-    char *m_name;
-    char *m_addr;
-    int  *m_ages;
-};
-//可以用tuple来表示这样的一个结构类型，作用是一样的。
-std::tuple&lt;const char *, const char *, int&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//2.获取tuple个数
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
+<span class="token comment">// name输出也是Sven</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name: "</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="tuple的操作"><a href="#tuple的操作" class="headerlink" title="tuple的操作"></a>tuple的操作</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//1.等价结构体</span>
+<span class="token keyword">struct</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>m_name<span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token operator">*</span>m_addr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span>  <span class="token operator">*</span>m_ages<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token comment">//可以用tuple来表示这样的一个结构类型，作用是一样的。</span>
+std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//2.获取tuple个数</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;tuple&gt;</span></span>
 
-int main (){
-  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);
-  std::cout &lt;&lt; "mytuple has ";
-  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;
-  std::cout &lt;&lt; " elements." &lt;&lt; '\n';
-  return 0;
-}
-//输出结果：mytuple has 3 elements<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//3.获取元素的值
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mytuple</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token number">3.14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"mytuple has "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>tuple_size<span class="token operator">&lt;</span><span class="token keyword">decltype</span><span class="token punctuation">(</span>mytuple<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token double-colon punctuation">::</span>value<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">" elements."</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//输出结果：mytuple has 3 elements</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//3.获取元素的值</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;tuple&gt;</span></span>
 
-int main ()
-{
-  std::tuple&lt;int, char, double&gt; mytuple (10, 'a', 3.14);
-  std::cout &lt;&lt; "mytuple has ";
-  std::cout &lt;&lt; std::tuple_size&lt;decltype(mytuple)&gt;::value;
-  std::cout &lt;&lt; " elements." &lt;&lt; '\n';
-  //获取元素
-  std::cout &lt;&lt; "the elements is: ";
-  std::cout &lt;&lt; std::get&lt;0&gt;(mytuple) &lt;&lt; " ";
-  std::cout &lt;&lt; std::get&lt;1&gt;(mytuple) &lt;&lt; " ";
-  std::cout &lt;&lt; std::get&lt;2&gt;(mytuple) &lt;&lt; " ";
-  std::cout &lt;&lt; '\n';
-  return 0;
-}
-/*输出结果：
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">&gt;</span> <span class="token function">mytuple</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token char">'a'</span><span class="token punctuation">,</span> <span class="token number">3.14</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"mytuple has "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>tuple_size<span class="token operator">&lt;</span><span class="token keyword">decltype</span><span class="token punctuation">(</span>mytuple<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token double-colon punctuation">::</span>value<span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">" elements."</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+  <span class="token comment">//获取元素</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"the elements is: "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>mytuple<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">1</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>mytuple<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">2</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>mytuple<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+  std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*输出结果：
 mytuple has 3 elements.
 the elements is: 10 a 3.14 
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p><strong>注意：tuple不支持迭代，只能通过元素索引(或tie解包)进行获取元素的值。但是给定的索引必须是在编译器就已经给定，不能在运行期进行动态传递，否则将发生编译错误：如：</strong></p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">&gt;for(int i=0; i&lt;3; i++)
-   std::cout &lt;&lt; std::get&lt;i&gt;(mytuple) &lt;&lt; " "; //将引发编译错误<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token operator">&gt;</span><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+   std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span>i<span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>mytuple<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span> <span class="token comment">//将引发编译错误</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </blockquote>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//4.获取元素的类型
-//要想得到元素类型可以通过tuple_element方法获取，如有以下元组对象：
-std::tuple&lt;std::string, int&gt; tp("Sven", 20);
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//4.获取元素的类型</span>
+<span class="token comment">//要想得到元素类型可以通过tuple_element方法获取，如有以下元组对象：</span>
+std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> <span class="token function">tp</span><span class="token punctuation">(</span><span class="token string">"Sven"</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// 得到第二个元素类型
-std::tuple_element&lt;1, decltype(tp)&gt;::type ages;  // ages就为int类型
+<span class="token comment">// 得到第二个元素类型</span>
+std<span class="token double-colon punctuation">::</span>tuple_element<span class="token operator">&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">decltype</span><span class="token punctuation">(</span>tp<span class="token punctuation">)</span><span class="token operator">&gt;</span><span class="token double-colon punctuation">::</span>type ages<span class="token punctuation">;</span>  <span class="token comment">// ages就为int类型</span>
  
-ages = std::get&lt;1&gt;(tp);
+ages <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">1</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>tp<span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; '\n';
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ages: "</span> <span class="token operator">&lt;&lt;</span> ages <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
  
-//输出结果:ages: 20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++"> //5.利用tie进行解包元素的值
- //如同pair一样也是可以通过tie进行解包tuple的各个元素的值。如下tuple对象有4个元素，通过tie解将会把这4个元素的值分别赋值给tie提供的4个变量中。
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-#include &lt;utility&gt;
+<span class="token comment">//输出结果:ages: 20</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"> <span class="token comment">//5.利用tie进行解包元素的值</span>
+ <span class="token comment">//如同pair一样也是可以通过tie进行解包tuple的各个元素的值。如下tuple对象有4个元素，通过tie解将会把这4个元素的值分别赋值给tie提供的4个变量中。</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;tuple&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;utility&gt;</span></span>
  
-int main(int argc, char **argv) {
-    std::tuple&lt;std::string, int, std::string, int&gt; tp;
-    tp = std::make_tuple("Sven", 25, "Shanghai", 21);
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> tp<span class="token punctuation">;</span>
+    tp <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">make_tuple</span><span class="token punctuation">(</span><span class="token string">"Sven"</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token string">"Shanghai"</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    // 定义接收变量
-    std::string name;
-    std::string addr;
-    int ages;
-    int areaCode;
+    <span class="token comment">// 定义接收变量</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string addr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> ages<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> areaCode<span class="token punctuation">;</span>
  
-    std::tie(name, ages, addr, areaCode) = tp;
-    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';
-    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";
-    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";
-    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";
-    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';
+    std<span class="token double-colon punctuation">::</span><span class="token function">tie</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> ages<span class="token punctuation">,</span> addr<span class="token punctuation">,</span> areaCode<span class="token punctuation">)</span> <span class="token operator">=</span> tp<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Output: "</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name: "</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span><span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"addr: "</span> <span class="token operator">&lt;&lt;</span> addr <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ages: "</span> <span class="token operator">&lt;&lt;</span> ages <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"areaCode: "</span> <span class="token operator">&lt;&lt;</span> areaCode <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
  
-    return 0;
-}
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
  
-/*输出结果：
+<span class="token comment">/*输出结果：
 Output: 
 name: Sven, addr: Shanghai, ages: 25, areaCode: 21
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但有时候tuple包含的多个元素时只需要其中的一个或两个元素，如此可以通过std::ignore进行变量占位，这样将会忽略提取对应的元素。可以修改上述例程：</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-#include &lt;utility&gt;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;tuple&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;utility&gt;</span></span>
  
-int main(int argc, char **argv) {
-    std::tuple&lt;std::string, int, std::string, int&gt; tp;
-    tp = std::make_tuple("Sven", 25, "Shanghai", 21);
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&gt;</span> tp<span class="token punctuation">;</span>
+    tp <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">make_tuple</span><span class="token punctuation">(</span><span class="token string">"Sven"</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token string">"Shanghai"</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    // 定义接收变量
-    std::string name;
-    std::string addr;
-    int ages;
-    int areaCode = 110;
+    <span class="token comment">// 定义接收变量</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string addr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> ages<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> areaCode <span class="token operator">=</span> <span class="token number">110</span><span class="token punctuation">;</span>
  
-    std::tie(name, ages, std::ignore, std::ignore) = tp;
-    std::cout &lt;&lt; "Output: " &lt;&lt; '\n';
-    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt;", ";
-    std::cout &lt;&lt; "addr: " &lt;&lt; addr &lt;&lt; ", ";
-    std::cout &lt;&lt; "ages: " &lt;&lt; ages &lt;&lt; ", ";
-    std::cout &lt;&lt; "areaCode: " &lt;&lt; areaCode &lt;&lt; '\n';
+    std<span class="token double-colon punctuation">::</span><span class="token function">tie</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> ages<span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>ignore<span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>ignore<span class="token punctuation">)</span> <span class="token operator">=</span> tp<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Output: "</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name: "</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span><span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"addr: "</span> <span class="token operator">&lt;&lt;</span> addr <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ages: "</span> <span class="token operator">&lt;&lt;</span> ages <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"areaCode: "</span> <span class="token operator">&lt;&lt;</span> areaCode <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
  
-    return 0;
-}
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
  
-/*输出结果：
+<span class="token comment">/*输出结果：
 Output: 
 name: Sven, addr: , ages: 25, areaCode: 110
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">//6. tuple元素的引用
-//前面已经列举了将引用作为tuple的元素类型。下面通过引用搭配make_tuple()可以提取tuple的元素值，将某些变量值设给它们，并通过改变这些变量来改变tuple元素的值：
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//6. tuple元素的引用</span>
+<span class="token comment">//前面已经列举了将引用作为tuple的元素类型。下面通过引用搭配make_tuple()可以提取tuple的元素值，将某些变量值设给它们，并通过改变这些变量来改变tuple元素的值：</span>
 
-#include &lt;iostream&gt;
-#include &lt;tuple&gt;
-#include &lt;functional&gt;
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;tuple&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;functional&gt;</span></span>
  
-int main(int argc, char **agrv) {
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>agrv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
  
-    std::tuple&lt;std::string, int, float&gt; tp1("Sven Cheng", 77, 66.1);
+    std<span class="token double-colon punctuation">::</span>tuple<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">float</span><span class="token operator">&gt;</span> <span class="token function">tp1</span><span class="token punctuation">(</span><span class="token string">"Sven Cheng"</span><span class="token punctuation">,</span> <span class="token number">77</span><span class="token punctuation">,</span> <span class="token number">66.1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
  
-    std::string name;
-    int weight;
-    float f;
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> weight<span class="token punctuation">;</span>
+    <span class="token keyword">float</span> f<span class="token punctuation">;</span>
  
-    auto tp2 = std::make_tuple(std::ref(name), std::ref(weight), std::ref(f)) = tp1;
+    <span class="token keyword">auto</span> tp2 <span class="token operator">=</span> std<span class="token double-colon punctuation">::</span><span class="token function">make_tuple</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span><span class="token function">ref</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span><span class="token function">ref</span><span class="token punctuation">(</span>weight<span class="token punctuation">)</span><span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span><span class="token function">ref</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">=</span> tp1<span class="token punctuation">;</span>
  
-    std::cout &lt;&lt; "Before change: " &lt;&lt; '\n';
-    std::cout &lt;&lt; "name: " &lt;&lt; name &lt;&lt; ", ";
-    std::cout &lt;&lt; "weight: " &lt;&lt; weight &lt;&lt; ", ";
-    std::cout &lt;&lt; "f: " &lt;&lt; f &lt;&lt; '\n';
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Before change: "</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name: "</span> <span class="token operator">&lt;&lt;</span> name <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"weight: "</span> <span class="token operator">&lt;&lt;</span> weight <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"f: "</span> <span class="token operator">&lt;&lt;</span> f <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
  
-    name = "Sven";
-    weight = 80;
-    f = 3.14;
+    name <span class="token operator">=</span> <span class="token string">"Sven"</span><span class="token punctuation">;</span>
+    weight <span class="token operator">=</span> <span class="token number">80</span><span class="token punctuation">;</span>
+    f <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
  
-	std::cout &lt;&lt; "After change: " &lt;&lt; '\n';
-	std::cout &lt;&lt; "element 1st: " &lt;&lt; std::get&lt;0&gt;(tp2) &lt;&lt; ", ";
-	std::cout &lt;&lt; "element 2nd: " &lt;&lt; std::get&lt;1&gt;(tp2) &lt;&lt; ", ";
-	std::cout &lt;&lt; "element 3rd: " &lt;&lt; std::get&lt;2&gt;(tp2) &lt;&lt; '\n';
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"After change: "</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"element 1st: "</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>tp2<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"element 2nd: "</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">1</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>tp2<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span><span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"element 3rd: "</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span><span class="token generic-function"><span class="token function">get</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token number">2</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">(</span>tp2<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
  
-    return 0;
-}
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
  
-/*输出结果：
+<span class="token comment">/*输出结果：
 Before change: 
 name: Sven Cheng, weight: 77, f: 66.1
 After change: 
 element 1st: Sven, element 2nd: 80, element 3rd: 3.14
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1041,7 +1041,7 @@ element 1st: Sven, element 2nd: 80, element 3rd: 3.14
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">15.8k</span>
+                        class="white-color">16.8k</span>
             
             
             
