@@ -405,7 +405,7 @@ static void GLClearError()//查错
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-25
+                    2023-03-10
                 </div>
                 
 
@@ -449,39 +449,39 @@ static void GLClearError()//查错
             <div id="articleContent">
                 <h3 id="glGetError"><a href="#glGetError" class="headerlink" title="glGetError"></a>glGetError</h3><p>兼容所有版本，使用方法简单</p>
 <p>调用后只返回一个任意的错误标志，所以要循环调用，而且使用麻烦，要在所有要检查的前后分别打上下面两段代码ww</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">static void GLClearError()//查错
-{
-	while (glGetError() != GL_NO_ERROR);
-}
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">GLClearError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//查错</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">glGetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> GL_NO_ERROR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-static void GLCheckError()//输出错误信息
-{
-	while (GLenum error =  glGetError())
-	{
-		std::cout &lt;&lt; "[OpenGL Error!](" &lt;&lt; error &lt;&lt; ")" &lt;&lt; std::endl;
-	}
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">GLCheckError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//输出错误信息</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>GLenum error <span class="token operator">=</span>  <span class="token function">glGetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"[OpenGL Error!]("</span> <span class="token operator">&lt;&lt;</span> error <span class="token operator">&lt;&lt;</span> <span class="token string">")"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>且OpenGl用十六进制定义了他所有的错误码，需要把拿到的错误码转换成十六进制，然后去glew头文件里搜</p>
 <br>
 断言改进版
 <br>
 
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#define ASSERT(x) if(!(x)) __debugbreak();
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">ASSERT</span><span class="token expression"><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">__debugbreak</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span></span>
 
-static void GLClearError()//查错
-{
-	while (glGetError() != GL_NO_ERROR);
-}
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">GLClearError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">//查错</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">glGetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> GL_NO_ERROR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-static bool GLLogCall()
-{
-	while (GLenum error =  glGetError())
-	{
-		std::cout &lt;&lt; "[OpenGL Error!](" &lt;&lt; error &lt;&lt; ")" &lt;&lt; std::endl;
-		return false;
-	}
-	return true;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">static</span> <span class="token keyword">bool</span> <span class="token function">GLLogCall</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>GLenum error <span class="token operator">=</span>  <span class="token function">glGetError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"[OpenGL Error!]("</span> <span class="token operator">&lt;&lt;</span> error <span class="token operator">&lt;&lt;</span> <span class="token string">")"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="4-3之后，glMessageCallback"><a href="#4-3之后，glMessageCallback" class="headerlink" title="4.3之后，glMessageCallback"></a>4.3之后，glMessageCallback</h3><p>允许我们指定一个指向OpenGL的函数指针，OpenGL会调用我们的那个函数</p>
 <p>比glGetError好用多了awa~，不需要一直问（</p>
@@ -630,18 +630,17 @@ static bool GLLogCall()
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/02/14/opengl-zhong-debug/">
+                <a href="/2023/03/05/ji-suan-ji-wang-luo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.png" class="responsive-img" alt="OpenGL中Debug">
+                        <img src="/medias/featureimages/10.png" class="responsive-img" alt="计网三级备考">
                         
-                        <span class="card-title">OpenGL中Debug</span>
+                        <span class="card-title">计网三级备考</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -651,9 +650,9 @@ static bool GLLogCall()
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -662,12 +661,11 @@ static bool GLLogCall()
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/OpenGL/">
-                        <span class="chip bg-color">OpenGL</span>
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%89%E7%BA%A7/">
+                        <span class="chip bg-color">计算机网络三级</span>
                     </a>
                     
                 </div>
@@ -899,7 +897,7 @@ static bool GLLogCall()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.8k</span>
+                        class="white-color">16.3k</span>
             
             
             

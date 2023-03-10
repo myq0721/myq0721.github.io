@@ -417,7 +417,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-25
+                    2023-03-10
                 </div>
                 
 
@@ -465,168 +465,168 @@
 <p>见代码</p>
 <br>
 
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#include&lt;GL/glew.h&gt;
-#include &lt;GLFW/glfw3.h&gt;
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;GL/glew.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;GLFW/glfw3.h&gt;</span></span>
 
-#include&lt;iostream&gt;
-#include&lt;fstream&gt;
-#include&lt;string&gt;
-#include&lt;sstream&gt;
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;fstream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;string&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;sstream&gt;</span></span>
 
-struct ShaderProgramSource
-{
-	std::string VertexShader;
-	std::string FragmentShader;
-};
-static ShaderProgramSource ParseShader(const std::string&amp; filepath)
-{
-	std::ifstream stream(filepath);
+<span class="token keyword">struct</span> <span class="token class-name">ShaderProgramSource</span>
+<span class="token punctuation">{</span>
+	std<span class="token double-colon punctuation">::</span>string VertexShader<span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>string FragmentShader<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">static</span> ShaderProgramSource <span class="token function">ParseShader</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string<span class="token operator">&amp;</span> filepath<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	std<span class="token double-colon punctuation">::</span>ifstream <span class="token function">stream</span><span class="token punctuation">(</span>filepath<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	enum class ShaderType
-	{
-		NONE = -1, VERTEX = 0, FRAGMENT = 1
-	};
+	<span class="token keyword">enum</span> <span class="token keyword">class</span> <span class="token class-name">ShaderType</span>
+	<span class="token punctuation">{</span>
+		NONE <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> VERTEX <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> FRAGMENT <span class="token operator">=</span> <span class="token number">1</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-	std::string line;
-	std::stringstream ss[2];
-	ShaderType type = ShaderType::NONE;
-	while (getline(stream, line))
-	{
-		if (line.find("#shader") != std::string::npos)
-		{
-			if (line.find("vertex") != std::string::npos)
-				type = ShaderType::VERTEX;
-			else if (line.find("fragment") != std::string::npos)
-				type = ShaderType::FRAGMENT;
-		}
-		else
-		{
-			ss[int(type)] &lt;&lt; line &lt;&lt; '\n';
-		}
-	}
-	return{ ss[0].str(),ss[1].str() };
-}
-static unsigned int CompileShader(unsigned int type, const std::string&amp; source)
-{
-	unsigned int id = glCreateShader(type);
-	const char* src = source.c_str();
-	glShaderSource(id, 1, &amp;src, nullptr);
-	glCompileShader(id);
+	std<span class="token double-colon punctuation">::</span>string line<span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>stringstream ss<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	ShaderType type <span class="token operator">=</span> ShaderType<span class="token double-colon punctuation">::</span>NONE<span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">getline</span><span class="token punctuation">(</span>stream<span class="token punctuation">,</span> line<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"#shader"</span><span class="token punctuation">)</span> <span class="token operator">!=</span> std<span class="token double-colon punctuation">::</span>string<span class="token double-colon punctuation">::</span>npos<span class="token punctuation">)</span>
+		<span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"vertex"</span><span class="token punctuation">)</span> <span class="token operator">!=</span> std<span class="token double-colon punctuation">::</span>string<span class="token double-colon punctuation">::</span>npos<span class="token punctuation">)</span>
+				type <span class="token operator">=</span> ShaderType<span class="token double-colon punctuation">::</span>VERTEX<span class="token punctuation">;</span>
+			<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"fragment"</span><span class="token punctuation">)</span> <span class="token operator">!=</span> std<span class="token double-colon punctuation">::</span>string<span class="token double-colon punctuation">::</span>npos<span class="token punctuation">)</span>
+				type <span class="token operator">=</span> ShaderType<span class="token double-colon punctuation">::</span>FRAGMENT<span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">{</span>
+			ss<span class="token punctuation">[</span><span class="token keyword">int</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> line <span class="token operator">&lt;&lt;</span> <span class="token char">'\n'</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span><span class="token punctuation">{</span> ss<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>ss<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">static</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token function">CompileShader</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string<span class="token operator">&amp;</span> source<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> id <span class="token operator">=</span> <span class="token function">glCreateShader</span><span class="token punctuation">(</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> src <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glShaderSource</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>src<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glCompileShader</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	int result;
-	glGetShaderiv(id, GL_COMPILE_STATUS, &amp;result);
-	if (result == GL_FALSE)
-	{
-		int length;
-		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &amp;length);
-		char* message = (char*)alloca(length * sizeof(char));
-		glGetShaderInfoLog(id, length, &amp;length, message);
-		std::cout &lt;&lt; "Failed To Compile" &lt;&lt; (type == GL_VERTEX_SHADER ? "vertex" : "fragmenrt") &lt;&lt; " Shader Nya~" &lt;&lt; std::endl;
-		std::cout &lt;&lt; message &lt;&lt; std::endl;
+	<span class="token keyword">int</span> result<span class="token punctuation">;</span>
+	<span class="token function">glGetShaderiv</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> GL_COMPILE_STATUS<span class="token punctuation">,</span> <span class="token operator">&amp;</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>result <span class="token operator">==</span> GL_FALSE<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token keyword">int</span> length<span class="token punctuation">;</span>
+		<span class="token function">glGetShaderiv</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> GL_INFO_LOG_LENGTH<span class="token punctuation">,</span> <span class="token operator">&amp;</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">char</span><span class="token operator">*</span> message <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">alloca</span><span class="token punctuation">(</span>length <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">glGetShaderInfoLog</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> length<span class="token punctuation">,</span> <span class="token operator">&amp;</span>length<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed To Compile"</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>type <span class="token operator">==</span> GL_VERTEX_SHADER <span class="token operator">?</span> <span class="token string">"vertex"</span> <span class="token operator">:</span> <span class="token string">"fragmenrt"</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" Shader Nya~"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+		std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> message <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
 
-		glDeleteShader(id);
-		return 0;
-	}
-	return id;
-}
-static unsigned int CreateShader(const std::string&amp; vertexShader, const std::string&amp; fragmentShader)
-{
-	unsigned int program = glCreateProgram();
-	unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-	unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
+		<span class="token function">glDeleteShader</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> id<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">static</span> <span class="token keyword">unsigned</span> <span class="token keyword">int</span> <span class="token function">CreateShader</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string<span class="token operator">&amp;</span> vertexShader<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string<span class="token operator">&amp;</span> fragmentShader<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> program <span class="token operator">=</span> <span class="token function">glCreateProgram</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> vs <span class="token operator">=</span> <span class="token function">CompileShader</span><span class="token punctuation">(</span>GL_VERTEX_SHADER<span class="token punctuation">,</span> vertexShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> fs <span class="token operator">=</span> <span class="token function">CompileShader</span><span class="token punctuation">(</span>GL_FRAGMENT_SHADER<span class="token punctuation">,</span> fragmentShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	glAttachShader(program, vs);
-	glAttachShader(program, fs);
-	glLinkProgram(program);
-	glValidateProgram(program);
+	<span class="token function">glAttachShader</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> vs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glAttachShader</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> fs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glLinkProgram</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glValidateProgram</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	glDeleteShader(vs);
-	glDeleteShader(fs);
+	<span class="token function">glDeleteShader</span><span class="token punctuation">(</span>vs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glDeleteShader</span><span class="token punctuation">(</span>fs<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	return program;
-}
-int main(void)
-{
-	GLFWwindow* window;
+	<span class="token keyword">return</span> program<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	GLFWwindow<span class="token operator">*</span> window<span class="token punctuation">;</span>
 
-	/* Initialize the library */
-	if (!glfwInit())
-		return -1;
+	<span class="token comment">/* Initialize the library */</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">glfwInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 
-	glewInit();
+	<span class="token function">glewInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(640, 480, "OpenGl", NULL, NULL);
-	if (!window)
-	{
-		glfwTerminate();
-		return -1;
-	}
+	<span class="token comment">/* Create a windowed mode window and its OpenGL context */</span>
+	window <span class="token operator">=</span> <span class="token function">glfwCreateWindow</span><span class="token punctuation">(</span><span class="token number">640</span><span class="token punctuation">,</span> <span class="token number">480</span><span class="token punctuation">,</span> <span class="token string">"OpenGl"</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>window<span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token function">glfwTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
 
-	/* Make the window's context current */
-	glfwMakeContextCurrent(window);
+	<span class="token comment">/* Make the window's context current */</span>
+	<span class="token function">glfwMakeContextCurrent</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	if (glewInit() != GLEW_OK) {
-		std::cout &lt;&lt; "Error" &lt;&lt; std::endl;
-	}
-	std::cout &lt;&lt; glGetString(GL_VERSION) &lt;&lt; std::endl;
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">glewInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> GLEW_OK<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Error"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">glGetString</span><span class="token punctuation">(</span>GL_VERSION<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
 
-	float position[] = {
-		-0.5f, -0.5f,//0
-		 0.5f, -0.5f,//1
-		 0.5f,  0.5f,//2
-		 -0.5f, 0.5f,//3
-	};
+	<span class="token keyword">float</span> position<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+		<span class="token operator">-</span><span class="token number">0.5f</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5f</span><span class="token punctuation">,</span><span class="token comment">//0</span>
+		 <span class="token number">0.5f</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5f</span><span class="token punctuation">,</span><span class="token comment">//1</span>
+		 <span class="token number">0.5f</span><span class="token punctuation">,</span>  <span class="token number">0.5f</span><span class="token punctuation">,</span><span class="token comment">//2</span>
+		 <span class="token operator">-</span><span class="token number">0.5f</span><span class="token punctuation">,</span> <span class="token number">0.5f</span><span class="token punctuation">,</span><span class="token comment">//3</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-	unsigned int indices[] = {
-		0,1,2,
-		2,3,0
-	};
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> indices<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+		<span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>
+		<span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">0</span>
+	<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-	unsigned int buffer;
-	glGenBuffers(1, &amp;buffer);
-	glBindBuffer(GL_ARRAY_BUFFER, buffer);
-	glBufferData(GL_ARRAY_BUFFER, 2 * 6 * sizeof(float), position, GL_STATIC_DRAW);
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> buffer<span class="token punctuation">;</span>
+	<span class="token function">glGenBuffers</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glBindBuffer</span><span class="token punctuation">(</span>GL_ARRAY_BUFFER<span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glBufferData</span><span class="token punctuation">(</span>GL_ARRAY_BUFFER<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> <span class="token number">6</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span><span class="token punctuation">,</span> position<span class="token punctuation">,</span> GL_STATIC_DRAW<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
+	<span class="token function">glEnableVertexAttribArray</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glVertexAttribPointer</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> GL_FLOAT<span class="token punctuation">,</span> GL_FALSE<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">float</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	/*glbindbuffer(gl_array_buffer, 0);*/
+	<span class="token comment">/*glbindbuffer(gl_array_buffer, 0);*/</span>
 
-	unsigned int ibo;//索引缓冲区对象,必须无符号整形
-	glGenBuffers(1, &amp;ibo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);//索引缓冲区插槽
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> ibo<span class="token punctuation">;</span><span class="token comment">//索引缓冲区对象,必须无符号整形</span>
+	<span class="token function">glGenBuffers</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>ibo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glBindBuffer</span><span class="token punctuation">(</span>GL_ELEMENT_ARRAY_BUFFER<span class="token punctuation">,</span> ibo<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//索引缓冲区插槽</span>
+	<span class="token function">glBufferData</span><span class="token punctuation">(</span>GL_ELEMENT_ARRAY_BUFFER<span class="token punctuation">,</span> <span class="token number">6</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">,</span> indices<span class="token punctuation">,</span> GL_STATIC_DRAW<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-	std::cout &lt;&lt; "VERREX" &lt;&lt; std::endl;
-	std::cout &lt;&lt; source.VertexShader &lt;&lt; std::endl;
-	std::cout &lt;&lt; "FRAGMENT" &lt;&lt; std::endl;
-	std::cout &lt;&lt; source.FragmentShader &lt;&lt; std::endl;
+	ShaderProgramSource source <span class="token operator">=</span> <span class="token function">ParseShader</span><span class="token punctuation">(</span><span class="token string">"res/shaders/Basic.shader"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"VERREX"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> source<span class="token punctuation">.</span>VertexShader <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"FRAGMENT"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+	std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> source<span class="token punctuation">.</span>FragmentShader <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
 
-	unsigned int shader = CreateShader(source.VertexShader,source.FragmentShader);
-	glUseProgram(shader);
+	<span class="token keyword">unsigned</span> <span class="token keyword">int</span> shader <span class="token operator">=</span> <span class="token function">CreateShader</span><span class="token punctuation">(</span>source<span class="token punctuation">.</span>VertexShader<span class="token punctuation">,</span>source<span class="token punctuation">.</span>FragmentShader<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">glUseProgram</span><span class="token punctuation">(</span>shader<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	/* Loop until the user closes the window */
-	while (!glfwWindowShouldClose(window))
-	{
-		/* Render here */
-		glClear(GL_COLOR_BUFFER_BIT);
+	<span class="token comment">/* Loop until the user closes the window */</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">glfwWindowShouldClose</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		<span class="token comment">/* Render here */</span>
+		<span class="token function">glClear</span><span class="token punctuation">(</span>GL_COLOR_BUFFER_BIT<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-		glDrawElements(GL_TRIANGLES, 6,GL_UNSIGNED_INT, nullptr);
+		<span class="token function">glDrawElements</span><span class="token punctuation">(</span>GL_TRIANGLES<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span>GL_UNSIGNED_INT<span class="token punctuation">,</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-		/* Swap front and back buffers */
-		glfwSwapBuffers(window);
+		<span class="token comment">/* Swap front and back buffers */</span>
+		<span class="token function">glfwSwapBuffers</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-		/* Poll for and process events */
-		glfwPollEvents();
-	}
+		<span class="token comment">/* Poll for and process events */</span>
+		<span class="token function">glfwPollEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
 
-	glDeleteProgram(shader);
+	<span class="token function">glDeleteProgram</span><span class="token punctuation">(</span>shader<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-	glfwTerminate();
-	return 0;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token function">glfwTerminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1037,7 +1037,7 @@ int main(void)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.8k</span>
+                        class="white-color">16.3k</span>
             
             
             

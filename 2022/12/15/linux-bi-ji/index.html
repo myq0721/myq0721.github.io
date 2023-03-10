@@ -5,17 +5,13 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="Linux入门学习笔记, 猫猫">
-    <meta name="description" content="一、基础篇1.Linux学习方向
-linux运维工程师
-
-linux嵌入式工程师
-
-linux下开发项目{ JavaEE，大数据，Python，PHP，c/c++}
+    <meta name="description" content="常用指令命令杂记
+su 登录root用户 exit 退出
+sudo /etc/init.d/ssh start 启动ssh服务
 
 
-2.Linux的应用领域
-个人桌面领域应用、相对薄弱
-服务器领域、Li">
+
+ifconfig 未找到命令yum install ifconfig发现输出了如下错误信息：没有可用软件包">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,21 +416,21 @@ linux下开发项目{ JavaEE，大数据，Python，PHP，c/c++}
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-27
+                    2023-03-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    673
+                    856
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -462,7 +458,33 @@ linux下开发项目{ JavaEE，大数据，Python，PHP，c/c++}
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、基础篇"><a href="#一、基础篇" class="headerlink" title="一、基础篇"></a>一、基础篇</h2><h3 id="1-Linux学习方向"><a href="#1-Linux学习方向" class="headerlink" title="1.Linux学习方向"></a>1.Linux学习方向</h3><ul>
+                <h3 id="常用指令命令"><a href="#常用指令命令" class="headerlink" title="常用指令命令"></a>常用指令<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">命令</a></h3><h2 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h2><ul>
+<li>su 登录root用户 exit 退出</li>
+<li>sudo /etc/init.d/ssh start 启动ssh服务</li>
+</ul>
+<blockquote>
+<ul>
+<li>ifconfig 未找到命令<br><br>yum install ifconfig发现输出了如下错误信息：没有可用软件包 ifconfig。<br><br>通过命令：yum search ifconfig，来搜索可用或者匹配的安装包程序。<br><br>搜索结果匹配ifconfig的安装包是net-tools.x86_64<br><br>我们安装ifconfig输入：yum install net-tools<br></li>
+</ul>
+</blockquote>
+<h2 id="二、实操篇"><a href="#二、实操篇" class="headerlink" title="二、实操篇"></a>二、实操篇</h2><h3 id="1-远程登录Linux系统"><a href="#1-远程登录Linux系统" class="headerlink" title="1.远程登录Linux系统"></a>1.远程登录Linux系统</h3><ul>
+<li><p>Xshell5 远程登录linux，完美解决中文乱码问题、但是只能发指令</p>
+</li>
+<li><p>XFep5 上传和下载文件，需要linux开启sshd服务22</p>
+</li>
+<li><p>Xshell连接成功~</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">Connecting to <span class="token number">192.168</span><span class="token number">.232</span><span class="token number">.3</span><span class="token operator">:</span><span class="token number">22.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+Connection established<span class="token punctuation">.</span>
+To escape to local shell<span class="token punctuation">,</span> press <span class="token char">'Ctrl+Alt+]'</span><span class="token punctuation">.</span>
+
+Last login<span class="token operator">:</span> Wed Mar  <span class="token number">8</span> <span class="token number">19</span><span class="token operator">:</span><span class="token number">44</span><span class="token operator">:</span><span class="token number">55</span> <span class="token number">2023</span>
+<span class="token punctuation">[</span>ayanami@master <span class="token operator">~</span><span class="token punctuation">]</span>$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<p>MySQL安装文件</p>
+<br>
+
+<hr>
+<h2 id="一、基础篇"><a href="#一、基础篇" class="headerlink" title="一、基础篇"></a>一、基础篇</h2><h3 id="1-Linux学习方向"><a href="#1-Linux学习方向" class="headerlink" title="1.Linux学习方向"></a>1.Linux学习方向</h3><ul>
 <li><p>linux运维工程师</p>
 </li>
 <li><p>linux嵌入式工程师</p>
@@ -554,10 +576,7 @@ linux下开发项目{ JavaEE，大数据，Python，PHP，c/c++}
 </li>
 </ul>
 <p>}</p>
-<br>
 
-<hr>
-<h2 id="二"><a href="#二" class="headerlink" title="二"></a>二</h2><h3 id="常用指令命令"><a href="#常用指令命令" class="headerlink" title="常用指令命令"></a>常用指令<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-command-manual.html">命令</a></h3>
                 
             </div>
             <hr/>
@@ -964,7 +983,7 @@ linux下开发项目{ JavaEE，大数据，Python，PHP，c/c++}
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16.8k</span>
+                        class="white-color">16.3k</span>
             
             
             
