@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>智慧运维</title>
+      <link href="/2023/03/11/zhi-hui-yun-wei/"/>
+      <url>/2023/03/11/zhi-hui-yun-wei/</url>
+      
+        <content type="html"><![CDATA[<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>在综述中提到了如下目标</p><ul><li>对日志语句进行分析和协助编写</li><li>压缩日志</li><li>将日志解析为结构化的事件模板</li><li>使用日志进行异常检测、故障预测和诊断</li><li>此外，调查发布开源工具包和数据集的工作</li></ul><h2 id="即：利用人工智能简化-IT-运营管理并加速和自动完成问题解决过程。"><a href="#即：利用人工智能简化-IT-运营管理并加速和自动完成问题解决过程。" class="headerlink" title="即：利用人工智能简化 IT 运营管理并加速和自动完成问题解决过程。"></a>即：利用人工智能简化 IT 运营管理并加速和自动完成问题解决过程。</h2><h2 id="主要背景总结"><a href="#主要背景总结" class="headerlink" title="主要背景总结"></a>主要背景总结</h2><p>关键词：机器学习、大数据、自动与智能化</p><ul><li>AIOps是</li></ul><p>————将人工智能应用于运维领域，基于已有的运维数据（日志、监控信息、应用信息等），通过<strong>机器学习</strong>的方式来进一步解决自动化运维没办法解决的问题。AIOps 不依赖于人为指定规则，主张由机器学习算法自动地从海量运维数据中不断地学习，不断地提炼并总结规则。</p><ul><li>AIOps的主要应用场景</li></ul><p>异常告警、告警收敛、故障分析、趋势预测、异常检测、根因分析</p><ul><li>智能运维（AIOps）</li></ul><p>————意指整合大数据和机器学习能力，通过<strong>松耦合、可扩展</strong>方式去提取和分析数据量、种类和速度这三个维度不断增长的 IT 数据，进而为 IT 运维管理产品提供支撑</p><ul><li>云智慧</li></ul><p>AIOps与其说是产品，不如说是一种理念和策略。通过以数据为基础、算法为支撑，场景为导向的AIOps平台，为企业现有运维管理工具和管理体系<strong>赋予统一数据管控能力和智能化数据分析能力</strong>，全面提升运维管理效率，化被动运维为主动运维。</p><ul><li>运维发展阶段</li></ul><p>{</p><p>早期的手工运维，</p><p>流程化、标准化运维，</p><p>平台化、自动化运维，</p><p>最后到近十年的 DevOps[4]（研发运营一体化）和 AIOps（智能运维）</p><p>}</p><ul><li>平台能力</li></ul><p>{</p><p>提供独立、开放的历史/实时<strong>数据采集</strong>、<strong>算法分析</strong>平台，整合IT数据和业务指标数据，</p><p>提供<strong>告警消噪</strong>，包括告警抑制、告警收敛等，消除误报或冗余事件；<br>提供跨系统追踪和关联分析，有效进行故障的根因分析，</p><p>设定动态基线捕获超出静态阈值的异常，实现单/多指标<strong>异常检测</strong>，</p><p>根据机器学习结果，<strong>预测未来事件</strong>，防止潜在的故障，</p><p>直接或通过<strong>集成启动解决问题的动作</strong></p><p>}</p><ul><li>将AI和运维程需要三方面的知识：</li></ul><p>{</p><p>行业、业务领域知识，跟业务特点相关的知识经验积累，熟悉生产实践中的难题</p><p>运维领域知识，如指标监控、异常检测、故障发现、故障止损、成本优化、容量规划和性能调优等</p><p>算法、机器学习知识，把实际问题转化为算法问题，常用算法包括如聚类、决策树、卷积神经网络等。</p><p>}</p><h2 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h2><p>Spark是一个<strong>通用</strong>的<strong>分布式</strong>数据处理<strong>引擎</strong></p><ul><li>通用</li></ul><p>指的是Spark可以做很多事情。包括机器学习，数据流传输，交互分析，ETL，批处理，图计算等</p><ul><li>分布式</li></ul><p>Spark处理数据的能力是建立在许多机器上的，是可以和分布式的存储系统对接的，是可以做横向扩展的</p><h2 id="ITOA"><a href="#ITOA" class="headerlink" title="ITOA"></a>ITOA</h2><p>(似乎有些过时)</p><p>全称“IT运营分析”（IT Operations Analytics），核心目标是“运”而非“维”，即通过运维手段和技术指导和促进业务发展</p><blockquote><p>相关资料：</p></blockquote><blockquote><p><a href="https://www.ibm.com/cn-zh/cloud/learn/aiops">IBM的介绍</a></p></blockquote><blockquote><p><a href="https://www.microsoft.com/en-us/research/project/aiops/">微软</a></p></blockquote><blockquote><p><a href="http://spark.apachecn.org/#/">Spark中文文档</a></p></blockquote>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计网三级备考</title>
       <link href="/2023/03/05/ji-suan-ji-wang-luo/"/>
       <url>/2023/03/05/ji-suan-ji-wang-luo/</url>
