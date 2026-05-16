@@ -80,27 +80,26 @@ dream:
 # 是否在首页显示音乐.
 music:
   enable: true
-  title: #非吸底模式有效
+  title:  #非吸底模式有效 
     enable: true
-    show: 响起世界之声
-  autoHide: false    # hide automaticaly
-  server: netease   
+    show: それが虚无ならば虚无自身がこのとほりで ある程度まではみんなに共通いたします --『春と修羅』
+  server: netease
   type: album    #require song, playlist, album, search, artist
   id: 34407365    
   fixed: false       # 开启吸底模式
-  autoplay: false   # 是否自动播放
+  autoplay: true   # 是否自动播放
   theme: '#42b983'
   loop: 'all'       # 音频循环播放, 可选值: 'all', 'one', 'none'
-  order: 'list'   # 音频循环顺序, 可选值: 'list', 'random'
-  preload: 'auto'   # 预加载，可选值: 'none', 'metadata', 'auto'
+  order: 'random'   # 音频循环顺序, 可选值: 'list', 'random'
+  preload: 'metadata'   # 预加载，可选值: 'none', 'metadata', 'auto'
   volume: 0.3       # 默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效
-  listFolded: false  # 列表默认折叠
-  hideLrc: true     # 隐藏歌词
+  listFolded: true  # 列表默认折叠
+  hideLrc: false     # 隐藏歌词
 
 # Whether to display the musics.
 # 单独的音乐页面.
 musics:
-  enable: true
+  enable: false
   title:          #非吸底模式有效
     enable: true
     show: 喵喵喵！
@@ -120,7 +119,7 @@ musics:
 # Whether to display the videos.
 # 是否在首页显示视频.
 video:
-  enable: true
+  enable: false
   showTitle: true
   title: 
   url: # url和iframeUrl其中一个必填
@@ -352,7 +351,7 @@ gitalk:
 # the Gitment config，default disabled
 # Gitment 评论模块的配置，默认为不激活
 gitment:
-  enable: false
+  enable: true
   owner:
   repo:
   oauth:
@@ -589,7 +588,7 @@ tuxiaochao:
   productId:
 #背景canvas-nest
 canvas_nest:
-  enable: true
+  enable: false
   color: 0,0,255 # 线条颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
   pointColor: 0,0,255 # 交点颜色, 默认: '0,0,0' ；三个数字分别为(R,G,B)，注意用,分割
   opacity: 0.7 # 线条透明度（0~1）, 默认: 0.5
@@ -606,7 +605,7 @@ ribbon:
 
 # 背景动态彩带.
 ribbon_dynamic:
-  enable: true
+  enable: false
 
 # sharejs文章分享模块.
 # 支持顺序，可选项目为twitter, facebook, google, qq, qzone, wechat, weibo, douban, linkedin.
@@ -629,7 +628,14 @@ subtitle:
   typeSpeed: 200 # 打字速度
   backSpeed: 100 # 删除速度
   sub: 
-    - Virtual Vision Engine Team
+    - Have a nice day!
+    - 祝你有美好的一天！
+    - Welcome to my blog!
+    - 欢迎来到我的博客！
+    - Enjoy it!
+    - 玩得开心！
+    - ٩(๑>◡<๑)۶
+    - (๑•̀ㅂ•́)و✧
 
 # 手机二级菜单.
 navMenu:
