@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://myq0721.github.io
+url: https://myq0721.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -105,11 +105,12 @@ ignore:
 theme: matery
 
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
+## 站点由 .github/workflows/pages.yml 构建并发布，请勿再 hexo deploy 到 master（会触发 Jekyll 误构建）
+## 若需本地一键部署，可改用 gh-pages 分支：hexo deploy
 deploy:
-  type: 'git'
-  repo: git@github.com:myq0721/myq0721.github.io
-  branch: master
+  type: git
+  repo: https://github.com/myq0721/myq0721.github.io.git
+  branch: gh-pages
 
 search:
   path: search.xml
