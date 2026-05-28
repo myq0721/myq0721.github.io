@@ -1,8 +1,7 @@
 ---
 title: OpenGL中Debug
 date: 2023-02-14 23:12:18
-tags: OpenGL
-catagories : 游戏/引擎开发/图形学
+categories: 图形与渲染
 ---
 ### glGetError
 

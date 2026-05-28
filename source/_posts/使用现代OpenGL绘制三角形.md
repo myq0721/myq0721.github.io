@@ -1,8 +1,7 @@
 ---
 title: 使用现代OpenGL绘制三角形
 date: 2023-01-08 20:49:28
-tags: OpenGL
-categories : 游戏/引擎开发/图形学
+categories: 图形与渲染
 ---
 
 没有shader的版本

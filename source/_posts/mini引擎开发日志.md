@@ -1,8 +1,7 @@
 ---
 title: mini引擎(Ayana engine)开发日志
 date: 2023-02-07 01:33:22
-tags: Ayana引擎开发
-categories : 游戏/引擎开发/图形学
+categories: 游戏/引擎开发
 top : true
 img : https://i.postimg.cc/zv2WgWR8/85f618385196c7b0ea3cb7bc52c5eb75388411170.png
 ---

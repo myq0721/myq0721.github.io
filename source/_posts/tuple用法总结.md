@@ -2,7 +2,7 @@
 title: tuple用法总结
 date: 2023-02-05 16:18:31
 tags: C++
-categories : 编程语言
+categories: 编程语言
 ---
 ## tuple简介
 tuple（元组）在c++11中开始引用，是一个固定大小的不同类型值的集合，是泛化的std::pair。

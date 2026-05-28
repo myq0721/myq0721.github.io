@@ -1,8 +1,7 @@
 ---
 title: OpenGL中的shader
 date: 2023-02-12 21:11:15
-tags: OpenGL
-categories : 游戏/引擎开发/图形学
+categories: 图形与渲染
 ---
 主要是顶点着色器与片段着色器（这之间已经顶点着色器之前还有许多阶段，此处省略
 

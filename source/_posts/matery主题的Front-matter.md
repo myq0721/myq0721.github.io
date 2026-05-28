@@ -1,7 +1,8 @@
 ---
 title: matery主题的Front-matter
 date: 2023-01-05 23:26:00
-tags: 其他
+categories: 其他
+tags: 杂谈
 ---
 ## 文章 Front-matter 介绍
 

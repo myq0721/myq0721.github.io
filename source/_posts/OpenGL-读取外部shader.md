@@ -1,8 +1,7 @@
 ---
 title: OpenGL_读取外部shader、建立索引缓冲区
 date: 2023-02-14 22:01:35
-tags: OpenGL
-categories: 游戏/引擎开发/图形学
+categories: 图形与渲染
 ---
 上次通过字符串的形式写了简单的顶点和片元着色器
 

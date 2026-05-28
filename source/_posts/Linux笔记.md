@@ -1,8 +1,7 @@
 ---
 title: Linux入门学习笔记
 date: 2022-12-15 19:02:25
-tags: linux
-categories: 操作系统
+categories: 操作系统与软件
 img: https://i.postimg.cc/MZgFsVkF/image.png
 ---
 

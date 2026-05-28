@@ -1,7 +1,8 @@
 ---
 title: markdown基础语法
 date: 2023-01-20 21:58:15
-tags: 其他
+categories: 其他
+tags: 杂谈
 ---
 
 ## 什么是Markdown?

@@ -1,8 +1,9 @@
 ---
 title: Lua运行时热更新的实现
 date: 2024-07-31 23:12:18
-tags: 热更新
-catagories : 秋招
+categories: 游戏/引擎开发
+tags:
+  - Unity
 ---
 ### 前言
 
@@ -68,58 +69,51 @@ return t
 
 这种情况下，t.data作为函数t.func的upvalue（外部局部变量）会被重置。
 
-upvalue
-上面讲到的就是upvalue的例子，在游戏运行时，我们不会希望数据被覆盖或清空，应该尽量在保留原有数据的情况下替换函数的逻辑。
+#### upvalue
 
-1
-2
-3
-4
-5
-6
+上面讲到的就是 upvalue 的例子。在游戏运行时，我们不会希望数据被覆盖或清空，应该尽量在保留原有数据的情况下替换函数的逻辑。
+
+```lua
 local count = 0
 local function func()
-	count = count + 1
-	print(count)
+    count = count + 1
+    print(count)
 end
 return func
-在上面这个例子中，如果使用require机制热更代码，我们需要保存旧函数的count值。Lua中提供了获取并设置upvalue的方法debug.getupvalue和debug.setupvalue。
+```
 
-遍历一个函数的所有upvalue并设置upvalue：
+在上面这个例子中，如果使用 require 机制热更代码，我们需要保存旧函数的 count 值。Lua 中提供了获取并设置 upvalue 的方法 `debug.getupvalue` 和 `debug.setupvalue`。
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
+遍历一个函数的所有 upvalue 并设置 upvalue：
+
+```lua
 local oldfunc = require "example"
 package.loaded["example"] = nil
 local newfunc = require "example"
 
 for i = 1, math.huge do
-	local name, value = debug.getupvalue(oldfunc, i)
-	if not name then break end
-	debug.setupvalue(newfunc, i, value)
+    local name, value = debug.getupvalue(oldfunc, i)
+    if not name then break end
+    debug.setupvalue(newfunc, i, value)
 end
-要注意的是，函数同样可以作为upvalue，而我们希望使用新的函数、旧的数据。所以在遍历upvalue的时候需要判断是否为函数，如果是则要用新的覆盖。
+```
 
-全局语句
+要注意的是，函数同样可以作为 upvalue，而我们希望使用新的函数、旧的数据。所以在遍历 upvalue 的时候需要判断是否为函数，如果是则要用新的覆盖。
+
+#### 全局语句
 在require一个模块时，会重新执行其中的全局语句，这会破坏已有的代码逻辑。解决办法有两种，都比较复杂。一种是语法分析，将全局语句变成local i = {}这种，保留住这个变量，然后把旧的数据复制过来；另一种是使用临时环境表执行新模块，执行完切换成旧模块使用的环境表。
 
 这两种方法都比较麻烦，一般需要热更的主要都是各个系统的数据层，这些数据层基本不会包含全局语句的修改，所以我们可以忽略这种情况，只进行数据层的热更新。在多数情况下可以满足需求。
 
-热更新的约定
-了解了上面的原理之后，我们要想实现简单的Lua运行时热更新，需要满足以下的约定。
+#### 热更新的约定
+
+了解了上面的原理之后，我们要想实现简单的 Lua 运行时热更新，需要满足以下的约定。
 
 不破坏原有数据
 游戏运行时许多Lua系统中都保存了服务器发来的数据，或者是计算产生的一些数据，我们不希望这些数据被清空或改变。热更新的基础就是更新服务的逻辑，通常只是逻辑发生变化，但原有的值并不能被改变。
 
 不为热更多写代码
-程序员都比较懒，如果热更需要现在原有的逻辑中加入热更前后进行的操作的话，没人能接受。就像为了热更C#而改变原有的代码结构，应该尽量避免额外的负担。
+程序员都比较懒，如果热需要在原有的逻辑中加入热更前后进行的操作的话，没人能接受。就像为了热更C#而改变原有的代码结构，应该尽量避免额外的负担。
 
 只修改逻辑，而非增加
 一般来说需要运行时热更的都是改动比较小的更新或者修复一些bug，这种情况下只要修改函数就可以达到目的，而没有必要新增函数。而且，新增的函数如果使用了upvalue，新增之后没法给它赋值，因为在旧的模块中不存在这个upvalue。
@@ -130,51 +124,43 @@ end
 不改变所有数据和函数的命名
 显然，如果改变命名，那谁知道要更新啥呢~
 
-实现思路
+### 实现思路
+
 下面简单介绍实现思路。
 
-热更模块
-一般来说需要热更的话，是你修改了某个XXXModel.lua文件，这个文件在package.loaded中名为XXXSystem.XXXModel。其中XXXSystem是这个Lua模块存放的文件夹名称。
+#### 热更模块
+
+一般来说需要热更的话，是你修改了某个 `XXXModel.lua` 文件，这个文件在 `package.loaded` 中名为 `XXXSystem.XXXModel`。其中 `XXXSystem` 是这个 Lua 模块存放的文件夹名称。
 
 热更之前要先保存旧模块的全部数据：
 
-1
-2
-3
-4
-5
+```lua
 local oldModule
 if package.loaded[packageName] then
     oldModule = package.loaded[packageName]
     package.loaded[packageName] = nil
 end
-之后直接require新的模块，然后把新模块记录下来，遍历新模块的所有数据。总体来说，遍历的过程中，元素如果是table就保留就模块的，如果是function就用新模块的。
+```
 
-当然要注意，table会嵌套table和function，因此这是一个递归的过程。
+之后直接 require 新的模块，然后把新模块记录下来，遍历新模块的所有数据。总体来说，遍历的过程中，元素如果是 table 就保留旧模块的，如果是 function 就用新模块的。
 
-还有，function要用新的，但是function的的upvalue要用旧的。
+当然要注意，table 会嵌套 table 和 function，因此这是一个递归的过程。
+
+还有，function 要用新的，但是 function 的 upvalue 要用旧的。
 
 table中的metatable同样作为table处理，使用debug.getmetatable获取一个table的metatable然后进行与table一样的操作。
 
 对于可能出现循环引用的情况，可以在更新表的时候记录已更新的table，避免重复处理死循环。
 
-监听模块
-热更可以用在编辑器下，同样可以在线上环境使用（当然要有更严格的限制）。在编辑器下热更的话，要监听本地lua文件的变化，
+#### 监听模块
 
-Unity编辑器中可以使用FileSystemWatcher来实现监听，可以把这个功能封装到一个DirectoryWatcher类里，方便监听指定的多个文件夹。
+热更可以用在编辑器下，同样可以在线上环境使用（当然要有更严格的限制）。在编辑器下热更的话，要监听本地 lua 文件的变化。
 
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-if (!Directory.Exists(dirPath)) 
-	return;
+Unity 编辑器中可以使用 `FileSystemWatcher` 来实现监听，可以把这个功能封装到一个 `DirectoryWatcher` 类里，方便监听指定的多个文件夹。
+
+```csharp
+if (!Directory.Exists(dirPath))
+    return;
 var watcher = new FileSystemWatcher();
 watcher.IncludeSubdirectories = true;
 watcher.Path = dirPath;
@@ -183,8 +169,12 @@ watcher.Filter = "*.lua";
 watcher.Changed += handler;
 watcher.EnableRaisingEvents = true;
 watcher.InternalBufferSize = 10240;
-编辑器下游戏启动时创建DirectoryWatcher监听指定文件夹，并写处理函数LuaFileOnChanged
+```
 
-1
-var luaDirWatcher = new DirectoryWatcher(LuaConst.luaDir, new FileSystemEventHandler(LuaFileOnChanged));//监听lua文件
-触发LuaFileOnChanged的时候调用对应的Lua方法重载该文件模块即可。
+编辑器下游戏启动时创建 `DirectoryWatcher` 监听指定文件夹，并写处理函数 `LuaFileOnChanged`：
+
+```csharp
+var luaDirWatcher = new DirectoryWatcher(LuaConst.luaDir, new FileSystemEventHandler(LuaFileOnChanged)); // 监听 lua 文件
+```
+
+触发 `LuaFileOnChanged` 的时候调用对应的 Lua 方法重载该文件模块即可。
