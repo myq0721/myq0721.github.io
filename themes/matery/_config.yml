@@ -365,7 +365,7 @@ utterances:
   enable: true
   repo: myq0721/myq0721.github.io
   issueTerm: pathname
-  theme: preferred-color-scheme
+  theme: github-light
   label: comment
 
 # disqus config, default disabled
