@@ -245,6 +245,10 @@
             <%- partial('_partial/gitment') %>
             <% } %>
 
+            <% if (theme.utterances && theme.utterances.enable) { %>
+                <%- partial('_partial/utterances') %>
+            <% } %>
+
             <% if (theme.disqus.enable) { %>
             <%- partial('_partial/disqus') %>
             <% } %>

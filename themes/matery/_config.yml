@@ -349,14 +349,24 @@ gitalk:
   admin:
 
 # the Gitment config，default disabled
-# Gitment 评论模块的配置，默认为不激活
+# Gitment 评论模块的配置，默认为不激活（OAuth 代理已失效，不推荐）
 gitment:
-  enable: true
+  enable: false
   owner:
   repo:
   oauth:
     clientId:
     clientSecret:
+
+# Utterances 评论（GitHub App，权限仅限指定仓库，推荐）
+# 使用前请在 https://github.com/apps/utterances 安装 App，并授权仓库
+# 详见 https://utteranc.es/
+utterances:
+  enable: true
+  repo: myq0721/myq0721.github.io
+  issueTerm: pathname
+  theme: preferred-color-scheme
+  label: comment
 
 # disqus config, default disabled
 # Disqus评论模块的配置，默认为不激活
