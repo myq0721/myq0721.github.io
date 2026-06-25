@@ -1,0 +1,106 @@
+{
+  "methodology": {
+    "start": "1996-01-01",
+    "end": "2025-12-31",
+    "currency": "CNY",
+    "rebalancing": "annual (December month-end)",
+    "nasdaq_proxy": "Kenneth French HiTec industry (USD) + USDCNY",
+    "sp500_proxy": "Kenneth French market factor Mkt-RF+RF (USD) + USDCNY",
+    "euro_proxy": "Kenneth French Europe market factor (EUR) + EURCNY",
+    "nikkei_proxy": "Kenneth French Japan market factor (JPY) + JPYCNY",
+    "csi300_proxy": "SSE Composite before CSI300 inception",
+    "gold_proxy": "GitHub LBMA monthly gold (USD) + USDCNY",
+    "bonds_proxy": "FRED DGS10 duration approximation (USD) + USDCNY",
+    "cash_proxy": "FRED DTB3 3-month T-bill + USDCNY",
+    "fx_source": "FRED DEXCHUS / DEXUSEU / DEXJPUS"
+  },
+  "portfolios": {
+    "组合1_全球分散": {
+      "nasdaq": 0.3,
+      "sp500": 0.2,
+      "euro": 0.1,
+      "nikkei": 0.1,
+      "gold": 0.1,
+      "cash": 0.2
+    },
+    "组合2_沪深300偏重": {
+      "nasdaq": 0.3,
+      "sp500": 0.2,
+      "csi300": 0.2,
+      "gold": 0.1,
+      "cash": 0.2
+    },
+    "组合3_黄金偏重": {
+      "nasdaq": 0.3,
+      "sp500": 0.2,
+      "csi300": 0.1,
+      "gold": 0.2,
+      "cash": 0.2
+    },
+    "组合4_四等分均衡": {
+      "sp500": 0.25,
+      "gold": 0.25,
+      "bonds": 0.25,
+      "cash": 0.25
+    }
+  },
+  "metrics": {
+    "组合1_全球分散": {
+      "start": "1999-02-28",
+      "end": "2025-12-31",
+      "years": 26.84,
+      "total_return_pct": 636.7,
+      "annualized_return_pct": 7.72,
+      "annualized_volatility_pct": 11.93,
+      "max_drawdown_pct": -47.0,
+      "sharpe_ratio": 0.536,
+      "calmar_ratio": 0.164,
+      "risk_free_annualized_pct": 1.34,
+      "final_nav": 7.367
+    },
+    "组合2_沪深300偏重": {
+      "start": "1999-02-28",
+      "end": "2025-12-31",
+      "years": 26.84,
+      "total_return_pct": 854.76,
+      "annualized_return_pct": 8.77,
+      "annualized_volatility_pct": 12.06,
+      "max_drawdown_pct": -41.11,
+      "sharpe_ratio": 0.617,
+      "calmar_ratio": 0.213,
+      "risk_free_annualized_pct": 1.34,
+      "final_nav": 9.548
+    },
+    "组合3_黄金偏重": {
+      "start": "1999-02-28",
+      "end": "2025-12-31",
+      "years": 26.84,
+      "total_return_pct": 870.64,
+      "annualized_return_pct": 8.84,
+      "annualized_volatility_pct": 10.55,
+      "max_drawdown_pct": -37.91,
+      "sharpe_ratio": 0.711,
+      "calmar_ratio": 0.233,
+      "risk_free_annualized_pct": 1.34,
+      "final_nav": 9.706
+    },
+    "组合4_四等分均衡": {
+      "start": "1999-02-28",
+      "end": "2025-12-31",
+      "years": 26.84,
+      "total_return_pct": 410.21,
+      "annualized_return_pct": 6.26,
+      "annualized_volatility_pct": 5.04,
+      "max_drawdown_pct": -16.53,
+      "sharpe_ratio": 0.977,
+      "calmar_ratio": 0.379,
+      "risk_free_annualized_pct": 1.34,
+      "final_nav": 5.102
+    }
+  },
+  "sample_period": {
+    "start": "1999-02-28",
+    "end": "2025-12-31",
+    "months": 323
+  }
+}
